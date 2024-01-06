@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import { api } from "@/trpc/react";
 
+import { Button } from "@/components/ui/button";
+
 export function CreatePost() {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -31,13 +33,9 @@ export function CreatePost() {
         onChange={(e) => setName(e.target.value)}
         className="w-full rounded-full px-4 py-2 text-black"
       />
-      <button
-        type="submit"
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
-        disabled={createPost.isLoading}
-      >
+      <Button type="submit" disabled={createPost.isLoading}>
         {createPost.isLoading ? "Submitting..." : "Submit"}
-      </button>
+      </Button>
     </form>
   );
 }
