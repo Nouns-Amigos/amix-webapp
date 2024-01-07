@@ -36,6 +36,18 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        brandWhite: {
+          DEFAULT: "hsl(var(--brand-white))",
+          foreground: "hsl(var(--foreground))",
+        },
+        brandWhiteGhost: {
+          DEFAULT: "hsl(var(--brand-white-ghost))",
+          foreground: "hsl(var(--foreground))",
+        },
+        brandWhiteLavender: {
+          DEFAULT: "hsl(var(--brand-white-lavender))",
+          foreground: "hsl(var(--foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
