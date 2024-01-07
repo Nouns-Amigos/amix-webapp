@@ -5,10 +5,11 @@ import { Button } from "@/components/ui/button";
 
 export default async function Home() {
   return (
-    <div className="container flex h-full flex-col items-center px-4 py-12 md:max-w-lg md:px-8 md:py-20 lg:max-w-2xl lg:py-12 lg:text-center xl:py-20">
-      <h1 className={`${nounsFont.className} text-5xl md:text-6xl`}>
-        Te damos la bienvenida a <br />
-        <span className="text-7xl font-medium text-secondary">
+    <div className="container flex h-full flex-col items-center px-4 px-6 py-12 md:max-w-lg md:px-8 md:py-20 lg:max-w-2xl lg:py-12 lg:text-center xl:py-20">
+      <h1 className={`${nounsFont.className} text-4xl md:text-6xl`}>
+        Te damos la <br className="md:hidden" />
+        bienvenida a <br />
+        <span className=" text-5xl font-medium text-secondary md:text-7xl">
           Nouns Amigos
         </span>
       </h1>
@@ -17,7 +18,7 @@ export default async function Home() {
       </h3>
       <Button
         size="lg"
-        className={`${nounsFont.className} z-10 mt-10 text-xl tracking-wide`}
+        className={`${nounsFont.className} z-10 mt-4 text-xl tracking-wide md:mt-10`}
       >
         🚧 En construcción 🏗️
       </Button>
