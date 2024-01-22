@@ -15,7 +15,7 @@ export default function CollectionDropdownButton() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="border-primary/25 pl-2 pr-1.5"
+          className="border-primary pl-2 pr-1.5"
           variant="outline"
           size="sm"
         >
