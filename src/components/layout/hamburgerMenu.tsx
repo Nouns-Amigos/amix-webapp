@@ -31,6 +31,13 @@ export default function HamburgerMenu() {
         </SheetHeader>
         <div className="flex flex-col space-y-4">
           <Link
+            href="/nouns-dao-amigos"
+            className={buttonVariants({ variant: "outline", size: "sm" })}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <span>DAO</span>
+          </Link>
+          <Link
             href="https://prop.house/0x58fcf38562f7402aad42a27bd783bd0892870536"
             target="_blank"
             rel="noopener noreferrer"
@@ -41,74 +48,18 @@ export default function HamburgerMenu() {
             <ExternalLink size={14} />
           </Link>
           <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span>Bounties</span>
-          </Link>
-          <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span className="mr-2">Otras ligas</span>
-          </Link>
-          <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span className="mr-2">Miembros</span>
-          </Link>
-          <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span className="mr-2">Dashboard</span>
-          </Link>
-          <Link
-            href="#"
+            href="/comunidad"
             className={buttonVariants({ variant: "outline", size: "sm" })}
             onClick={() => setIsMenuOpen(false)}
           >
             Comunidad
           </Link>
           <Link
-            href="#"
+            href="/token-amigo"
             className={buttonVariants({ variant: "outline", size: "sm" })}
             onClick={() => setIsMenuOpen(false)}
           >
-            Recursos
-          </Link>
-          <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span className="mr-2">NFT: Características</span>
-          </Link>
-          <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span className="mr-2">Colección</span>
-          </Link>
-          <Link
-            href="#"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            <span className="mr-2">Área de Juegos</span>
-          </Link>
-          <Link
-            href="/entrar"
-            className={buttonVariants({ variant: "default", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Entrar
+            AMIGO
           </Link>
         </div>
       </SheetContent>
