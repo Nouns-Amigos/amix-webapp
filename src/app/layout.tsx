@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
@@ -13,7 +13,7 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export const interFont = Inter({
+export const bodyFont = Raleway({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -27,11 +27,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${interFont.variable} h-screen`}>
+      <body className={`font-sans ${bodyFont.variable} h-screen`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <Navbar />
           <main
-            className={`min-h-[calc(100vh-${NAVBAR_HEIGHT})] overflow-x-hidden overflow-y-scroll`}
+            className={`min-h-[calc(100svh-${NAVBAR_HEIGHT})] overflow-x-hidden overflow-y-scroll`}
           >
             {children}
           </main>
