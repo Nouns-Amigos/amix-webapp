@@ -7,10 +7,11 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import HamburgerMenu from "./hamburgerMenu";
 import DaoDropdownMenu from "./daoDropdownButton";
 import CollectionDropdownButton from "./collectionDropdownButton";
+import TreasuryButton from "./treasuryButton";
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 h-16 bg-background">
+    <nav className="sticky top-0 z-10 h-16 bg-background">
       <div className="mx-auto flex h-full max-w-7xl justify-between px-4">
         <div className="flex items-center space-x-0 md:space-x-4">
           <Link
@@ -31,35 +32,25 @@ export default function Navbar() {
               amigos
             </span>
           </Link>
-          <Link
-            href="https://etherscan.io/address/0x9581587991da459409b4e7e3b44daa1e65e589ec"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-          >
-            <span className="mr-2.5 hidden text-slate-600 lg:block">
-              Tesorería
-            </span>{" "}
-            Ξ 3.269
-          </Link>
+          <TreasuryButton />
         </div>
 
         {/* Primary Navbar items */}
         <div className="hidden items-center space-x-4 lg:flex">
           <DaoDropdownMenu />
           <Link
-            href="#"
+            href="/comunidad"
             className={buttonVariants({ variant: "outline", size: "sm" })}
           >
             Comunidad
           </Link>
           <Link
-            href="#"
+            href="/token-amigo"
             className={buttonVariants({ variant: "outline", size: "sm" })}
           >
-            Recursos
+            AMIGO
           </Link>
-          <CollectionDropdownButton />
+          {/* <CollectionDropdownButton /> */}
           <Button
             variant="default"
             size="sm"
