@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <>
       <div className="h-[calc(100svh-64px)]">
-        <div className="container flex h-[50%] w-full flex-col justify-center gap-y-3 pb-4  pt-12 md:max-w-xl md:px-8 md:py-20 lg:max-w-2xl lg:py-12 lg:text-center xl:py-20">
+        <div className="container flex h-1/2 w-full flex-col justify-center gap-y-2 pt-12 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
           <h1
             className={`${nounsFont.className} text-left text-4xl xs:text-5xl md:text-center md:text-6xl`}
           >
@@ -33,7 +33,7 @@ export default async function Home() {
             </Button>
           </div>
         </div>
-        <div className="relative flex h-[50%] w-full items-end">
+        <div className="relative flex h-1/2 w-full items-end">
           <div className="bottom-0 flex w-full justify-center">
             <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:h-80 lg:w-80 2xl:h-[480px] 2xl:w-[480px]">
               <Image
