@@ -46,6 +46,7 @@ export default async function Home() {
         </div>
       </div>
       <WhatIsNounsSection />
+      <AmigoToken />
     </>
   );
 }
@@ -53,7 +54,7 @@ export default async function Home() {
 function WhatIsNounsSection() {
   return (
     <div className="w-full bg-primary lg:flex lg:justify-center">
-      <div className="flex h-full flex-col gap-y-6 px-8 py-16 text-brandWhite md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+      <div className="flex h-full flex-col gap-y-6 px-6 py-16 text-brandWhite md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
         <div className="w-full md:flex md:flex-col">
           <h2
             className={`${nounsFont.className} text-left text-3xl xs:text-4xl md:text-center`}
