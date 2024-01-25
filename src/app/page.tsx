@@ -10,6 +10,14 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import DefaultCard from "@/components/cards/DefaultCard";
+import {
+  HeartHandshakeIcon,
+  InboxIcon,
+  LightbulbIcon,
+  SproutIcon,
+  TrashIcon,
+  UsersIcon,
+} from "lucide-react";
 
 export default async function Home() {
   return (
@@ -56,6 +64,7 @@ export default async function Home() {
       <WhatIsNounsSection />
       <AmigoToken />
       <HowItWorks />
+      <Benefits />
     </>
   );
 }
@@ -344,10 +353,82 @@ function HowItWorks() {
         </DefaultCard>
         <DefaultCard title="6. Recibe tu AMIGO">
           <p className="text-xl">
-            Con tus avences y entrega de tu proyecto, podrás llenar el
+            Con tus avances y entrega de tu proyecto, podrás llenar el
             formulario para recibir tu AMIGO.
           </p>
         </DefaultCard>
+      </div>
+    </div>
+  );
+}
+
+const features = [
+  {
+    name: "Haz realidad tus ideas",
+    description:
+      "Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt. Ex tempora quia. Sit nobis consequatur dolores incidunt.",
+    href: "#",
+    icon: LightbulbIcon,
+  },
+  {
+    name: "Proyectos con impacto social",
+    description:
+      "Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus.",
+    href: "#",
+    icon: HeartHandshakeIcon,
+  },
+  {
+    name: "Participa en la gobernanza",
+    description:
+      "Et quod quaerat dolorem quaerat architecto aliquam accusantium. Ex adipisci et doloremque autem quia quam. Quis eos molestiae at iure impedit.",
+    href: "#",
+    icon: SproutIcon,
+  },
+];
+
+function Benefits() {
+  return (
+    <div className="bg-brandWhiteLavender py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl">
+          <h2
+            className={`${nounsFont.className} text-3xl font-bold tracking-tight text-secondary xs:text-4xl md:text-5xl`}
+          >
+            Disfruta mientras construyes con impacto
+          </h2>
+          <p className="mt-6 text-xl leading-8 text-foreground">
+            Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
+            voluptatum cupiditate veritatis in accusamus quisquam.
+          </p>
+        </div>
+        <div className="mx-auto mt-8 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {features.map((feature) => (
+              <div key={feature.name} className="flex flex-col">
+                <dt className="text-2xl font-semibold leading-7 text-foreground">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
+                    <feature.icon
+                      className="h-8 w-8 text-brandWhiteLavender"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  {feature.name}
+                </dt>
+                <dd className="mt-1 flex flex-auto flex-col leading-7 text-foreground">
+                  <p className="flex-auto text-xl">{feature.description}</p>
+                  {/* <p className="mt-6">
+                    <a
+                      href={feature.href}
+                      className="text-sm font-semibold leading-6 text-indigo-400"
+                    >
+                      Learn more <span aria-hidden="true">→</span>
+                    </a>
+                  </p> */}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </div>
   );
