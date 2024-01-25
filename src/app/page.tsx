@@ -388,7 +388,7 @@ const features = [
 
 function Benefits() {
   return (
-    <div className="bg-brandWhiteLavender py-24 sm:py-32">
+    <div className="bg-brandWhiteLavender px-4 py-24 sm:py-32 md:px-8">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl">
           <h2
