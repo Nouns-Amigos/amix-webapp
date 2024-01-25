@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export default async function Home() {
   return (
     <>
-      <div className="h-[calc(100svh-64px)]">
+      <div className="h-full md:h-[calc(100svh-64px)]">
         <div className="container flex h-1/2 w-full flex-col justify-center gap-y-2 pt-12 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
           <h1
             className={`${nounsFont.className} text-left text-4xl xs:text-5xl md:text-center md:text-6xl`}
