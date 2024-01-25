@@ -1,6 +1,13 @@
 import Image from "next/image";
 
 import { nounsFont } from "@/lib/fonts";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 
 export default async function Home() {
@@ -46,6 +53,7 @@ export default async function Home() {
         </div>
       </div>
       <WhatIsNounsSection />
+      <AmigoToken />
     </>
   );
 }
@@ -164,6 +172,118 @@ function WhatIsNounsSection() {
             >
               Descubre nuestra DAO
             </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AmigoToken() {
+  return (
+    <div className="w-full bg-brandWhiteLavender lg:flex lg:justify-center">
+      <div className="flex h-full flex-col gap-y-6 px-6 py-16 text-black md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+        <div className="w-full md:flex md:flex-col">
+          <h2
+            className={`${nounsFont.className} text-left text-4xl text-secondary xs:text-5xl md:text-center`}
+          >
+            Token AMIGO
+          </h2>
+          <div className="flex flex-col gap-y-4 md:flex-row">
+            <div className="w-full md:flex md:w-1/2 md:items-center md:pl-16 md:pr-2">
+              <p className="mt-2 text-[22px] sm:text-[2rem] md:text-2xl lg:text-left">
+                El token AMIGO es nuestra colección insignia, el cual otorga
+                poder de votación sobre las rondas de props, y que identifica a
+                los ganadores de propuestas anteriores.
+              </p>
+            </div>
+            <Accordion type="single" collapsible>
+              <AccordionItem value="item-1">
+                <AccordionTrigger>
+                  <h2 className={`${nounsFont.className} text-3xl xs:text-4xl`}>
+                    Nouns DAO Amigos
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="text-xl">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Voluptatibus reiciendis sunt quisquam officiis quas aperiam
+                  molestiae fuga non a recusandae mollitia omnis tempora nobis,
+                  quo quidem iste eveniet animi! A!
+                  <div className="flex w-full justify-center py-6">
+                    <Button
+                      size="lg"
+                      className={`${nounsFont.className} text-2xl`}
+                    >
+                      Únete al Discord
+                    </Button>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2">
+                <AccordionTrigger>
+                  <h2 className={`${nounsFont.className} text-3xl xs:text-4xl`}>
+                    Rasgos AMIGO
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="text-xl">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. In
+                  delectus possimus voluptatibus nulla dolore quibusdam
+                  repellendus odio molestias harum.
+                  <div className="py-3 pl-2">
+                    <ul className="list-inside list-[square] marker:text-secondary">
+                      <li>Rasgo 1</li>
+                      <li>Rasgo 2</li>
+                      <li>Rasgo 3</li>
+                      <li>Rasgo 4</li>
+                      <li>Rasgo 5</li>
+                    </ul>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3">
+                <AccordionTrigger>
+                  <h2 className={`${nounsFont.className} text-3xl xs:text-4xl`}>
+                    Cómo obtenerlo
+                  </h2>
+                </AccordionTrigger>
+                <AccordionContent className="flex flex-col gap-y-2 text-xl">
+                  <p>
+                    Los token AMIGO se distribuyen al concretar exitosamente lo
+                    comprometido en una prop ganadora.
+                  </p>
+                  <p>
+                    Esto compromete a los builders a desarrollar sus propuestas,
+                    y una vez obtenido, a participar en la gobernanza de la DAO.
+                  </p>
+                  <p>
+                    Así que, el primer paso es convertir tu idea en una prop y
+                    participar en una ronda.
+                  </p>
+                  <h3
+                    className={`text-center text-2xl xs:text-3xl ${nounsFont.className}`}
+                  >
+                    ¿Qué esperas?
+                  </h3>
+                  <div className="flex w-full justify-center py-6">
+                    <Button
+                      size="lg"
+                      className={`${nounsFont.className} text-2xl`}
+                    >
+                      Crea tu Prop
+                    </Button>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+            <div className="flex w-full justify-center md:w-1/2 md:px-8">
+              <div className="relative aspect-square w-full">
+                <Image
+                  src="/icons/android-chrome-512x512.png"
+                  alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
+                  fill
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

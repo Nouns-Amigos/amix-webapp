@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --background: 240 60% 96%;
-    --foreground: 320 12% 10%;
+    --background: 240 60% 96%; /* --brand-white-magnolia */
+    --foreground: 276 10% 10%; /* #19161b Raisin black (coolors.co)*/
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -14,14 +14,14 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 235 74% 51%; /* #2435DE Platinate blue (coolors.co) */
-    --primary-foreground: 240 50% 96%; /* --brand-white-ghost */
+    --primary-foreground: 240 60% 96%; /* --brand-white-magnolia */
 
     --secondary: 336 79% 51%; /* #E51F6E Razzmatazz (coolors.co), red-pink */
-    --secondary-foreground: 240 50% 96%; /* --brand-white-ghost */
+    --secondary-foreground: 240 60% 96%; /* --brand-white-magnolia */
 
     --brand-white: 0 40% 96.1%; /* #F1F5F9 Anti-flash white (coolors.co) */
-    --brand-white-ghost: 240 50% 96%; /* #F0F0FA Ghost white (coolors.co) */
-    --brand-white-lavender: 255 67% 94%;
+    --brand-white-magnolia: 240 60% 96%; /* #E51F6E Magnolia (coolors.co) */
+    --brand-white-lavender: 255 67% 94%; /* #EBE5FA Lavender (web) (coolors.co) */
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
