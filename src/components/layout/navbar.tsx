@@ -10,7 +10,7 @@ import CollectionDropdownButton from "./collectionDropdownButton";
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 h-16 bg-background">
+    <nav className="sticky top-0 z-10 h-16 bg-background">
       <div className="mx-auto flex h-full max-w-7xl justify-between px-4">
         <div className="flex items-center space-x-0 md:space-x-4">
           <Link

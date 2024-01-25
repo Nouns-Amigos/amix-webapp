@@ -10,14 +10,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import DefaultCard from "@/components/cards/DefaultCard";
-import {
-  HeartHandshakeIcon,
-  InboxIcon,
-  LightbulbIcon,
-  SproutIcon,
-  TrashIcon,
-  UsersIcon,
-} from "lucide-react";
+import { HeartHandshakeIcon, LightbulbIcon, SproutIcon } from "lucide-react";
 
 export default async function Home() {
   return (
@@ -43,7 +36,7 @@ export default async function Home() {
           <div className="flex w-full justify-center">
             <Button
               size="lg"
-              className={`${nounsFont.className} z-10 mt-4 text-2xl font-medium tracking-wide md:mt-10`}
+              className={`${nounsFont.className} mt-4 text-2xl font-medium tracking-wide md:mt-10`}
             >
               🚧 En construcción 🏗️
             </Button>
@@ -65,6 +58,8 @@ export default async function Home() {
       <AmigoToken />
       <HowItWorks />
       <Benefits />
+      <Testimonials />
+      <CallToAction />
     </>
   );
 }
@@ -392,7 +387,7 @@ function Benefits() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl">
           <h2
-            className={`${nounsFont.className} text-3xl font-bold tracking-tight text-secondary xs:text-4xl md:text-5xl`}
+            className={`${nounsFont.className} text-3xl font-bold text-secondary xs:text-4xl md:text-5xl`}
           >
             Disfruta mientras construyes con impacto
           </h2>
@@ -405,7 +400,9 @@ function Benefits() {
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
             {features.map((feature) => (
               <div key={feature.name} className="flex flex-col">
-                <dt className="text-2xl font-semibold leading-7 text-foreground">
+                <dt
+                  className={`${nounsFont.className} text-2xl font-semibold leading-7 text-foreground xs:text-[30px]`}
+                >
                   <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
                     <feature.icon
                       className="h-8 w-8 text-brandWhiteLavender"
@@ -428,6 +425,142 @@ function Benefits() {
               </div>
             ))}
           </dl>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const testimonials = [
+  {
+    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    author: {
+      name: "Leslie Alexander",
+      handle: "lesliealexander",
+      imageUrl:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    author: {
+      name: "Leslie Alexander",
+      handle: "lesliealexander2",
+      imageUrl:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    author: {
+      name: "Leslie Alexander",
+      handle: "lesliealexander3",
+      imageUrl:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    author: {
+      name: "Leslie Alexander",
+      handle: "lesliealexander4",
+      imageUrl:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    author: {
+      name: "Leslie Alexander",
+      handle: "lesliealexander5",
+      imageUrl:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  {
+    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    author: {
+      name: "Leslie Alexander",
+      handle: "lesliealexander6",
+      imageUrl:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+    },
+  },
+  // More testimonials...
+];
+
+function Testimonials() {
+  return (
+    <div className="bg-primary py-16 sm:py-32 md:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-xl text-center">
+          <p
+            className={`${nounsFont.className} mt-2 text-3xl font-bold leading-6 text-primary-foreground xs:text-4xl lg:text-5xl`}
+          >
+            ¿Cómo impactan los proyectos{" "}
+            <span className="font-bold underline decoration-secondary decoration-4 underline-offset-8">
+              Nounish
+            </span>
+            ?
+          </p>
+        </div>
+        <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
+          <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.author.handle}
+                className="pt-8 sm:inline-block sm:w-full sm:px-4"
+              >
+                <figure className="rounded-2xl bg-gray-50 p-8 leading-6">
+                  <blockquote className="text-lg text-gray-900">
+                    <p>{`“${testimonial.body}”`}</p>
+                  </blockquote>
+                  <figcaption className="mt-6 flex items-center gap-x-4">
+                    <img
+                      className="h-10 w-10 rounded-full bg-gray-50"
+                      src={testimonial.author.imageUrl}
+                      alt=""
+                    />
+                    <div>
+                      <div className="text-xl font-semibold text-gray-900">
+                        {testimonial.author.name}
+                      </div>
+                      <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+function CallToAction() {
+  return (
+    <div className="bg-brandWhiteLavender">
+      <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h2
+            className={`${nounsFont.className} text-3xl  text-secondary xs:text-4xl md:text-5xl`}
+          >
+            No lo pienses más.
+            <br />
+            Empieza a construir con Nouns Amigos.
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
+            Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
+            anim id veniam aliqua proident excepteur commodo do ea.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Button
+              size="lg"
+              className={`${nounsFont.className} z-10 mt-4 text-2xl font-medium tracking-wide md:mt-10`}
+            >
+              Únete al Discord
+            </Button>
+          </div>
         </div>
       </div>
     </div>
