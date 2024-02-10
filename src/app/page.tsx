@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 import { nounsFont } from "@/lib/fonts";
@@ -11,8 +13,38 @@ import {
 import { Button } from "@/components/ui/button";
 import DefaultCard from "@/components/cards/DefaultCard";
 import { HeartHandshakeIcon, LightbulbIcon, SproutIcon } from "lucide-react";
+import useAlchemy from "@/services/alchemy";
 
-export default async function Home() {
+import { NounsAmigosContractAddress } from "@/config/nounsAmigosCollection";
+import { useEffect } from "react";
+
+export default function Home() {
+  const alchemy = useAlchemy();
+
+  async function getNftsForAmigosCollection() {
+    try {
+      const nfts = [];
+      // Get the async iterable for the contract's NFTs.
+      const nftsIterable = alchemy.nft.getNftsForContractIterator(
+        NounsAmigosContractAddress,
+      );
+
+      // Iterate over the NFTs and add them to the nfts array.
+      for await (const nft of nftsIterable) {
+        nfts.push(nft);
+      }
+
+      // Log the NFTs.
+      console.log(nfts);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    void getNftsForAmigosCollection();
+  }, []);
+
   return (
     <>
       <div className="flex h-full flex-col items-center md:h-[calc(100svh-64px)]">
