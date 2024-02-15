@@ -11,7 +11,7 @@ export const interFont = Inter({
 });
 
 export const nounsFont = LondrinaSolid({
-  weight: "400",
+  weight: ["300", "400"],
   subsets: ["latin"],
   variable: "--font-nouns",
 });

@@ -12,13 +12,99 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import DefaultCard from "@/components/cards/DefaultCard";
-import { HeartHandshakeIcon, LightbulbIcon, SproutIcon } from "lucide-react";
+import { CornerLeftDown, ChevronsDown } from "lucide-react";
 import useAlchemy from "@/services/alchemy";
 
 import { NounsAmigosContractAddress } from "@/config/nounsAmigosCollection";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { NftTokenType } from "alchemy-sdk";
+import { ProjectsCarousel } from "@/components/landing/ProjectsCarousel";
+
+type nftElementDataType = {
+  acquiredAt: unknown;
+  collection: {
+    bannerImageUrl: string;
+    externalUrl: string;
+    name: string;
+    slug: string;
+  };
+  contract: {
+    address: string | `0x${string}`;
+    contractDeployer: string | `0x${string}`;
+    deployedBlockNumber: number;
+    isSpam: boolean;
+    name: string;
+    openSeaMetadata: {
+      bannerImageUrl: string;
+      collectionName: string;
+      collectionSlug: string;
+      description: string;
+      discordUrl: string;
+      externalUrl: string;
+      floorPrice: number;
+      imageUrl: string;
+      lastIngestedAt: string;
+      safelistRequestStatus: string;
+      twitterUsername: string;
+    };
+    spamClassifications: unknown[];
+    symbol: string;
+    tokenType: string;
+    totalSupply: string | number | unknown;
+  };
+  description: string;
+  image: {
+    cachedUrl: string;
+    contentType: string;
+    originalUrl: string;
+    pngUrl: string;
+    size: number;
+    thumbnailUrl: string;
+  };
+  mint: {
+    mintAddress: string | `0x${string}`;
+    blockNumber: number;
+    timestamp: string;
+    transactionHash: string | `0x${string}`;
+  };
+  name: string;
+  owners: unknown;
+  raw: {
+    error: unknown;
+    metadata: {
+      created_by: string;
+      description: string;
+      external_url: string;
+      image: string;
+      image_details: {
+        format: string;
+        width: number;
+        sha256: string;
+        bytes: number;
+        height: number;
+      };
+      image_url: string;
+      name: string;
+    };
+    tokenUri: string;
+  };
+  timeLastUpdated: string;
+  tokenId: string;
+  tokenType: string;
+  tokenUri: string;
+};
+
+function getRandomNumber(range: number) {
+  return Math.floor(Math.random() * range);
+}
 
 export default function Home() {
+  const [isCollectionFetched, setIsCollectionFetched] = useState(false);
+  const [displayAmigoToken, setDisplayAmigoToken] =
+    useState<unknown>(undefined);
+  const [amigosCollection, setAmigosCollection] = useState<
+    nftElementDataType[]
+  >([]);
   const alchemy = useAlchemy();
 
   async function getNftsForAmigosCollection() {
@@ -31,133 +117,143 @@ export default function Home() {
 
       // Iterate over the NFTs and add them to the nfts array.
       for await (const nft of nftsIterable) {
-        nfts.push(nft);
+        nfts.push(nft as nftElementDataType);
       }
 
       // Log the NFTs.
       console.log(nfts);
+      return nfts;
     } catch (error) {
       console.log(error);
     }
   }
 
+  async function getRandomAmigoToken() {
+    const fetchedCollection = await getNftsForAmigosCollection();
+    if (!fetchedCollection) return;
+    setAmigosCollection(fetchedCollection);
+    const randomTokenId = getRandomNumber(fetchedCollection.length);
+    const selectedAmigoMetadata = await alchemy.nft.getNftMetadata(
+      NounsAmigosContractAddress,
+      randomTokenId,
+      { tokenType: NftTokenType.ERC721 },
+    );
+    console.log(selectedAmigoMetadata);
+  }
+
   useEffect(() => {
-    void getNftsForAmigosCollection();
+    if (!isCollectionFetched) {
+      void getRandomAmigoToken();
+      setIsCollectionFetched(true);
+    }
   }, []);
 
   return (
     <>
-      <div className="flex h-full flex-col items-center md:h-[calc(100svh-64px)]">
-        <div className="flex h-1/2 w-full flex-col justify-center gap-y-2 px-4 pt-8 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
-          <h1
-            className={`${nounsFont.className} text-left text-4xl xs:text-5xl md:text-center md:text-6xl`}
-          >
-            Construye con
-            <br />
-            <span className="text-5xl font-medium text-secondary xs:text-6xl md:text-7xl">
-              Nouns Amigos
-            </span>
-            <br />y fondea tus ideas
-          </h1>
-          <h4
-            className={`${nounsFont.className} mt-4 text-2xl sm:text-[2rem] md:text-center`}
-          >
-            Descubre todo lo que puedes hacer con la comunidad de Nouns en
-            español
-          </h4>
-          <div className="flex w-full justify-center">
-            <Button
-              size="lg"
-              className={`${nounsFont.className} mt-4 text-2xl font-medium tracking-wide md:mt-10`}
-            >
-              🚧 En construcción 🏗️
-            </Button>
-          </div>
-        </div>
-        <div className="relative flex h-1/2 w-full items-end">
-          <div className="bottom-0 flex w-full justify-center">
-            <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:h-80 lg:w-80 2xl:h-[480px] 2xl:w-[480px]">
-              <Image
-                src="/icons/android-chrome-512x512.png"
-                alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
-                fill
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <WhatIsNounsSection />
-      <AmigoToken />
-      <HowItWorks />
-      <Benefits />
+      <Hero />
+      <WhatIsNounsAmigos />
+      <ProjectsShowcase />
       <Testimonials />
-      <CallToAction />
+      <Faq />
     </>
   );
 }
 
-function WhatIsNounsSection() {
+function Hero() {
   return (
-    <div className="w-full bg-primary lg:flex lg:justify-center">
-      <div className="flex h-full flex-col gap-y-6 px-6 py-16 text-brandWhite md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
-        <div className="w-full md:flex md:flex-col">
-          <h2
-            className={`${nounsFont.className} text-left text-3xl xs:text-4xl md:text-center`}
-          >
-            Te damos la bienvenida a <br />
-            <span className="text-5xl font-medium text-[#EE6DA1] xs:text-6xl">
-              Nouns Amigos
-            </span>
-          </h2>
-          <div className="flex flex-col gap-y-4 md:flex-row">
-            <div className="w-full md:flex md:w-1/2 md:items-center md:pl-16 md:pr-2">
-              <p className="mt-2 text-[22px] sm:text-[2rem] md:text-2xl lg:text-left">
-                Nouns Amigos nace como una comunidad donde la gente de habla
-                hispana puede aprender sobre Nouns y crear proyectos divertidos
-                con impacto social
-              </p>
-            </div>
-            <div className="flex w-full justify-center md:w-1/2 md:px-8">
-              <div className="relative aspect-square w-full">
-                <Image
-                  src="/icons/android-chrome-512x512.png"
-                  alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
-                  fill
-                />
-              </div>
-            </div>
+    <div className="flex h-full w-full flex-col-reverse items-center md:h-[calc(100svh-64px)]">
+      <div className="flex w-full flex-col pb-8 md:hidden">
+        <div className="flex w-full items-center justify-around ">
+          <div className="hidden items-center md:flex">
+            <CornerLeftDown className="mt-8 h-12 w-12" />
+          </div>
+          <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
+          <div className="flex flex-col text-sm">
+            <p>Propietario: Nouns Amigos</p>
+            <p>Propuestas: 0</p>
+            <p>Mejor oferta: Ξ 0.069</p>
           </div>
         </div>
-        <div className="flex w-full flex-col gap-y-4">
-          <h2
-            className={`${nounsFont.className} text-left text-3xl xs:text-4xl md:px-12`}
-          >
-            ¿Qué es Nouns?
-          </h2>
-          <div className="flex flex-col gap-y-4 md:flex-row">
-            <div className="hidden w-full md:flex md:w-1/3 md:justify-center">
-              <div className="relative aspect-square w-full">
-                <Image
-                  src="/icons/android-chrome-512x512.png"
-                  alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
-                  fill
-                />
-              </div>
-            </div>
-            <div className="w-full md:flex md:w-2/3 md:flex-col md:items-center md:gap-y-2 md:px-4 lg:text-left">
-              <p className="text-[22px] sm:text-[2rem] md:text-2xl">
-                Nouns es un experimento creativo de coordinación humana.
-              </p>
-              <p className="text-[22px] sm:text-[2rem] md:text-2xl">
-                El nacimiento se da como una colección de arte digital, donde se
-                subasta una pieza (un Noun) cada día.
-              </p>{" "}
-              <p className="text-[22px] sm:text-[2rem] md:text-2xl">
-                Este Noun funge como membresía para la Nouns DAO, organismo que
-                administra la tesorería.
-              </p>
-            </div>
+        <div className="flex justify-center">
+          <a href="#what-is-nouns-amigos">
+            <Button
+              variant="ghost"
+              className="border-none px-0 py-1 pb-0 text-secondary hover:bg-transparent hover:text-secondary"
+            >
+              <ChevronsDown className="h-12 w-12" />
+            </Button>
+          </a>
+        </div>
+      </div>
+
+      <div className="flex w-full justify-center py-4">
+        <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:h-80 lg:w-80 2xl:h-[480px] 2xl:w-[480px]">
+          <Image
+            src="/icons/android-chrome-512x512.png"
+            alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
+            fill
+          />
+        </div>
+      </div>
+      <div className="flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-1/2 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
+        <h1
+          className={`${nounsFont.className} px-2 text-left text-4xl font-light uppercase text-secondary xs:text-5xl md:text-center md:text-6xl`}
+        >
+          Únete a la comunidad de Nouns en español
+        </h1>
+        <h4
+          className={`${nounsFont.className} mt-2 px-4 text-[2rem] font-light leading-none md:text-center`}
+        >
+          Trae tus ideas y construye con nosotros
+        </h4>
+        <div className="hidden p-4 md:block">
+          <hr className="border-black" />
+        </div>
+        <div className="hidden w-full items-center justify-around md:flex">
+          <div className="hidden items-center md:flex">
+            <CornerLeftDown className="mt-8 h-12 w-12" />
           </div>
+          <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
+          <div className="flex flex-col text-sm">
+            <p>Propietario: Nouns Amigos</p>
+            <p>Propuestas: 0</p>
+            <p>Mejor oferta: Ξ 0.069</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WhatIsNounsAmigos() {
+  return (
+    <div
+      id="what-is-nouns-amigos"
+      className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center"
+    >
+      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+        <div>
+          <h2
+            className={`${nounsFont.className} text-left text-5xl md:text-center`}
+          >
+            Nouns Amigos es para todos
+          </h2>
+        </div>
+        <div className="flex flex-col space-y-4 md:flex-row">
+          <p className="mt-2 text-lg md:text-2xl lg:text-left">
+            Nouns Amigos es una marca de uso libre que genera un impacto
+            positivo al financiar ideas y fomentar la colaboración entre
+            comunidades de habla Hispana. <br /> Desde coleccionistas y
+            tecnólogos hasta marcas y organizaciones sin fines de lucro...
+          </p>
+          <h4
+            className={`${nounsFont.className} text-center text-3xl font-light uppercase`}
+          >
+            ¡Nouns Amigos <br />
+            es para todos!
+          </h4>
+        </div>
+        <div className="flex w-full flex-col gap-y-4">
           <div className="aspect-video md:mt-6 md:px-8">
             <iframe
               className="h-full w-full"
@@ -170,293 +266,39 @@ function WhatIsNounsSection() {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-y-2 md:container md:mt-8 md:gap-y-4">
-          <h3 className="text-center text-2xl md:text-3xl">
-            Ahora en español 😅
+      </div>
+    </div>
+  );
+}
+
+function ProjectsShowcase() {
+  return (
+    <div className="w-full bg-[#FFFFFF] text-foreground lg:flex lg:justify-center">
+      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+        <div>
+          <h3
+            className={`${nounsFont.className} text-left text-4xl md:text-center`}
+          >
+            Construye con nosotros y haz realidad tu proyecto
           </h3>
-          <div className="flex flex-col gap-y-4">
-            <h2
-              className={`${nounsFont.className} text-center text-3xl xs:text-4xl md:text-5xl`}
-            >
-              Nouns fondea{" "}
-              <span className="font-bold underline decoration-secondary decoration-4 underline-offset-8">
-                ideas
-              </span>
-            </h2>
-            <p className="text-[22px] sm:text-[2rem] md:max-w-2xl md:text-2xl">
-              Puedes crear una propuesta con un presupuesto, y compartirla en
-              Prop House para evaluación. Se necesitan ideas atrevidas, con
-              impacto social, proyectos "
-              <span className="underline decoration-secondary decoration-4 underline-offset-4">
-                Nounish
-              </span>
-              ". Pero, esto puede ser desafiante...
-            </p>
-          </div>
         </div>
-        <div className="container flex w-full flex-col justify-center md:max-w-xl md:text-center">
-          <h4
-            className={`${nounsFont.className} mt-4 text-2xl xs:text-3xl sm:text-[2rem]`}
+        <div className="flex flex-col space-y-4 md:flex-row">
+          <p className="mt-2 text-lg md:text-2xl lg:text-left">
+            Desde meet-ups, construir unos Noggles gigantes en Japón, o crear
+            proyectos tecnológicos,{" "}
+            <span className="font-bold">
+              en Nouns Amigos DAO apoyamos proyectos de todos los tamaños.
+            </span>
+          </p>
+          <h5
+            className={`${nounsFont.className} text-center text-2xl font-light`}
           >
-            Para llevar la misión de Nouns a todos lados, un grupo de amigos
-            decidió crear una SubDAO de Nouns:{" "}
-            <span className="text-[#EE6DA1]">Nouns Amigos</span>
-          </h4>
-          <div className="flex justify-center">
-            <Button
-              variant="secondary"
-              size="lg"
-              className={`${nounsFont.className} z-10 mt-4 text-2xl font-medium tracking-wide md:mt-10`}
-            >
-              Descubre nuestra DAO
-            </Button>
-          </div>
+            Algunos proyectos fondeados <br />
+            <span className="font-extrabold">↓</span>
+          </h5>
         </div>
-      </div>
-    </div>
-  );
-}
-
-function AmigoToken() {
-  return (
-    <div className="w-full bg-brandWhiteLavender lg:flex lg:justify-center">
-      <div className="flex h-full flex-col gap-y-6 px-6 py-16 text-black md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
-        <div className="w-full md:flex md:flex-col">
-          <h2
-            className={`${nounsFont.className} text-left text-4xl text-secondary xs:text-5xl md:text-center`}
-          >
-            Token AMIGO
-          </h2>
-          <div className="flex flex-col items-center gap-y-4">
-            <div className="w-full md:flex md:w-2/3 md:items-center">
-              <p className="mt-2 text-[22px] sm:text-[2rem] md:text-2xl lg:text-left">
-                El token AMIGO es nuestra colección insignia, el cual otorga
-                poder de votación sobre las rondas de props, y que identifica a
-                los ganadores de propuestas anteriores.
-              </p>
-            </div>
-            <div className="w-full md:flex md:w-2/3 md:justify-center">
-              <Accordion type="single" collapsible className="w-4/5">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>
-                    <h2
-                      className={`${nounsFont.className} text-3xl xs:text-4xl`}
-                    >
-                      Nouns DAO Amigos
-                    </h2>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-xl">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Voluptatibus reiciendis sunt quisquam officiis quas aperiam
-                    molestiae fuga non a recusandae mollitia omnis tempora
-                    nobis, quo quidem iste eveniet animi! A!
-                    <div className="flex w-full justify-center py-6">
-                      <Button
-                        size="lg"
-                        className={`${nounsFont.className} text-2xl`}
-                      >
-                        Únete al Discord
-                      </Button>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>
-                    <h2
-                      className={`${nounsFont.className} text-3xl xs:text-4xl`}
-                    >
-                      Rasgos AMIGO
-                    </h2>
-                  </AccordionTrigger>
-                  <AccordionContent className="text-xl">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. In
-                    delectus possimus voluptatibus nulla dolore quibusdam
-                    repellendus odio molestias harum.
-                    <div className="py-3 pl-2">
-                      <ul className="list-inside list-[square] marker:text-secondary">
-                        <li>Rasgo 1</li>
-                        <li>Rasgo 2</li>
-                        <li>Rasgo 3</li>
-                        <li>Rasgo 4</li>
-                        <li>Rasgo 5</li>
-                      </ul>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>
-                    <h2
-                      className={`${nounsFont.className} text-3xl xs:text-4xl`}
-                    >
-                      Cómo obtenerlo
-                    </h2>
-                  </AccordionTrigger>
-                  <AccordionContent className="flex flex-col gap-y-2 text-xl">
-                    <p>
-                      Los token AMIGO se distribuyen al concretar exitosamente
-                      lo comprometido en una prop ganadora.
-                    </p>
-                    <p>
-                      Esto compromete a los builders a desarrollar sus
-                      propuestas, y una vez obtenido, a participar en la
-                      gobernanza de la DAO.
-                    </p>
-                    <p>
-                      Así que, el primer paso es convertir tu idea en una prop y
-                      participar en una ronda.
-                    </p>
-                    <h3
-                      className={`text-center text-2xl xs:text-3xl ${nounsFont.className}`}
-                    >
-                      ¿Qué esperas?
-                    </h3>
-                    <div className="flex w-full justify-center py-6">
-                      <Button
-                        size="lg"
-                        className={`${nounsFont.className} text-2xl`}
-                      >
-                        Crea tu Prop
-                      </Button>
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
-            </div>
-            <div className="flex w-full justify-center md:w-1/2 md:px-8">
-              <div className="relative aspect-square w-full">
-                <Image
-                  src="/icons/android-chrome-512x512.png"
-                  alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
-                  fill
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function HowItWorks() {
-  return (
-    <div className="w-full bg-primary md:flex md:justify-center">
-      <div className="flex h-full flex-col gap-y-6 px-6 py-16 text-brandWhite md:max-w-lg md:pb-20 md:pt-24 lg:py-12 xl:max-w-2xl xl:py-20 xl:text-center">
-        <h2
-          className={`${nounsFont.className} text-center text-3xl xs:text-4xl`}
-        >
-          ¿Cómo funciona el fondeo?
-        </h2>
-        <DefaultCard title="1. Desarrolla tu idea">
-          <p className="text-xl">
-            Si tienes una idea, conviértela en una propuesta. Compártela, busca
-            retroalimentación y mejórala.
-          </p>
-        </DefaultCard>
-        <DefaultCard title="2. Participa en una ronda">
-          <p className="text-xl">
-            Busca una ronda y "sube" tu propuesta en Prop House. Es lo primero
-            que verá la comunidad <br />
-            ¡Y tal vez lo único!
-          </p>
-        </DefaultCard>
-        <DefaultCard title="3. Involúcrate con la comunidad">
-          <p className="text-xl">
-            Aquí es donde sucede la magia. Participa en las sesiones de
-            pitch-eo, comparte en redes, etc.
-          </p>
-        </DefaultCard>
-        <DefaultCard title="4. Asignación de ganadores">
-          <p className="text-xl">
-            Los holders votarán, y una vez terminada la votación, se anunciará a
-            los ganadores. Aquí puedes "reclamar" el "premio" monetario.
-          </p>
-        </DefaultCard>
-        <DefaultCard title="5. Construye en público">
-          <p className="text-xl">
-            ¡A trabajar! Comparte avances, colabora con la comunidad y hazlo
-            divertido.
-          </p>
-        </DefaultCard>
-        <DefaultCard title="6. Recibe tu AMIGO">
-          <p className="text-xl">
-            Con tus avances y entrega de tu proyecto, podrás llenar el
-            formulario para recibir tu AMIGO.
-          </p>
-        </DefaultCard>
-      </div>
-    </div>
-  );
-}
-
-const features = [
-  {
-    name: "Haz realidad tus ideas",
-    description:
-      "Non quo aperiam repellendus quas est est. Eos aut dolore aut ut sit nesciunt. Ex tempora quia. Sit nobis consequatur dolores incidunt.",
-    href: "#",
-    icon: LightbulbIcon,
-  },
-  {
-    name: "Proyectos con impacto social",
-    description:
-      "Vero eum voluptatem aliquid nostrum voluptatem. Vitae esse natus. Earum nihil deserunt eos quasi cupiditate. A inventore et molestiae natus.",
-    href: "#",
-    icon: HeartHandshakeIcon,
-  },
-  {
-    name: "Participa en la gobernanza",
-    description:
-      "Et quod quaerat dolorem quaerat architecto aliquam accusantium. Ex adipisci et doloremque autem quia quam. Quis eos molestiae at iure impedit.",
-    href: "#",
-    icon: SproutIcon,
-  },
-];
-
-function Benefits() {
-  return (
-    <div className="bg-brandWhiteLavender px-4 py-24 sm:py-32 md:px-8">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl">
-          <h2
-            className={`${nounsFont.className} text-3xl font-bold text-secondary xs:text-4xl md:text-5xl`}
-          >
-            Disfruta mientras construyes con impacto
-          </h2>
-          <p className="mt-6 text-xl leading-8 text-foreground">
-            Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam
-            voluptatum cupiditate veritatis in accusamus quisquam.
-          </p>
-        </div>
-        <div className="mx-auto mt-8 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.name} className="flex flex-col">
-                <dt
-                  className={`${nounsFont.className} text-2xl font-semibold leading-7 text-foreground xs:text-[30px]`}
-                >
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary">
-                    <feature.icon
-                      className="h-8 w-8 text-brandWhiteLavender"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  {feature.name}
-                </dt>
-                <dd className="mt-1 flex flex-auto flex-col leading-7 text-foreground">
-                  <p className="flex-auto text-xl">{feature.description}</p>
-                  {/* <p className="mt-6">
-                    <a
-                      href={feature.href}
-                      className="text-sm font-semibold leading-6 text-indigo-400"
-                    >
-                      Learn more <span aria-hidden="true">→</span>
-                    </a>
-                  </p> */}
-                </dd>
-              </div>
-            ))}
-          </dl>
+        <div className="flex flex-col space-y-4 px-4">
+          <ProjectsCarousel />
         </div>
       </div>
     </div>
@@ -523,31 +365,28 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <div className="bg-primary py-16 sm:py-32 md:py-24">
+    <div className="bg-[#EBEBEB] py-16 text-foreground sm:py-32 md:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
-          <p
-            className={`${nounsFont.className} mt-2 text-3xl font-bold leading-6 text-primary-foreground xs:text-4xl lg:text-5xl`}
+          <h3
+            className={`${nounsFont.className} mt-2 text-4xl font-bold leading-relaxed xs:text-4xl lg:text-5xl`}
           >
-            ¿Cómo impactan los proyectos{" "}
-            <span className="font-bold underline decoration-secondary decoration-4 underline-offset-8">
-              Nounish
-            </span>
-            ?
-          </p>
+            ¿Cuál es el{" "}
+            <span className="font-bold underline decoration-secondary decoration-4 underline-offset-4">
+              impacto
+            </span>{" "}
+            de nuestra comunidad?
+          </h3>
         </div>
-        <div className="mx-auto mt-16 flow-root max-w-2xl sm:mt-20 lg:mx-0 lg:max-w-none">
+        <div className="mx-auto flow-root max-w-2xl pb-8 pt-12 sm:mt-20 lg:mx-0 lg:max-w-none">
           <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.author.handle}
-                className="pt-8 sm:inline-block sm:w-full sm:px-4"
+                className="py-4 sm:inline-block sm:w-full sm:px-4"
               >
-                <figure className="rounded-2xl bg-gray-50 p-8 leading-6">
-                  <blockquote className="text-lg text-gray-900">
-                    <p>{`“${testimonial.body}”`}</p>
-                  </blockquote>
-                  <figcaption className="mt-6 flex items-center gap-x-4">
+                <figure className="rounded-2xl bg-gray-50 p-6 leading-6">
+                  <figcaption className="flex items-center gap-x-4">
                     <img
                       className="h-10 w-10 rounded-full bg-gray-50"
                       src={testimonial.author.imageUrl}
@@ -560,39 +399,131 @@ function Testimonials() {
                       <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
                     </div>
                   </figcaption>
+                  <blockquote className="py-2 text-lg text-gray-900">
+                    <p>{`“${testimonial.body}”`}</p>
+                  </blockquote>
                 </figure>
               </div>
             ))}
           </div>
         </div>
+        <div className="flex flex-col items-center space-y-4 py-4">
+          <h4
+            className={`${nounsFont.className} text-center text-3xl font-light text-secondary`}
+          >
+            Súmate a Nouns Amigos y comienza a construir en Web3 con nosotros
+          </h4>
+          <Button variant="secondary" size="lg">
+            Únete a nuestro servidor Discord
+          </Button>
+        </div>
       </div>
     </div>
   );
 }
-function CallToAction() {
+
+function Faq() {
   return (
-    <div className="bg-brandWhiteLavender">
-      <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2
-            className={`${nounsFont.className} text-3xl  text-secondary xs:text-4xl md:text-5xl`}
-          >
-            No lo pienses más.
-            <br />
-            Empieza a construir con Nouns Amigos.
-          </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
-            Incididunt sint fugiat pariatur cupidatat consectetur sit cillum
-            anim id veniam aliqua proident excepteur commodo do ea.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Button
-              size="lg"
-              className={`${nounsFont.className} z-10 mt-4 text-2xl font-medium tracking-wide md:mt-10`}
-            >
-              Únete al Discord
-            </Button>
-          </div>
+    <div className="bg-[#FFFFFF]">
+      <div className="px-6 pb-8 pt-16">
+        <h3
+          className={`${nounsFont.className} mt-2 text-4xl leading-tight xs:text-4xl lg:text-5xl`}
+        >
+          Preguntas Frecuentes
+        </h3>
+        <div className="w-full px-4 md:flex md:w-2/3 md:justify-center">
+          <Accordion type="single" collapsible className="w-4/5 py-4">
+            <AccordionItem value="item-1" className="">
+              <AccordionTrigger className="py-2">
+                <h4 className={`${nounsFont.className} text-3xl`}>
+                  Pregunta 1
+                </h4>
+              </AccordionTrigger>
+              <AccordionContent className="text-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero molestias, possimus illo minima, eligendi hic officia,
+                  dignissimos doloribus nesciunt quasi ratione veritatis soluta
+                  nostrum modi natus voluptas illum voluptatibus eveniet!
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="py-2">
+                <h2 className={`${nounsFont.className} text-3xl`}>
+                  Pregunta 2
+                </h2>
+              </AccordionTrigger>
+              <AccordionContent className="text-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero molestias, possimus illo minima, eligendi hic officia,
+                  dignissimos doloribus nesciunt quasi ratione veritatis soluta
+                  nostrum modi natus voluptas illum voluptatibus eveniet!
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="py-2">
+                <h2 className={`${nounsFont.className} text-3xl`}>
+                  Pregunta 3
+                </h2>
+              </AccordionTrigger>
+              <AccordionContent className="text-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero molestias, possimus illo minima, eligendi hic officia,
+                  dignissimos doloribus nesciunt quasi ratione veritatis soluta
+                  nostrum modi natus voluptas illum voluptatibus eveniet!
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-1" className="">
+              <AccordionTrigger className="py-2">
+                <h4 className={`${nounsFont.className} text-3xl`}>
+                  Pregunta 4
+                </h4>
+              </AccordionTrigger>
+              <AccordionContent className="text-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero molestias, possimus illo minima, eligendi hic officia,
+                  dignissimos doloribus nesciunt quasi ratione veritatis soluta
+                  nostrum modi natus voluptas illum voluptatibus eveniet!
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger className="py-2">
+                <h2 className={`${nounsFont.className} text-3xl`}>
+                  Pregunta 5
+                </h2>
+              </AccordionTrigger>
+              <AccordionContent className="text-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero molestias, possimus illo minima, eligendi hic officia,
+                  dignissimos doloribus nesciunt quasi ratione veritatis soluta
+                  nostrum modi natus voluptas illum voluptatibus eveniet!
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger className="py-2">
+                <h2 className={`${nounsFont.className} text-3xl`}>
+                  Pregunta 6
+                </h2>
+              </AccordionTrigger>
+              <AccordionContent className="text-lg">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Libero molestias, possimus illo minima, eligendi hic officia,
+                  dignissimos doloribus nesciunt quasi ratione veritatis soluta
+                  nostrum modi natus voluptas illum voluptatibus eveniet!
+                </p>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </div>
     </div>

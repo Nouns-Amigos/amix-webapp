@@ -16,8 +16,11 @@
     --primary: 235 74% 51%; /* #2435DE Platinate blue (coolors.co) */
     --primary-foreground: 240 60% 96%; /* --brand-white-magnolia */
 
-    --secondary: 336 79% 51%; /* #E51F6E Razzmatazz (coolors.co), red-pink */
+    --secondary: 17 99% 52%; /* #FE500C Aerospace orange (coolors.co), red-pink */
     --secondary-foreground: 240 60% 96%; /* --brand-white-magnolia */
+
+    --redPink: 336 79% 51%; /* #E51F6E Razzmatazz (coolors.co), red-pink */
+    --redPink-foreground: 240 60% 96%; /* --brand-white-magnolia */
 
     --brand-white: 0 40% 96.1%; /* #F1F5F9 Anti-flash white (coolors.co) */
     --brand-white-magnolia: 240 60% 96%; /* #E51F6E Magnolia (coolors.co) */
@@ -73,6 +76,9 @@
 @layer base {
   * {
     @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground;
