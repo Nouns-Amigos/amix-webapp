@@ -28,8 +28,8 @@ type nftElementDataType = {
     slug: string;
   };
   contract: {
-    address: string | `0x${string}`;
-    contractDeployer: string | `0x${string}`;
+    address: string;
+    contractDeployer: string;
     deployedBlockNumber: number;
     isSpam: boolean;
     name: string;
@@ -49,7 +49,7 @@ type nftElementDataType = {
     spamClassifications: unknown[];
     symbol: string;
     tokenType: string;
-    totalSupply: string | number | unknown;
+    totalSupply: string | number;
   };
   description: string;
   image: {
@@ -61,10 +61,10 @@ type nftElementDataType = {
     thumbnailUrl: string;
   };
   mint: {
-    mintAddress: string | `0x${string}`;
+    mintAddress: string;
     blockNumber: number;
     timestamp: string;
-    transactionHash: string | `0x${string}`;
+    transactionHash: string;
   };
   name: string;
   owners: unknown;
