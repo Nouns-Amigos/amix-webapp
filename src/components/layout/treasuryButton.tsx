@@ -12,8 +12,8 @@ const grantsAccountAddress = "0x9d8571a3e0f12e838264291eb3d1f5266f88ed4c";
 const PropHouseAccountAddress = "0x5f654f869bcfabdd02639a89286048b87995cde1";
 
 function TreasuryButton() {
-  const [treasuryBalance, setTreasuryBalance] = useState<number | string>(
-    "...",
+  const [treasuryBalance, setTreasuryBalance] = useState<number | undefined>(
+    undefined,
   );
   const alchemy = useAlchemy();
   async function getTreasuryBalance() {
@@ -27,9 +27,6 @@ function TreasuryButton() {
         "safe",
       );
 
-      console.log(Number(formatEther(BigInt(grantsAccountBalance._hex))));
-      console.log(Number(formatEther(BigInt(propHouseAccountBalance._hex))));
-
       setTreasuryBalance(
         Number(formatEther(BigInt(grantsAccountBalance._hex))) +
           Number(formatEther(BigInt(propHouseAccountBalance._hex))),
@@ -41,7 +38,6 @@ function TreasuryButton() {
 
   useEffect(() => {
     void getTreasuryBalance();
-    console.log("loiading...");
   }, []);
   return (
     <Link
@@ -53,8 +49,8 @@ function TreasuryButton() {
         size: "sm",
       })} border-primary`}
     >
-      <span className="mr-2.5 hidden text-slate-600 lg:block">Tesorería</span> Ξ
-      {(treasuryBalance as number).toFixed(2)}
+      <span className="mr-2.5 hidden text-slate-600 lg:block">Tesorería</span>
+      {treasuryBalance ? `Ξ ${(treasuryBalance as number).toFixed(2)}` : "..."}
     </Link>
   );
 }
