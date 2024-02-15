@@ -7,6 +7,7 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import HamburgerMenu from "./hamburgerMenu";
 import DaoDropdownMenu from "./daoDropdownButton";
 import CollectionDropdownButton from "./collectionDropdownButton";
+import TreasuryButton from "./treasuryButton";
 
 export default function Navbar() {
   return (
@@ -31,20 +32,7 @@ export default function Navbar() {
               amigos
             </span>
           </Link>
-          <Link
-            href="https://etherscan.io/address/0x9581587991da459409b4e7e3b44daa1e65e589ec"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${buttonVariants({
-              variant: "outline",
-              size: "sm",
-            })} border-primary`}
-          >
-            <span className="mr-2.5 hidden text-slate-600 lg:block">
-              Tesorería
-            </span>{" "}
-            Ξ 3.269
-          </Link>
+          <TreasuryButton />
         </div>
 
         {/* Primary Navbar items */}
