@@ -35,7 +35,10 @@ export default function Navbar() {
             href="https://etherscan.io/address/0x9581587991da459409b4e7e3b44daa1e65e589ec"
             target="_blank"
             rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
+            className={`${buttonVariants({
+              variant: "outline",
+              size: "sm",
+            })} border-primary`}
           >
             <span className="mr-2.5 hidden text-slate-600 lg:block">
               Tesorería

@@ -28,7 +28,7 @@ export default function DefaultCard({
     <Card className="bg-brandWhiteLavender">
       <CardHeader>
         <CardTitle
-          className={`${nounsFont.className} text-2xl text-secondary xs:text-3xl`}
+          className={`${nounsFont.className} text-2xl text-primary xs:text-3xl`}
         >
           {title}
         </CardTitle>

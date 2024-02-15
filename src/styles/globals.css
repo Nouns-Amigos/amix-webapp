@@ -13,10 +13,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 235 74% 51%; /* #2435DE Platinate blue (coolors.co) */
+    --primary: 17 99% 52%; /* #FE500C Aerospace orange (coolors.co), red-pink */
     --primary-foreground: 240 60% 96%; /* --brand-white-magnolia */
 
-    --secondary: 17 99% 52%; /* #FE500C Aerospace orange (coolors.co), red-pink */
+    --secondary: 235 74% 51%; /* #2435DE Platinate blue (coolors.co) */
     --secondary-foreground: 240 60% 96%; /* --brand-white-magnolia */
 
     --redPink: 336 79% 51%; /* #E51F6E Razzmatazz (coolors.co), red-pink */

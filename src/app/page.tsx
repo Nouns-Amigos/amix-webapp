@@ -178,7 +178,7 @@ function Hero() {
           <a href="#what-is-nouns-amigos">
             <Button
               variant="ghost"
-              className="border-none px-0 py-1 pb-0 text-secondary hover:bg-transparent hover:text-secondary"
+              className="border-none px-0 py-1 pb-0 text-primary hover:bg-transparent hover:text-primary"
             >
               <ChevronsDown className="h-12 w-12" />
             </Button>
@@ -197,7 +197,7 @@ function Hero() {
       </div>
       <div className="flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-1/2 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
         <h1
-          className={`${nounsFont.className} px-2 text-left text-4xl font-light uppercase text-secondary xs:text-5xl md:text-center md:text-6xl`}
+          className={`${nounsFont.className} px-2 text-left text-4xl font-light uppercase text-primary xs:text-5xl md:text-center md:text-6xl`}
         >
           Únete a la comunidad de Nouns en español
         </h1>
@@ -372,7 +372,7 @@ function Testimonials() {
             className={`${nounsFont.className} mt-2 text-4xl font-bold leading-relaxed xs:text-4xl lg:text-5xl`}
           >
             ¿Cuál es el{" "}
-            <span className="font-bold underline decoration-secondary decoration-4 underline-offset-4">
+            <span className="font-bold underline decoration-primary decoration-4 underline-offset-4">
               impacto
             </span>{" "}
             de nuestra comunidad?
@@ -409,13 +409,11 @@ function Testimonials() {
         </div>
         <div className="flex flex-col items-center space-y-4 py-4">
           <h4
-            className={`${nounsFont.className} text-center text-3xl font-light text-secondary`}
+            className={`${nounsFont.className} text-center text-3xl font-light text-primary`}
           >
             Súmate a Nouns Amigos y comienza a construir en Web3 con nosotros
           </h4>
-          <Button variant="secondary" size="lg">
-            Únete a nuestro servidor Discord
-          </Button>
+          <Button size="lg">Únete a nuestro servidor Discord</Button>
         </div>
       </div>
     </div>

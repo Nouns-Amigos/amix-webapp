@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { TRPCReactProvider } from "@/trpc/react";
 
 import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
 
 export const metadata = {
   title: "Nouns Amigos",
@@ -35,6 +36,7 @@ export default function RootLayout({
           >
             {children}
           </main>
+          <Footer />
         </TRPCReactProvider>
       </body>
     </html>

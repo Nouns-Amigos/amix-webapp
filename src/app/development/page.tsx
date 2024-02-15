@@ -156,7 +156,7 @@ export default function Home() {
           >
             Construye con
             <br />
-            <span className="text-5xl font-medium text-secondary xs:text-6xl md:text-7xl">
+            <span className="text-5xl font-medium text-primary xs:text-6xl md:text-7xl">
               Nouns Amigos
             </span>
             <br />y fondea tus ideas
@@ -325,7 +325,7 @@ function AmigoToken() {
       <div className="flex h-full flex-col gap-y-6 px-6 py-16 text-black md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
         <div className="w-full md:flex md:flex-col">
           <h2
-            className={`${nounsFont.className} text-left text-4xl text-secondary xs:text-5xl md:text-center`}
+            className={`${nounsFont.className} text-left text-4xl text-primary xs:text-5xl md:text-center`}
           >
             Token AMIGO
           </h2>
@@ -375,7 +375,7 @@ function AmigoToken() {
                     delectus possimus voluptatibus nulla dolore quibusdam
                     repellendus odio molestias harum.
                     <div className="py-3 pl-2">
-                      <ul className="list-inside list-[square] marker:text-secondary">
+                      <ul className="list-inside list-[square] marker:text-primary">
                         <li>Rasgo 1</li>
                         <li>Rasgo 2</li>
                         <li>Rasgo 3</li>
@@ -521,7 +521,7 @@ function Benefits() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl">
           <h2
-            className={`${nounsFont.className} text-3xl font-bold text-secondary xs:text-4xl md:text-5xl`}
+            className={`${nounsFont.className} text-3xl font-bold text-primary xs:text-4xl md:text-5xl`}
           >
             Disfruta mientras construyes con impacto
           </h2>
@@ -677,7 +677,7 @@ function CallToAction() {
       <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2
-            className={`${nounsFont.className} text-3xl  text-secondary xs:text-4xl md:text-5xl`}
+            className={`${nounsFont.className} text-3xl  text-primary xs:text-4xl md:text-5xl`}
           >
             No lo pienses más.
             <br />
