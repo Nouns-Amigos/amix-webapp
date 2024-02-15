@@ -29,46 +29,50 @@ export function ProjectsCarousel() {
   }, [api]);
 
   return (
-    <>
-      <h4 className={`${nounsFont.className} text-center text-3xl`}>
-        {projectsArray[current]?.title}
-      </h4>
-      <Carousel className="w-full max-w-xs" setApi={setApi}>
-        <CarouselContent>
-          {projectsArray.map((project, index) => (
-            <CarouselItem key={index}>
-              <div className="p-1">
-                <Card className="border-0">
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <div className="flex w-full justify-center">
-                      <div className="relative w-full">
-                        <Image
-                          src={
-                            project.imageSrc ??
-                            "/icons/android-chrome-512x512.png"
-                          }
-                          alt={project.imageAlt ?? "Image showing the project"}
-                          width={0}
-                          height={0}
-                          sizes="100vw"
-                          style={{ width: "100%", height: "auto" }}
-                        />
+    <div className="flex flex-col items-center space-y-4 px-4 md:flex-row md:justify-center">
+      <div>
+        <h4 className={`${nounsFont.className} text-center text-3xl`}>
+          {projectsArray[current]?.title}
+        </h4>
+        <Carousel className="w-full max-w-xs" setApi={setApi}>
+          <CarouselContent>
+            {projectsArray.map((project, index) => (
+              <CarouselItem key={index}>
+                <div className="p-1">
+                  <Card className="border-0">
+                    <CardContent className="flex aspect-square items-center justify-center p-6">
+                      <div className="flex w-full justify-center">
+                        <div className="relative w-full">
+                          <Image
+                            src={
+                              project.imageSrc ??
+                              "/icons/android-chrome-512x512.png"
+                            }
+                            alt={
+                              project.imageAlt ?? "Image showing the project"
+                            }
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            style={{ width: "100%", height: "auto" }}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="md:hidden" />
+          <CarouselNext className="md:hidden" />
+        </Carousel>
+      </div>
       <div className="flex flex-col space-y-1">
         {projectsArray[current]?.content}
         {projectsArray[current]?.stats}
       </div>
-    </>
+    </div>
   );
 }
 

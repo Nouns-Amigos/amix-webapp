@@ -11,7 +11,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { CornerLeftDown, ChevronsDown } from "lucide-react";
+import { CornerLeftDown, ChevronsDown, ArrowLeft } from "lucide-react";
 import useAlchemy from "@/services/alchemy";
 
 import { NounsAmigosContractAddress } from "@/config/nounsAmigosCollection";
@@ -163,7 +163,7 @@ function Hero() {
     <div className="flex h-full w-full flex-col-reverse items-center md:h-[calc(100svh-64px)]">
       <div className="flex w-full flex-col pb-8 md:hidden">
         <div className="flex w-full items-center justify-around ">
-          <div className="hidden items-center md:flex">
+          <div className="hidden items-center lg:flex">
             <CornerLeftDown className="mt-8 h-12 w-12" />
           </div>
           <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
@@ -185,16 +185,40 @@ function Hero() {
         </div>
       </div>
 
-      <div className="flex w-full justify-center py-4">
-        <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:h-80 lg:w-80 2xl:h-[480px] 2xl:w-[480px]">
-          <Image
-            src="/icons/android-chrome-512x512.png"
-            alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
-            fill
-          />
+      <div className="flex w-full flex-wrap justify-center py-4">
+        <div className="flex w-full justify-center md:w-3/5">
+          <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:h-80 lg:w-80 2xl:h-[480px] 2xl:w-[480px]">
+            <Image
+              src="/icons/android-chrome-512x512.png"
+              alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
+              fill
+            />
+          </div>
+        </div>
+        <div className="hidden w-full items-start justify-center md:flex md:w-2/5 md:flex-col lg:hidden">
+          <div className="flex items-center space-x-4">
+            <ArrowLeft className="h-12 w-12" />
+            <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
+          </div>
+
+          <div className="flex flex-col text-lg">
+            <p>Propietario: Nouns Amigos</p>
+            <p>Propuestas: 0</p>
+            <p>Mejor oferta: Ξ 0.069</p>
+          </div>
+        </div>
+        <div className="flex w-full justify-center py-8">
+          <a href="#what-is-nouns-amigos">
+            <Button
+              variant="ghost"
+              className="border-none px-0 py-1 pb-0 text-primary hover:bg-transparent hover:text-primary"
+            >
+              <ChevronsDown className="h-12 w-12" />
+            </Button>
+          </a>
         </div>
       </div>
-      <div className="flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-1/2 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
+      <div className="flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-3/4 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
         <h1
           className={`${nounsFont.className} px-2 text-left text-4xl font-light uppercase text-primary xs:text-5xl md:text-center md:text-6xl`}
         >
@@ -205,11 +229,11 @@ function Hero() {
         >
           Trae tus ideas y construye con nosotros
         </h4>
-        <div className="hidden p-4 md:block">
+        <div className="hidden p-4 lg:block">
           <hr className="border-black" />
         </div>
-        <div className="hidden w-full items-center justify-around md:flex">
-          <div className="hidden items-center md:flex">
+        <div className="hidden w-full items-center justify-around lg:flex">
+          <div className="hidden items-center lg:flex">
             <CornerLeftDown className="mt-8 h-12 w-12" />
           </div>
           <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
@@ -230,7 +254,7 @@ function WhatIsNounsAmigos() {
       id="what-is-nouns-amigos"
       className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center"
     >
-      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
         <div>
           <h2
             className={`${nounsFont.className} text-left text-5xl md:text-center`}
@@ -238,8 +262,8 @@ function WhatIsNounsAmigos() {
             Nouns Amigos es para todos
           </h2>
         </div>
-        <div className="flex flex-col space-y-4 md:flex-row">
-          <p className="mt-2 text-lg md:text-2xl lg:text-left">
+        <div className="flex flex-col space-y-4 px-4 lg:flex-row">
+          <p className="mt-2 text-lg md:text-xl lg:text-left">
             Nouns Amigos es una marca de uso libre que genera un impacto
             positivo al financiar ideas y fomentar la colaboración entre
             comunidades de habla Hispana. <br /> Desde coleccionistas y
@@ -248,7 +272,7 @@ function WhatIsNounsAmigos() {
           <h4
             className={`${nounsFont.className} text-center text-3xl font-light uppercase`}
           >
-            ¡Nouns Amigos <br />
+            ¡Nouns Amigos <br className="md:hidden" />
             es para todos!
           </h4>
         </div>
@@ -273,16 +297,14 @@ function WhatIsNounsAmigos() {
 function ProjectsShowcase() {
   return (
     <div className="w-full bg-[#FFFFFF] text-foreground lg:flex lg:justify-center">
-      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
         <div>
-          <h3
-            className={`${nounsFont.className} text-left text-4xl md:text-center`}
-          >
+          <h3 className={`${nounsFont.className} px-4 text-left text-4xl`}>
             Construye con nosotros y haz realidad tu proyecto
           </h3>
         </div>
-        <div className="flex flex-col space-y-4 md:flex-row">
-          <p className="mt-2 text-lg md:text-2xl lg:text-left">
+        <div className="flex flex-col space-y-4 md:space-y-8 md:px-4 lg:flex-row">
+          <p className="mt-2 text-lg md:text-xl lg:text-left">
             Desde meet-ups, construir unos Noggles gigantes en Japón, o crear
             proyectos tecnológicos,{" "}
             <span className="font-bold">
@@ -296,9 +318,7 @@ function ProjectsShowcase() {
             <span className="font-extrabold">↓</span>
           </h5>
         </div>
-        <div className="flex flex-col space-y-4 px-4">
-          <ProjectsCarousel />
-        </div>
+        <ProjectsCarousel />
       </div>
     </div>
   );
@@ -364,7 +384,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <div className="bg-[#EBEBEB] py-16 text-foreground sm:py-32 md:py-24">
+    <div className="bg-[#EBEBEB] py-16 text-foreground md:px-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-xl text-center">
           <h3
@@ -377,8 +397,8 @@ function Testimonials() {
             de nuestra comunidad?
           </h3>
         </div>
-        <div className="mx-auto flow-root max-w-2xl pb-8 pt-12 sm:mt-20 lg:mx-0 lg:max-w-none">
-          <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+        <div className="mx-auto flow-root max-w-2xl pb-8 pt-12 lg:mx-0 lg:max-w-none">
+          <div className="sm:columns-2 sm:text-[0] lg:columns-3">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.author.handle}
@@ -406,7 +426,7 @@ function Testimonials() {
             ))}
           </div>
         </div>
-        <div className="flex flex-col items-center space-y-4 py-4">
+        <div className="flex flex-col items-center space-y-4 py-4 md:px-8">
           <h4
             className={`${nounsFont.className} text-center text-3xl font-light text-primary`}
           >
@@ -421,15 +441,15 @@ function Testimonials() {
 
 function Faq() {
   return (
-    <div className="bg-[#FFFFFF]">
-      <div className="px-6 pb-8 pt-16">
+    <div className="bg-[#FFFFFF] md:flex md:justify-center">
+      <div className="px-6 pb-8 pt-16 md:flex md:w-3/4 md:flex-col md:px-16">
         <h3
-          className={`${nounsFont.className} mt-2 text-4xl leading-tight xs:text-4xl lg:text-5xl`}
+          className={`${nounsFont.className} mt-2 text-4xl leading-tight xs:text-4xl md:text-left lg:text-5xl`}
         >
           Preguntas Frecuentes
         </h3>
-        <div className="w-full px-4 md:flex md:w-2/3 md:justify-center">
-          <Accordion type="single" collapsible className="w-4/5 py-4">
+        <div className="w-full px-4 md:flex md:justify-center">
+          <Accordion type="single" collapsible className="w-4/5 py-4 md:w-full">
             <AccordionItem value="item-1" className="">
               <AccordionTrigger className="py-2">
                 <h4 className={`${nounsFont.className} text-3xl`}>
@@ -447,9 +467,9 @@ function Faq() {
             </AccordionItem>
             <AccordionItem value="item-2">
               <AccordionTrigger className="py-2">
-                <h2 className={`${nounsFont.className} text-3xl`}>
+                <h4 className={`${nounsFont.className} text-3xl`}>
                   Pregunta 2
-                </h2>
+                </h4>
               </AccordionTrigger>
               <AccordionContent className="text-lg">
                 <p>
@@ -462,9 +482,9 @@ function Faq() {
             </AccordionItem>
             <AccordionItem value="item-3">
               <AccordionTrigger className="py-2">
-                <h2 className={`${nounsFont.className} text-3xl`}>
+                <h4 className={`${nounsFont.className} text-3xl`}>
                   Pregunta 3
-                </h2>
+                </h4>
               </AccordionTrigger>
               <AccordionContent className="text-lg">
                 <p>
@@ -475,7 +495,7 @@ function Faq() {
                 </p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-1" className="">
+            <AccordionItem value="item-4" className="">
               <AccordionTrigger className="py-2">
                 <h4 className={`${nounsFont.className} text-3xl`}>
                   Pregunta 4
@@ -490,11 +510,11 @@ function Faq() {
                 </p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-2">
+            <AccordionItem value="item-5">
               <AccordionTrigger className="py-2">
-                <h2 className={`${nounsFont.className} text-3xl`}>
+                <h4 className={`${nounsFont.className} text-3xl`}>
                   Pregunta 5
-                </h2>
+                </h4>
               </AccordionTrigger>
               <AccordionContent className="text-lg">
                 <p>
@@ -505,11 +525,11 @@ function Faq() {
                 </p>
               </AccordionContent>
             </AccordionItem>
-            <AccordionItem value="item-3">
+            <AccordionItem value="item-6">
               <AccordionTrigger className="py-2">
-                <h2 className={`${nounsFont.className} text-3xl`}>
+                <h4 className={`${nounsFont.className} text-3xl`}>
                   Pregunta 6
-                </h2>
+                </h4>
               </AccordionTrigger>
               <AccordionContent className="text-lg">
                 <p>

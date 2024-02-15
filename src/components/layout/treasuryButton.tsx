@@ -1,11 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import useAlchemy from "@/services/alchemy";
-import { useEffect, useState } from "react";
-import { formatEther } from "@ethersproject/units";
-import { number } from "zod";
+import { formatEther } from "viem";
 
 const grantsAccountAddress = "0x9d8571a3e0f12e838264291eb3d1f5266f88ed4c";
 
@@ -47,7 +46,7 @@ function TreasuryButton() {
       className={`${buttonVariants({
         variant: "outline",
         size: "sm",
-      })} border-primary`}
+      })} border-primary/100`}
     >
       <span className="mr-2.5 hidden text-slate-600 lg:block">Tesorería</span>
       {treasuryBalance ? `Ξ ${treasuryBalance.toFixed(2)}` : "..."}
