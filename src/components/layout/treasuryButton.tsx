@@ -50,7 +50,7 @@ function TreasuryButton() {
       })} border-primary`}
     >
       <span className="mr-2.5 hidden text-slate-600 lg:block">Tesorería</span>
-      {treasuryBalance ? `Ξ ${(treasuryBalance as number).toFixed(2)}` : "..."}
+      {treasuryBalance ? `Ξ ${treasuryBalance.toFixed(2)}` : "..."}
     </Link>
   );
 }
