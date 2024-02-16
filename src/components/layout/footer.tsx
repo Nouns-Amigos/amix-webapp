@@ -87,7 +87,10 @@ function Footer() {
               className="text-gray-500 hover:text-gray-500"
             >
               <span className="sr-only">{item.name}</span>
-              <item.icon className="h-6 w-6" aria-hidden="true" />
+              <item.icon
+                className="h-6 w-6 hover:text-primary"
+                aria-hidden="true"
+              />
             </a>
           ))}
         </div>

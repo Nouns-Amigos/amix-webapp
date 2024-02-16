@@ -32,7 +32,7 @@ export default function RootLayout({
         <TRPCReactProvider cookies={cookies().toString()}>
           <Navbar />
           <main
-            className={`min-h-[calc(100svh-${NAVBAR_HEIGHT})] overflow-x-hidden overflow-y-scroll t-[${NAVBAR_HEIGHT}]`}
+            className={`min-h-[calc(100svh-${NAVBAR_HEIGHT})] overflow-x-hidden t-[${NAVBAR_HEIGHT}]`}
           >
             {children}
           </main>

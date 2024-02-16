@@ -29,7 +29,7 @@ export function ProjectsCarousel() {
   }, [api]);
 
   return (
-    <div className="flex flex-col items-center space-y-4 px-4 md:flex-row md:justify-center">
+    <div className="flex flex-col items-center space-y-4 px-4 md:flex-row md:justify-center lg:items-start">
       <div>
         <h4 className={`${nounsFont.className} text-center text-3xl`}>
           {projectsArray[current]?.title}
@@ -68,7 +68,7 @@ export function ProjectsCarousel() {
           <CarouselNext className="md:hidden" />
         </Carousel>
       </div>
-      <div className="flex flex-col space-y-1">
+      <div className="flex flex-col space-y-1 text-left lg:pt-8">
         {projectsArray[current]?.content}
         {projectsArray[current]?.stats}
       </div>

@@ -160,87 +160,99 @@ export default function Home() {
 
 function Hero() {
   return (
-    <div className="flex h-full w-full flex-col-reverse items-center md:h-[calc(100svh-64px)]">
-      <div className="flex w-full flex-col pb-8 md:hidden">
-        <div className="flex w-full items-center justify-around ">
-          <div className="hidden items-center lg:flex">
-            <CornerLeftDown className="mt-8 h-12 w-12" />
-          </div>
-          <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
-          <div className="flex flex-col text-sm">
-            <p>Propietario: Nouns Amigos</p>
-            <p>Propuestas: 0</p>
-            <p>Mejor oferta: Ξ 0.069</p>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <a href="#what-is-nouns-amigos">
-            <Button
-              variant="ghost"
-              className="border-none px-0 py-1 pb-0 text-primary hover:bg-transparent hover:text-primary"
-            >
-              <ChevronsDown className="h-12 w-12" />
-            </Button>
-          </a>
-        </div>
-      </div>
-
-      <div className="flex w-full flex-wrap justify-center py-4">
-        <div className="flex w-full justify-center md:w-3/5">
-          <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:h-80 lg:w-80 2xl:h-[480px] 2xl:w-[480px]">
-            <Image
-              src="/icons/android-chrome-512x512.png"
-              alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
-              fill
-            />
-          </div>
-        </div>
-        <div className="hidden w-full items-start justify-center md:flex md:w-2/5 md:flex-col lg:hidden">
-          <div className="flex items-center space-x-4">
-            <ArrowLeft className="h-12 w-12" />
+    <div className="xl:flex xl:justify-center">
+      <div className="flex h-full w-full flex-col-reverse items-center md:h-[calc(100svh-64px)] lg:flex-row xl:max-w-6xl">
+        <div className="flex w-full flex-col pb-8 md:hidden">
+          <div className="flex w-full items-center justify-around">
             <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
+            <div className="flex flex-col text-sm">
+              <p>Propietario: Nouns Amigos</p>
+              <p>Propuestas: 0</p>
+              <p>Mejor oferta: Ξ 0.069</p>
+            </div>
           </div>
+          <div className="flex justify-center">
+            <a href="#what-is-nouns-amigos">
+              <Button
+                variant="ghost"
+                className="border-none px-0 pb-0 pt-4 text-primary hover:bg-transparent hover:text-primary"
+              >
+                <ChevronsDown className="h-12 w-12" />
+              </Button>
+            </a>
+          </div>
+        </div>
 
-          <div className="flex flex-col text-lg">
-            <p>Propietario: Nouns Amigos</p>
-            <p>Propuestas: 0</p>
-            <p>Mejor oferta: Ξ 0.069</p>
+        <div className="flex w-full flex-wrap justify-center py-4 md:pb-0 lg:w-1/2">
+          <div className="flex w-full justify-center md:w-3/5 lg:bottom-0 lg:h-[100vh] lg:w-full">
+            <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:absolute lg:bottom-0 lg:h-[576px] lg:w-[576px] xl:h-[640px] xl:w-[640px]">
+              <Image
+                src="/icons/android-chrome-512x512.png"
+                alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
+                fill
+              />
+            </div>
+          </div>
+          <div className="hidden w-full items-start justify-center md:flex md:w-2/5 md:flex-col lg:hidden">
+            <div className="flex items-center space-x-4">
+              <ArrowLeft className="h-12 w-12" />
+              <div className={`${nounsFont.className} text-[40px]`}>
+                Amigo 52
+              </div>
+            </div>
+
+            <div className="flex flex-col text-lg">
+              <p>Propietario: Nouns Amigos</p>
+              <p>Propuestas: 0</p>
+              <p>Mejor oferta: Ξ 0.069</p>
+            </div>
+          </div>
+          <div className="hidden w-full justify-center py-8 md:flex lg:hidden">
+            <a href="#what-is-nouns-amigos">
+              <Button
+                variant="ghost"
+                className="border-none px-0 py-1 pb-0 text-primary hover:bg-transparent hover:text-primary"
+              >
+                <ChevronsDown className="h-12 w-12" />
+              </Button>
+            </a>
           </div>
         </div>
-        <div className="flex w-full justify-center py-8">
-          <a href="#what-is-nouns-amigos">
-            <Button
-              variant="ghost"
-              className="border-none px-0 py-1 pb-0 text-primary hover:bg-transparent hover:text-primary"
-            >
-              <ChevronsDown className="h-12 w-12" />
-            </Button>
-          </a>
-        </div>
-      </div>
-      <div className="flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-3/4 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:max-w-2xl lg:pt-12 lg:text-center xl:pt-20">
-        <h1
-          className={`${nounsFont.className} px-2 text-left text-4xl font-light uppercase text-primary xs:text-5xl md:text-center md:text-6xl`}
-        >
-          Únete a la comunidad de Nouns en español
-        </h1>
-        <h4
-          className={`${nounsFont.className} mt-2 px-4 text-[2rem] font-light leading-none md:text-center`}
-        >
-          Trae tus ideas y construye con nosotros
-        </h4>
-        <div className="hidden p-4 lg:block">
-          <hr className="border-black" />
-        </div>
-        <div className="hidden w-full items-center justify-around lg:flex">
-          <div className="hidden items-center lg:flex">
-            <CornerLeftDown className="mt-8 h-12 w-12" />
+        <div className="flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-3/4 md:max-w-xl md:gap-y-3 md:px-8 md:pt-20 lg:mb-24 lg:w-1/2 lg:max-w-2xl lg:pl-0 lg:pr-16 lg:pt-0 lg:text-center xl:pt-20">
+          <h1
+            className={`${nounsFont.className} px-2 text-left text-4xl font-light uppercase text-primary xs:text-5xl md:text-center md:text-6xl lg:text-left`}
+          >
+            Únete a la comunidad de Nouns en español
+          </h1>
+          <h4
+            className={`${nounsFont.className} mt-2 px-4 text-[2rem] font-light leading-none md:text-center`}
+          >
+            Trae tus ideas
+            <br className="hidden lg:block" /> y construye con nosotros
+          </h4>
+          <div className="hidden p-4 lg:block">
+            <hr className="border-black" />
           </div>
-          <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
-          <div className="flex flex-col text-sm">
-            <p>Propietario: Nouns Amigos</p>
-            <p>Propuestas: 0</p>
-            <p>Mejor oferta: Ξ 0.069</p>
+          <div className="hidden w-full items-center justify-around lg:flex">
+            <div className="hidden items-center lg:flex">
+              <ArrowLeft className="h-12 w-12" />
+            </div>
+            <div className={`${nounsFont.className} text-[40px]`}>Amigo 52</div>
+            <div className="flex flex-col items-start text-sm">
+              <p>Propietario: Nouns Amigos</p>
+              <p>Propuestas: 0</p>
+              <p>Mejor oferta: Ξ 0.069</p>
+            </div>
+          </div>
+          <div className="mt-8 hidden w-full justify-center lg:flex">
+            <a href="#what-is-nouns-amigos">
+              <Button
+                variant="ghost"
+                className="border-none px-0 py-1 pb-0 text-primary hover:bg-transparent hover:text-primary"
+              >
+                <ChevronsDown className="h-12 w-12" />
+              </Button>
+            </a>
           </div>
         </div>
       </div>
@@ -254,7 +266,7 @@ function WhatIsNounsAmigos() {
       id="what-is-nouns-amigos"
       className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center"
     >
-      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:max-w-3xl lg:py-12 lg:text-center xl:py-20">
+      <div className="flex h-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:max-w-3xl lg:text-center xl:py-20">
         <div>
           <h2
             className={`${nounsFont.className} text-left text-5xl md:text-center`}
@@ -262,7 +274,7 @@ function WhatIsNounsAmigos() {
             Nouns Amigos es para todos
           </h2>
         </div>
-        <div className="flex flex-col space-y-4 px-4 lg:flex-row">
+        <div className="flex flex-col space-y-4 px-4">
           <p className="mt-2 text-lg md:text-xl lg:text-left">
             Nouns Amigos es una marca de uso libre que genera un impacto
             positivo al financiar ideas y fomentar la colaboración entre
@@ -303,7 +315,7 @@ function ProjectsShowcase() {
             Construye con nosotros y haz realidad tu proyecto
           </h3>
         </div>
-        <div className="flex flex-col space-y-4 md:space-y-8 md:px-4 lg:flex-row">
+        <div className="flex flex-col space-y-4 md:space-y-8 md:px-4">
           <p className="mt-2 text-lg md:text-xl lg:text-left">
             Desde meet-ups, construir unos Noggles gigantes en Japón, o crear
             proyectos tecnológicos,{" "}
@@ -312,7 +324,7 @@ function ProjectsShowcase() {
             </span>
           </p>
           <h5
-            className={`${nounsFont.className} text-center text-2xl font-light`}
+            className={`${nounsFont.className} text-center text-2xl font-light lg:hidden`}
           >
             Algunos proyectos fondeados <br />
             <span className="font-extrabold">↓</span>
@@ -430,7 +442,8 @@ function Testimonials() {
           <h4
             className={`${nounsFont.className} text-center text-3xl font-light text-primary`}
           >
-            Súmate a Nouns Amigos y comienza a construir en Web3 con nosotros
+            Súmate a Nouns Amigos y comienza <br className="hidden lg:block" />a
+            construir en Web3 con nosotros
           </h4>
           <Button size="lg">Únete a nuestro servidor Discord</Button>
         </div>
@@ -442,7 +455,7 @@ function Testimonials() {
 function Faq() {
   return (
     <div className="bg-[#FFFFFF] md:flex md:justify-center">
-      <div className="px-6 pb-8 pt-16 md:flex md:w-3/4 md:flex-col md:px-16">
+      <div className="px-6 pb-8 pt-16 md:flex md:w-3/4 md:flex-col md:px-16 lg:px-32">
         <h3
           className={`${nounsFont.className} mt-2 text-4xl leading-tight xs:text-4xl md:text-left lg:text-5xl`}
         >
