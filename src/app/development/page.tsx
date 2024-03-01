@@ -99,11 +99,11 @@ function getRandomNumber(range: number) {
 
 export default function Home() {
   const [isCollectionFetched, setIsCollectionFetched] = useState(false);
-  const [displayAmigoToken, setDisplayAmigoToken] =
-    useState<unknown>(undefined);
-  const [amigosCollection, setAmigosCollection] = useState<
-    nftElementDataType[]
-  >([]);
+  // const [displayAmigoToken, setDisplayAmigoToken] =
+  //   useState<unknown>(undefined);
+  // const [amigosCollection, setAmigosCollection] = useState<
+  //   nftElementDataType[]
+  // >([]);
   const alchemy = useAlchemy();
 
   async function getNftsForAmigosCollection() {
@@ -130,7 +130,7 @@ export default function Home() {
   async function getRandomAmigoToken() {
     const fetchedCollection = await getNftsForAmigosCollection();
     if (!fetchedCollection) return;
-    setAmigosCollection(fetchedCollection);
+    // setAmigosCollection(fetchedCollection);
     const randomTokenId = getRandomNumber(fetchedCollection.length);
     const selectedAmigoMetadata = await alchemy.nft.getNftMetadata(
       NounsAmigosContractAddress,
@@ -650,10 +650,12 @@ function Testimonials() {
                     <p>{`“${testimonial.body}”`}</p>
                   </blockquote>
                   <figcaption className="mt-6 flex items-center gap-x-4">
-                    <img
+                    <Image
                       className="h-10 w-10 rounded-full bg-gray-50"
-                      src={testimonial.author.imageUrl}
+                      src="/icons/android-chrome-512x512.png"
                       alt=""
+                      width={10}
+                      height={10}
                     />
                     <div>
                       <div className="text-xl font-semibold text-gray-900">

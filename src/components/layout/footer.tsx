@@ -1,5 +1,5 @@
 import { nounsFont } from "@/lib/fonts";
-import { JSX, SVGProps } from "react";
+import type { JSX, SVGProps } from "react";
 
 const navigation = [
   {

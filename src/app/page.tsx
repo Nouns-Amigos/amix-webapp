@@ -11,13 +11,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { CornerLeftDown, ChevronsDown, ArrowLeft } from "lucide-react";
+import { ChevronsDown, ArrowLeft } from "lucide-react";
 import useAlchemy from "@/services/alchemy";
 
 import { NounsAmigosContractAddress } from "@/config/nounsAmigosCollection";
 import { useEffect, useState } from "react";
 import { NftTokenType } from "alchemy-sdk";
 import { ProjectsCarousel } from "@/components/landing/ProjectsCarousel";
+import { getRandomNumber } from "@/utils";
 
 type nftElementDataType = {
   acquiredAt: unknown;
@@ -93,17 +94,13 @@ type nftElementDataType = {
   tokenUri: string;
 };
 
-function getRandomNumber(range: number) {
-  return Math.floor(Math.random() * range);
-}
-
 export default function Home() {
   const [isCollectionFetched, setIsCollectionFetched] = useState(false);
-  const [displayAmigoToken, setDisplayAmigoToken] =
-    useState<unknown>(undefined);
-  const [amigosCollection, setAmigosCollection] = useState<
-    nftElementDataType[]
-  >([]);
+  // const [displayAmigoToken, setDisplayAmigoToken] =
+  //   useState<unknown>(undefined);
+  // const [amigosCollection, setAmigosCollection] = useState<
+  //   nftElementDataType[]
+  // >([]);
   const alchemy = useAlchemy();
 
   async function getNftsForAmigosCollection() {
@@ -130,7 +127,7 @@ export default function Home() {
   async function getRandomAmigoToken() {
     const fetchedCollection = await getNftsForAmigosCollection();
     if (!fetchedCollection) return;
-    setAmigosCollection(fetchedCollection);
+    // setAmigosCollection(fetchedCollection);
     const randomTokenId = getRandomNumber(fetchedCollection.length);
     const selectedAmigoMetadata = await alchemy.nft.getNftMetadata(
       NounsAmigosContractAddress,
@@ -418,10 +415,12 @@ function Testimonials() {
               >
                 <figure className="rounded-2xl bg-gray-50 p-6 leading-6">
                   <figcaption className="flex items-center gap-x-4">
-                    <img
+                    <Image
                       className="h-10 w-10 rounded-full bg-gray-50"
-                      src={testimonial.author.imageUrl}
+                      src="/icons/android-chrome-512x512.png"
                       alt=""
+                      width={10}
+                      height={10}
                     />
                     <div>
                       <div className="text-xl font-semibold text-gray-900">
