@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import Image from "next/image";
 
 import { Card, CardContent } from "@/components/ui/card";
