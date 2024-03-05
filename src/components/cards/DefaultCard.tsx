@@ -25,10 +25,10 @@ export default function DefaultCard({
   footer,
 }: DefaultCardProps) {
   return (
-    <Card className="bg-brandWhiteLavender">
-      <CardHeader>
+    <Card>
+      <CardHeader className="pb-2">
         <CardTitle
-          className={`${nounsFont.className} text-2xl text-primary xs:text-3xl`}
+          className={`${nounsFont.className} text-xl font-light text-primary xs:text-2xl`}
         >
           {title}
         </CardTitle>

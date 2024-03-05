@@ -39,18 +39,18 @@ export default function Navbar() {
         <div className="hidden items-center space-x-4 lg:flex">
           <DaoDropdownMenu />
           <Link
-            href="#"
+            href="/comunidad"
             className={buttonVariants({ variant: "outline", size: "sm" })}
           >
             Comunidad
           </Link>
           <Link
-            href="#"
+            href="/token-amigo"
             className={buttonVariants({ variant: "outline", size: "sm" })}
           >
-            Recursos
+            AMIGO
           </Link>
-          <CollectionDropdownButton />
+          {/* <CollectionDropdownButton /> */}
           <Button
             variant="default"
             size="sm"

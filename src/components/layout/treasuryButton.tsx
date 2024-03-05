@@ -67,7 +67,7 @@ function TreasuryButton() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className="border-primary/75 pl-2 pr-1.5"
+          className="border-primary pl-2 pr-1.5"
           variant="outline"
           size="sm"
         >
@@ -94,15 +94,17 @@ function TreasuryButton() {
               href={`https://etherscan.io/address/${grantsAccountAddress}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full justify-between space-x-3"
+              className="flex w-full justify-start space-x-3"
             >
               <span>
                 {grantsAccountBalance
                   ? `Ξ ${grantsAccountBalance.toFixed(2)}`
                   : "..."}
               </span>
-              <span className="mr-2">grants.nounsamigos.eth</span>
-              <ExternalLink size={16} />
+              <div className="flex flex-grow items-center justify-between">
+                <span className="mr-2">grants.nounsamigos.eth</span>
+                <ExternalLink size={14} />
+              </div>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
@@ -110,7 +112,7 @@ function TreasuryButton() {
               href={`https://etherscan.io/address/${propHouseAccountAddress}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full justify-between space-x-3"
+              className="flex w-full justify-start space-x-3"
             >
               <span>
                 {propHouseAccountBalance
@@ -118,7 +120,7 @@ function TreasuryButton() {
                   : "..."}
               </span>
               <span className="mr-2">prophouse.nounsamigos.eth</span>
-              <ExternalLink size={16} />
+              <ExternalLink size={14} />
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>

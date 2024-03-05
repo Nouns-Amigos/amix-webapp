@@ -185,7 +185,7 @@ function Hero() {
             <div className="relative -z-10 h-72 w-72 xs:h-96 xs:w-96 md:h-[416px] md:w-[416px] lg:absolute lg:bottom-0 lg:h-[576px] lg:w-[576px] xl:h-[640px] xl:w-[640px]">
               <Image
                 src="/icons/android-chrome-512x512.png"
-                alt="AMIGO token #1: a burro with noggles wearing a red shirt that says 'hola'"
+                alt="AMIGO token example: a burro with noggles wearing a red shirt that says 'hola'"
                 fill
               />
             </div>
