@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/carousel";
 import { nounsFont } from "@/lib/fonts";
 
-export function ProjectsCarousel() {
+export function CommunityProjects() {
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
 
@@ -31,12 +31,12 @@ export function ProjectsCarousel() {
   }, [api]);
 
   return (
-    <div className="flex flex-col items-center space-y-4 px-4 md:flex-row md:justify-center lg:items-start">
-      <div>
-        <h4 className={`${nounsFont.className} text-center text-3xl`}>
+    <div className="flex flex-col items-center space-y-4 px-4 py-2 lg:flex-row lg:items-start lg:justify-center">
+      <div className="flex flex-col items-center space-y-2 lg:w-2/5">
+        <h2 className={`${nounsFont.className} text-center text-4xl md:hidden`}>
           {projectsArray[current]?.title}
-        </h4>
-        <Carousel className="w-full max-w-xs" setApi={setApi}>
+        </h2>
+        <Carousel className="w-[87.5%] xs:w-full md:max-w-md" setApi={setApi}>
           <CarouselContent>
             {projectsArray.map((project, index) => (
               <CarouselItem key={index}>
@@ -66,11 +66,16 @@ export function ProjectsCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="md:hidden" />
-          <CarouselNext className="md:hidden" />
+          <CarouselPrevious className="lg:hidden" />
+          <CarouselNext className="lg:hidden" />
         </Carousel>
       </div>
-      <div className="flex flex-col space-y-1 text-left lg:pt-8">
+      <div className="flex flex-col space-y-1 text-left lg:w-3/5 lg:pl-6 lg:pr-2 lg:pt-4">
+        <h3
+          className={`${nounsFont.className} hidden text-left text-3xl md:block md:text-4xl`}
+        >
+          {projectsArray[current]?.title}
+        </h3>
         {projectsArray[current]?.content}
         {projectsArray[current]?.stats}
       </div>
