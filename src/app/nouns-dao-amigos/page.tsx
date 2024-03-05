@@ -81,8 +81,8 @@ const SocialLinks = [
 
 export default function NounsAmigosDaoPage() {
   return (
-    <div className="flex min-h-[calc(100vh-64px)] w-full justify-center bg-background py-8 text-foreground">
-      <div className="flex h-full w-full flex-col md:px-8 lg:w-4/5">
+    <div className="flex min-h-[calc(100vh-64px)] w-full justify-center bg-background py-8 text-foreground lg:pt-12">
+      <div className="flex h-full w-full flex-col md:px-8 lg:w-4/5 xl:max-w-5xl">
         <h1 className={`${nounsFont.className} text-center text-5xl`}>
           Nosotros
         </h1>

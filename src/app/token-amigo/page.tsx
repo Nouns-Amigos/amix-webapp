@@ -119,7 +119,7 @@ export default function AmigoToken() {
 
   return (
     <div className="flex min-h-[calc(100vh-64px)] w-full justify-center bg-background text-foreground">
-      <div className="flex h-full w-full flex-col items-end md:px-8 lg:w-4/5">
+      <div className="flex h-full w-full flex-col items-end md:px-8 lg:w-4/5 xl:max-w-6xl">
         <div className="w-full pt-12 md:flex md:pt-16">
           <div className="w-full md:w-1/2">
             {displayAmigoToken ? (
