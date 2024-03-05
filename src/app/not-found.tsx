@@ -4,13 +4,11 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="w-5xl flex h-full flex-col items-center px-4 text-center">
-      <h2
-        className={`${nounsFont.className} pt-32 text-5xl tracking-tight md:text-6xl`}
-      >
+    <div className="w-5xl flex h-[calc(100vh-64px)] flex-col items-center px-4 text-center">
+      <h2 className={`${nounsFont.className} pt-40 text-5xl tracking-tight`}>
         404 | No encontrada
       </h2>
-      <p className="mt-4 text-2xl">
+      <p className="mt-4 text-xl">
         ¡Parece que la página que buscas no existe!
       </p>
       <Link href="/">
