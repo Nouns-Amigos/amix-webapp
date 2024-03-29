@@ -1,16 +1,8 @@
-import { nounsFont } from "@/lib/fonts";
 import type { JSX, SVGProps } from "react";
+import Image from "next/image";
+import { nounsFont } from "@/lib/fonts";
 
 const navigation = [
-  {
-    name: "Discord",
-    href: "https://discord.gg/we3HY9YBfZ",
-    icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
-      <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
-        <path d="M13.545 2.907a13.227 13.227 0 00-3.257-1.011.05.05 0 00-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 00-3.658 0 8.258 8.258 0 00-.412-.833.051.051 0 00-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 00-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 003.995 2.02.05.05 0 00.056-.019c.308-.42.582-.863.818-1.329a.05.05 0 00-.01-.059.051.051 0 00-.018-.011 8.875 8.875 0 01-1.248-.595.05.05 0 01-.02-.066.051.051 0 01.015-.019c.084-.063.168-.129.248-.195a.05.05 0 01.051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 01.053.007c.08.066.164.132.248.195a.051.051 0 01-.004.085 8.254 8.254 0 01-1.249.594.05.05 0 00-.03.03.052.052 0 00.003.041c.24.465.515.909.817 1.329a.05.05 0 00.056.019 13.235 13.235 0 004.001-2.02.049.049 0 00.021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 00-.02-.019zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612z" />
-      </svg>
-    ),
-  },
   {
     name: "Farcaster",
     href: "https://warpcast.com/nounsamigos",
@@ -59,6 +51,15 @@ const navigation = [
     ),
   },
   {
+    name: "Discord",
+    href: "https://discord.gg/we3HY9YBfZ",
+    icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
+      <svg fill="currentColor" viewBox="0 0 16 16" {...props}>
+        <path d="M13.545 2.907a13.227 13.227 0 00-3.257-1.011.05.05 0 00-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 00-3.658 0 8.258 8.258 0 00-.412-.833.051.051 0 00-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 00-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 003.995 2.02.05.05 0 00.056-.019c.308-.42.582-.863.818-1.329a.05.05 0 00-.01-.059.051.051 0 00-.018-.011 8.875 8.875 0 01-1.248-.595.05.05 0 01-.02-.066.051.051 0 01.015-.019c.084-.063.168-.129.248-.195a.05.05 0 01.051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 01.053.007c.08.066.164.132.248.195a.051.051 0 01-.004.085 8.254 8.254 0 01-1.249.594.05.05 0 00-.03.03.052.052 0 00.003.041c.24.465.515.909.817 1.329a.05.05 0 00.056.019 13.235 13.235 0 004.001-2.02.049.049 0 00.021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 00-.02-.019zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612z" />
+      </svg>
+    ),
+  },
+  {
     name: "GitHub",
     href: "https://github.com/nouns-amigos",
     icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
@@ -76,7 +77,7 @@ const navigation = [
 function Footer() {
   return (
     <footer className={`${nounsFont.className} bg-white`}>
-      <div className="mx-auto max-w-7xl px-6 py-4 md:flex md:items-center md:justify-between lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 py-8 md:flex md:items-center md:justify-between md:px-8 lg:px-12 xl:px-16">
         <div className="flex justify-center space-x-6 md:order-2">
           {navigation.map((item) => (
             <a
@@ -86,17 +87,28 @@ function Footer() {
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-500"
             >
-              <span className="sr-only">{item.name}</span>
-              <item.icon
-                className="h-6 w-6 hover:text-primary"
-                aria-hidden="true"
-              />
+              {item.name}
             </a>
           ))}
         </div>
-        <div className="mt-8 md:order-1 md:mt-0">
-          <p className="text-center text-base leading-5 text-gray-500">
-            &copy; 2024 Nouns DAO Amigos
+        <div className="md:min-w-1/3 mt-8 flex items-center justify-center space-x-3 md:order-1 md:mt-0">
+          <div className="flex items-center space-x-1">
+            <Image
+              src="/icons/noggles.png"
+              alt="Noggles"
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="h-auto w-16 transition duration-300 ease-in-out hover:scale-90"
+            />
+            <span
+              className={`${nounsFont.className} text-2xl font-semibold md:text-[26px]`}
+            >
+              amigos
+            </span>
+          </div>
+          <p className="text-center text-xl leading-5 text-gray-500">
+            &copy; 2024
           </p>
         </div>
       </div>
