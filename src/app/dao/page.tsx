@@ -6,7 +6,6 @@ import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import DefaultCard from "@/components/cards/DefaultCard";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import Navbar from "../navbar";
 
 const SocialLinks = [
   {
@@ -82,122 +81,119 @@ const SocialLinks = [
 
 export default function NounsAmigosDaoPage() {
   return (
-    <>
-      <Navbar />
-      <div className="flex min-h-[calc(100vh-64px)] w-full justify-center bg-background py-8 text-foreground lg:pt-12">
-        <div className="flex h-full w-full flex-col md:px-8 lg:w-4/5 xl:max-w-5xl">
-          <h1 className={`${nounsFont.className} text-center text-5xl`}>
-            Nosotros
-          </h1>
-          <div className="flex flex-col px-8 py-4 md:flex-row">
-            <div className="w-full space-y-4 md:flex md:w-1/2 md:flex-col md:justify-center">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-                voluptas corporis sapiente non eius asperiores molestias ipsum
-                illum saepe, odit, inventore alias, voluptatem ea ducimus
-                praesentium delectus magnam aperiam libero.
-              </p>
-              <ul className="list-inside list-[square] pl-4 text-base marker:text-primary">
-                <li>Carteras Multifirma</li>
-                <li>Colección AMIGO</li>
-                <li>Casa Prop House (rondas de votación)</li>
-                <li>Eventos y meetups</li>
-                <li>Ser Nounish</li>
-              </ul>
-            </div>
-            <div className="relative aspect-square w-full md:w-1/2">
-              <Image
-                src="/icons/android-chrome-512x512.png"
-                alt="AMIGO token example: a burro with noggles wearing a red shirt that says 'hola'"
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col items-center space-y-2 px-8 py-4">
-            <div className="w-full text-left">
-              <h2 className={`${nounsFont.className} text-3xl md:text-4xl`}>
-                Canales de comunicación
-              </h2>
-            </div>
+    <div className="flex min-h-[calc(100vh-64px)] w-full justify-center bg-background py-8 text-foreground lg:pt-12">
+      <div className="flex h-full w-full flex-col md:px-8 lg:w-4/5 xl:max-w-5xl">
+        <h1 className={`${nounsFont.className} text-center text-5xl`}>
+          Nosotros
+        </h1>
+        <div className="flex flex-col px-8 py-4 md:flex-row">
+          <div className="w-full space-y-4 md:flex md:w-1/2 md:flex-col md:justify-center">
             <p>
-              Si quieres interactuar con nosotros, participar en la comunidad y
-              estar enterado de lo que hacemos en Nouns Amigos, lo puedes hacer
-              a través de estos canales:
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
+              voluptas corporis sapiente non eius asperiores molestias ipsum
+              illum saepe, odit, inventore alias, voluptatem ea ducimus
+              praesentium delectus magnam aperiam libero.
             </p>
-            <div className="grid grid-cols-2 gap-4 py-2 md:w-2/3 md:grid-cols-3 lg:w-4/5 lg:grid-cols-5">
-              {SocialLinks.map((item, index) => (
-                <div
-                  key={`social-link-${index + 1}`}
-                  className="flex w-full justify-center"
+            <ul className="list-inside list-[square] pl-4 text-base marker:text-primary">
+              <li>Carteras Multifirma</li>
+              <li>Colección AMIGO</li>
+              <li>Casa Prop House (rondas de votación)</li>
+              <li>Eventos y meetups</li>
+              <li>Ser Nounish</li>
+            </ul>
+          </div>
+          <div className="relative aspect-square w-full md:w-1/2">
+            <Image
+              src="/icons/android-chrome-512x512.png"
+              alt="AMIGO token example: a burro with noggles wearing a red shirt that says 'hola'"
+              width={0}
+              height={0}
+              sizes="100vw"
+              style={{ width: "100%", height: "auto" }}
+            />
+          </div>
+        </div>
+        <div className="flex flex-col items-center space-y-2 px-8 py-4">
+          <div className="w-full text-left">
+            <h2 className={`${nounsFont.className} text-3xl md:text-4xl`}>
+              Canales de comunicación
+            </h2>
+          </div>
+          <p>
+            Si quieres interactuar con nosotros, participar en la comunidad y
+            estar enterado de lo que hacemos en Nouns Amigos, lo puedes hacer a
+            través de estos canales:
+          </p>
+          <div className="grid grid-cols-2 gap-4 py-2 md:w-2/3 md:grid-cols-3 lg:w-4/5 lg:grid-cols-5">
+            {SocialLinks.map((item, index) => (
+              <div
+                key={`social-link-${index + 1}`}
+                className="flex w-full justify-center"
+              >
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center text-gray-500 hover:text-primary"
                 >
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col items-center text-gray-500 hover:text-primary"
-                  >
-                    <item.icon
-                      className="h-8 w-8 hover:text-primary"
-                      aria-hidden="true"
-                    />
-                    <p className={`${nounsFont.className} text-2xl`}>
-                      {item.name}
-                    </p>
-                  </a>
-                </div>
-              ))}
-            </div>
+                  <item.icon
+                    className="h-8 w-8 hover:text-primary"
+                    aria-hidden="true"
+                  />
+                  <p className={`${nounsFont.className} text-2xl`}>
+                    {item.name}
+                  </p>
+                </a>
+              </div>
+            ))}
           </div>
-          <TokenAmigo />
-          <div className="flex flex-col space-y-2 px-8 py-4">
-            <h2 className={`${nounsFont.className} pb-2 text-3xl md:text-4xl`}>
-              Carteras Multifirma
-            </h2>
-            <div className="grid w-full grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-8 md:px-12 md:py-4">
-              <Card className="border-[3px] border-secondary">
-                <CardHeader>
-                  <CardTitle className="text-center text-xl">
-                    Cartera DAO
-                  </CardTitle>
-                </CardHeader>
-              </Card>
-              <Card className="border-[3px] border-secondary">
-                <CardHeader>
-                  <CardTitle className="text-center text-xl">
-                    Cartera Grants
-                  </CardTitle>
-                </CardHeader>
-              </Card>
-              <Card className="border-[3px] border-secondary">
-                <CardHeader>
-                  <CardTitle className="text-center text-xl">
-                    Cartera Prop House
-                  </CardTitle>
-                </CardHeader>
-              </Card>
-            </div>
+        </div>
+        <TokenAmigo />
+        <div className="flex flex-col space-y-2 px-8 py-4">
+          <h2 className={`${nounsFont.className} pb-2 text-3xl md:text-4xl`}>
+            Carteras Multifirma
+          </h2>
+          <div className="grid w-full grid-cols-1 gap-y-4 md:grid-cols-3 md:gap-x-8 md:px-12 md:py-4">
+            <Card className="border-[3px] border-secondary">
+              <CardHeader>
+                <CardTitle className="text-center text-xl">
+                  Cartera DAO
+                </CardTitle>
+              </CardHeader>
+            </Card>
+            <Card className="border-[3px] border-secondary">
+              <CardHeader>
+                <CardTitle className="text-center text-xl">
+                  Cartera Grants
+                </CardTitle>
+              </CardHeader>
+            </Card>
+            <Card className="border-[3px] border-secondary">
+              <CardHeader>
+                <CardTitle className="text-center text-xl">
+                  Cartera Prop House
+                </CardTitle>
+              </CardHeader>
+            </Card>
           </div>
-          <div className="flex flex-col space-y-2 px-8 py-4">
-            <h2 className={`${nounsFont.className} pb-2 text-3xl md:text-4xl`}>
-              Prop House
-            </h2>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quod
-              iure soluta ratione excepturi libero. Temporibus eaque aut
-              consequatur nesciunt pariatur voluptatibus eum soluta delectus in
-              culpa, officiis, iste repellendus.
-            </p>
-            <div className="py-4 md:flex md:justify-center">
-              <HowItWorks />
-            </div>
+        </div>
+        <div className="flex flex-col space-y-2 px-8 py-4">
+          <h2 className={`${nounsFont.className} pb-2 text-3xl md:text-4xl`}>
+            Prop House
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed quod
+            iure soluta ratione excepturi libero. Temporibus eaque aut
+            consequatur nesciunt pariatur voluptatibus eum soluta delectus in
+            culpa, officiis, iste repellendus.
+          </p>
+          <div className="py-4 md:flex md:justify-center">
+            <HowItWorks />
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
