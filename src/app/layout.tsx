@@ -14,12 +14,13 @@ export const metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export const bodyFont = Raleway({
+const bodyFont = Raleway({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const NAVBAR_HEIGHT = "64px"; // ~4rem or h-16 (tailwind)
+const NAVBAR_HEIGHT_SM = "0"; // ~5rem or h-20 (tailwind)
+const NAVBAR_HEIGHT_MD = "0"; // ~6rem or h-24 (tailwind)
 
 export default function RootLayout({
   children,
@@ -30,9 +31,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`font-sans ${bodyFont.variable} h-screen`}>
         <TRPCReactProvider cookies={cookies().toString()}>
-          <Navbar />
+          {/* <Navbar /> */}
           <main
-            className={`min-h-[calc(100svh-${NAVBAR_HEIGHT})] overflow-x-hidden t-[${NAVBAR_HEIGHT}]`}
+            className={`min-h-[calc(100svh-${NAVBAR_HEIGHT_SM})] overflow-x-hidden t-[${NAVBAR_HEIGHT_SM}] md:min-h-[calc(100svh-${NAVBAR_HEIGHT_MD})] t-[${NAVBAR_HEIGHT_MD}]`}
           >
             {children}
           </main>

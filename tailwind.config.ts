@@ -20,6 +20,7 @@ const config = {
     },
     screens: {
       xs: "390px",
+      "3xl": "1512px",
       ...defaultTheme.screens,
     },
     extend: {
