@@ -6,16 +6,27 @@ import Link from "next/link";
 import { nounsFont } from "@/lib/fonts";
 
 import { Button, buttonVariants } from "@/components/ui/button";
-import HamburgerMenu from "./hamburgerMenu";
-import TreasuryButton from "./treasuryButton";
+import HamburgerMenu from "@/components/layout/hamburgerMenu";
+import TreasuryButton from "@/components/layout/treasuryButton";
 import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+export default function Navbar({ color }: { color?: "cool" | "warm" }) {
   const pathname = usePathname();
-  console.log(pathname);
+  let navbarBgTwClass = "bg-transparent";
+  switch (color) {
+    case "cool":
+      navbarBgTwClass = "bg-[#D5D7E1]";
+      break;
+    case "warm":
+      navbarBgTwClass = "bg-[#E1D7D5]";
+      break;
+    default:
+      navbarBgTwClass = "bg-transparent";
+      break;
+  }
   return (
-    <nav className="sticky top-0 z-10 h-20 bg-background md:h-24">
-      <div className="mx-auto flex h-full max-w-7xl justify-between px-4">
+    <nav className={`h-20 md:h-24 ${navbarBgTwClass}`}>
+      <div className="mx-auto flex h-full max-w-7xl justify-between px-4 md:px-8 lg:px-12 xl:px-16">
         <div className="flex items-center space-x-0 md:space-x-4">
           <Link href="/" className="flex items-center gap-1 px-2 text-black">
             <div className="flex items-center">
@@ -38,7 +49,7 @@ export default function Navbar() {
         </div>
 
         {/* Primary Navbar items */}
-        <div className="hidden items-center space-x-4 lg:flex">
+        <div className="mr-1 hidden items-center space-x-4 lg:flex">
           <Link
             href="/"
             className={buttonVariants({
@@ -58,7 +69,7 @@ export default function Navbar() {
               variant: "outline",
               size: "default",
               className: `border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3 ${
-                pathname === "/dao" &&
+                pathname === "/nouns-dao-amigos" &&
                 "border-white bg-white hover:!bg-white hover:!text-black"
               }`,
             })}
@@ -100,7 +111,7 @@ export default function Navbar() {
           </Button>
         </div>
 
-        <div className="flex items-center lg:hidden">
+        <div className="mr-1 flex items-center lg:hidden">
           <HamburgerMenu />
         </div>
       </div>
