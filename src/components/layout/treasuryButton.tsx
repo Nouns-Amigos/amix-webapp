@@ -12,13 +12,13 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import useAlchemy from "@/services/alchemy";
 import { formatEther } from "viem";
-import { ExternalLink } from "lucide-react";
 
 const grantsAccountAddress = "0x9d8571a3e0f12e838264291eb3d1f5266f88ed4c";
 
 const propHouseAccountAddress = "0x5f654f869bcfabdd02639a89286048b87995cde1";
 
 function TreasuryButton() {
+  const [isOpen, setIsOpen] = useState(false);
   const [grantsAccountBalance, setGrantsAccountBalance] = useState<
     number | undefined
   >(undefined);
@@ -64,12 +64,13 @@ function TreasuryButton() {
     }
   }, []);
   return (
-    <DropdownMenu>
+    <DropdownMenu onOpenChange={() => setIsOpen(!isOpen)}>
       <DropdownMenuTrigger asChild>
         <Button
-          className="border-primary pl-2 pr-1.5"
+          className={`border-primary p-2.5 text-base hover:bg-primary hover:text-white active:bg-primary md:p-3 ${
+            isOpen && "bg-primary text-white"
+          }`}
           variant="outline"
-          size="sm"
         >
           {/* <Link
             href="https://etherscan.io/address/0x9581587991da459409b4e7e3b44daa1e65e589ec"
@@ -80,31 +81,26 @@ function TreasuryButton() {
               size: "sm",
             })} border-primary/100`}
           > */}
-          <span className="mr-2.5 hidden text-slate-600 lg:block">
-            Tesorería
-          </span>
+          <span className="mr-2.5 hidden lg:block">Tesorería</span>
           {treasuryBalance ? `Ξ ${treasuryBalance.toFixed(2)}` : "..."}
           {/* </Link> */}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="mt-1 border-2 border-primary/25 bg-background px-2 py-1.5 md:ml-48 lg:ml-44 xl:ml-40">
+      <DropdownMenuContent className="mt-1 bg-primary px-2 py-1.5 md:ml-56 lg:ml-36">
         <DropdownMenuGroup>
           <DropdownMenuItem>
             <Link
               href={`https://etherscan.io/address/${grantsAccountAddress}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full justify-start space-x-3"
+              className="flex w-full justify-between space-x-3 text-base text-white hover:font-bold"
             >
+              <span>grants.nounsamigos.eth</span>
               <span>
                 {grantsAccountBalance
                   ? `Ξ ${grantsAccountBalance.toFixed(2)}`
                   : "..."}
               </span>
-              <div className="flex flex-grow items-center justify-between">
-                <span className="mr-2">grants.nounsamigos.eth</span>
-                <ExternalLink size={14} />
-              </div>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
@@ -112,15 +108,14 @@ function TreasuryButton() {
               href={`https://etherscan.io/address/${propHouseAccountAddress}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex w-full justify-start space-x-3"
+              className="flex w-full justify-between space-x-3 text-base text-white hover:font-bold"
             >
+              <span>prophouse.nounsamigos.eth</span>
               <span>
                 {propHouseAccountBalance
                   ? `Ξ ${propHouseAccountBalance.toFixed(2)}`
                   : "..."}
               </span>
-              <span className="mr-2">prophouse.nounsamigos.eth</span>
-              <ExternalLink size={14} />
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
