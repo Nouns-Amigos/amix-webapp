@@ -11,135 +11,110 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { ChevronsDown, ArrowLeft, ExternalLink } from "lucide-react";
+import { ChevronsDown, ArrowLeft } from "lucide-react";
 import useAlchemy from "@/services/alchemy";
 import {
-  type GetOwnersForContractResponse,
-  type GetOwnersForContractWithTokenBalancesResponse,
+  // type GetOwnersForContractResponse,
+  // type GetOwnersForContractWithTokenBalancesResponse,
   type Nft,
   NftTokenType,
 } from "alchemy-sdk";
 
 import { NounsAmigosContractAddress } from "@/config/nounsAmigosCollection";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { type Dispatch, type SetStateAction, useEffect, useState } from "react";
 import { getRandomNumber, truncateString } from "@/utils";
 import { ProjectsShowcase } from "@/components/landing/ProjectsShowcase";
-import { AMIGOS_METADATA, AmigoMetadataType } from "amigos/metadata";
+import { AMIGOS_METADATA } from "amigos/metadata";
 import Navbar from "./navbar";
 import { zeroAddress } from "viem";
 import Link from "next/link";
 
-type nftElementDataType = {
-  acquiredAt: unknown;
-  collection: {
-    bannerImageUrl: string;
-    externalUrl: string;
-    name: string;
-    slug: string;
-  };
-  contract: {
-    address: string;
-    contractDeployer: string;
-    deployedBlockNumber: number;
-    isSpam: boolean;
-    name: string;
-    openSeaMetadata: {
-      bannerImageUrl: string;
-      collectionName: string;
-      collectionSlug: string;
-      description: string;
-      discordUrl: string;
-      externalUrl: string;
-      floorPrice: number;
-      imageUrl: string;
-      lastIngestedAt: string;
-      safelistRequestStatus: string;
-      twitterUsername: string;
-    };
-    spamClassifications: unknown[];
-    symbol: string;
-    tokenType: string;
-    totalSupply: string | number;
-  };
-  description: string;
-  image: {
-    cachedUrl: string;
-    contentType: string;
-    originalUrl: string;
-    pngUrl: string;
-    size: number;
-    thumbnailUrl: string;
-  };
-  mint: {
-    mintAddress: string;
-    blockNumber: number;
-    timestamp: string;
-    transactionHash: string;
-  };
-  name: string;
-  owners: unknown;
-  raw: {
-    error: unknown;
-    metadata: {
-      created_by: string;
-      description: string;
-      external_url: string;
-      image: string;
-      image_details: {
-        format: string;
-        width: number;
-        sha256: string;
-        bytes: number;
-        height: number;
-      };
-      image_url: string;
-      name: string;
-    };
-    tokenUri: string;
-  };
-  timeLastUpdated: string;
-  tokenId: string;
-  tokenType: string;
-  tokenUri: string;
-};
+// type nftElementDataType = {
+//   acquiredAt: unknown;
+//   collection: {
+//     bannerImageUrl: string;
+//     externalUrl: string;
+//     name: string;
+//     slug: string;
+//   };
+//   contract: {
+//     address: string;
+//     contractDeployer: string;
+//     deployedBlockNumber: number;
+//     isSpam: boolean;
+//     name: string;
+//     openSeaMetadata: {
+//       bannerImageUrl: string;
+//       collectionName: string;
+//       collectionSlug: string;
+//       description: string;
+//       discordUrl: string;
+//       externalUrl: string;
+//       floorPrice: number;
+//       imageUrl: string;
+//       lastIngestedAt: string;
+//       safelistRequestStatus: string;
+//       twitterUsername: string;
+//     };
+//     spamClassifications: unknown[];
+//     symbol: string;
+//     tokenType: string;
+//     totalSupply: string | number;
+//   };
+//   description: string;
+//   image: {
+//     cachedUrl: string;
+//     contentType: string;
+//     originalUrl: string;
+//     pngUrl: string;
+//     size: number;
+//     thumbnailUrl: string;
+//   };
+//   mint: {
+//     mintAddress: string;
+//     blockNumber: number;
+//     timestamp: string;
+//     transactionHash: string;
+//   };
+//   name: string;
+//   owners: unknown;
+//   raw: {
+//     error: unknown;
+//     metadata: {
+//       created_by: string;
+//       description: string;
+//       external_url: string;
+//       image: string;
+//       image_details: {
+//         format: string;
+//         width: number;
+//         sha256: string;
+//         bytes: number;
+//         height: number;
+//       };
+//       image_url: string;
+//       name: string;
+//     };
+//     tokenUri: string;
+//   };
+//   timeLastUpdated: string;
+//   tokenId: string;
+//   tokenType: string;
+//   tokenUri: string;
+// };
 
 export default function Home() {
   const [isCollectionFetched, setIsCollectionFetched] = useState(false);
-  const [displayAmigoToken, setDisplayAmigoToken] = useState<
-    AmigoMetadataType | undefined
-  >(undefined);
-  const warmHexColor = "#E1D7D5";
-  const coolHexColor = "#D5D7E1";
+  // const [displayAmigoToken, setDisplayAmigoToken] = useState<
+  //   AmigoMetadataType | undefined
+  // >(undefined);
+  // const warmHexColor = "#E1D7D5";
+  // const coolHexColor = "#D5D7E1";
   const [isWarmColor, setIsWarmColor] = useState(true);
-  // const [amigosCollection, setAmigosCollection] = useState<
-  //   nftElementDataType[]
-  // >([]);
-  const alchemy = useAlchemy();
-
-  async function getNftsForAmigosCollection() {
-    try {
-      const nfts = [];
-      // Get the async iterable for the contract's NFTs.
-      const nftsIterable = alchemy.nft.getNftsForContractIterator(
-        NounsAmigosContractAddress,
-      );
-
-      // Iterate over the NFTs and add them to the nfts array.
-      for await (const nft of nftsIterable) {
-        nfts.push(nft as nftElementDataType);
-      }
-
-      // Log the NFTs.
-      console.log(nfts);
-      return nfts;
-    } catch (error) {
-      console.log(error);
-    }
-  }
 
   async function getRandomAmigoToken() {
     const randomTokenId = getRandomNumber(AMIGOS_METADATA.length);
-    setDisplayAmigoToken(AMIGOS_METADATA[randomTokenId]);
+    // setDisplayAmigoToken(AMIGOS_METADATA[randomTokenId]);
     console.log(AMIGOS_METADATA[randomTokenId]);
     AMIGOS_METADATA[randomTokenId]?.background === "warm"
       ? setIsWarmColor(true)
@@ -179,9 +154,9 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
     string | undefined
   >(undefined);
   const [amigosCollection, setAmigosCollection] = useState<Nft[]>([]);
-  const [amigoHolders, setAmigoHolders] = useState<
-    GetOwnersForContractWithTokenBalancesResponse | GetOwnersForContractResponse
-  >();
+  // const [amigoHolders, setAmigoHolders] = useState<
+  //   GetOwnersForContractWithTokenBalancesResponse | GetOwnersForContractResponse
+  // >();
   const alchemy = useAlchemy();
 
   async function getNftsForAmigosCollection() {
@@ -240,19 +215,19 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
     setIsWarmColor(AMIGOS_METADATA[tokenId]?.background === "warm");
   }
 
-  async function getCollectionHolders() {
-    const holders = await alchemy.nft.getOwnersForContract(
-      NounsAmigosContractAddress,
-      { withTokenBalances: true, includeCount: true },
-    );
-    console.log(holders);
-    setAmigoHolders(holders);
-  }
+  // async function getCollectionHolders() {
+  //   const holders = await alchemy.nft.getOwnersForContract(
+  //     NounsAmigosContractAddress,
+  //     { withTokenBalances: true, includeCount: true },
+  //   );
+  //   console.log(holders);
+  //   setAmigoHolders(holders);
+  // }
 
   useEffect(() => {
     if (!isCollectionFetched) {
       void getAmigoToken(-1);
-      void getCollectionHolders();
+      // void getCollectionHolders();
       setIsCollectionFetched(true);
     }
   }, []);

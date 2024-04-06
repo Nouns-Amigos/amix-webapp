@@ -64,7 +64,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
             Inicio
           </Link>
           <Link
-            href="/dao"
+            href="/nouns-dao-amigos"
             className={buttonVariants({
               variant: "outline",
               size: "default",
