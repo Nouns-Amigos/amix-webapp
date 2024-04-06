@@ -12,6 +12,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button";
+import { usePathname } from "next/navigation";
 
 // type HamburgerMenuProps = {
 //   menuItems?: [{ displayText: string; href: string }];
@@ -19,6 +20,7 @@ import { buttonVariants } from "@/components/ui/button";
 
 export default function HamburgerMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -32,7 +34,14 @@ export default function HamburgerMenu() {
         <div className="flex flex-col space-y-4">
           <Link
             href="/nouns-dao-amigos"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: `border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3 ${
+                pathname === "/nouns-dao-amigos" &&
+                "border-white bg-white hover:!bg-white hover:!text-black"
+              }`,
+            })}
             onClick={() => setIsMenuOpen(false)}
           >
             <span>DAO</span>
