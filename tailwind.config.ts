@@ -44,6 +44,12 @@ const config = {
         redNoggles: {
           DEFAULT: "hsl(var(--redNoggles))",
         },
+        coolBgNouns: {
+          DEFAULT: "hsl(var(--coolBgNouns))",
+        },
+        warmBgNouns: {
+          DEFAULT: "hsl(var(--warmBgNouns))",
+        },
         brandWhite: {
           DEFAULT: "hsl(var(--brand-white))",
           foreground: "hsl(var(--foreground))",
