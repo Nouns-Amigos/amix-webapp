@@ -41,6 +41,9 @@ const config = {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        redNoggles: {
+          DEFAULT: "hsl(var(--redNoggles))",
+        },
         brandWhite: {
           DEFAULT: "hsl(var(--brand-white))",
           foreground: "hsl(var(--foreground))",
