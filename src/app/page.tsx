@@ -238,11 +238,11 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
         isWarmColor ? "bg-[#E1D7D5]" : "bg-[#D5D7E1]"
       } w-full xl:flex xl:justify-center`}
     >
-      <div className="flex h-full w-full flex-col-reverse items-center md:items-end lg:h-[calc(100svh-160px)] lg:w-full lg:flex-row lg:items-center xl:h-[calc(100svh-256px)] xl:max-w-6xl 3xl:h-[calc(100svh-256px)]">
+      <div className="flex h-full w-full flex-col-reverse items-center md:items-end lg:w-full lg:flex-row lg:items-center xl:max-w-6xl">
         {/*AMIGO image container*/}
-        <div className="flex w-full flex-wrap justify-center pt-4 md:absolute md:justify-start md:py-0 lg:static lg:h-full lg:w-[47.5%] lg:items-end lg:justify-end">
+        <div className="flex w-full flex-wrap justify-center md:absolute md:justify-start md:py-0 lg:static lg:h-full lg:w-[47.5%] lg:items-end lg:justify-end lg:pt-10 xl:pt-0">
           {/*AMIGO image*/}
-          <div className="flex w-full items-start justify-center md:-ml-12 md:w-[55%] lg:-mr-8 lg:ml-0 lg:w-[90%]">
+          <div className="flex w-full items-start justify-center md:-ml-8 md:w-[55%] lg:-mr-8 lg:ml-0 lg:w-full">
             <div className="w-full">
               {displayAmigoToken ? (
                 <Image
@@ -273,7 +273,7 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
           </div>
         </div>
         {/*AMIGO data and scroll-down arrows (sm viewports only)*/}
-        <div className="z-10 flex w-full flex-col pt-8 md:hidden">
+        <div className="z-10 flex w-full flex-col md:hidden">
           <div className="flex w-full items-center justify-around px-6">
             <div className={`${nounsFont.className} text-[40px]`}>
               Amigo {displayAmigoToken?.tokenId ?? ""}
@@ -296,12 +296,17 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
                   )}
                 </div>
                 <div className="flex space-x-2">
-                  <p>Acuñado:</p>
+                  <p>Creado:</p>
                   {displayAmigoToken?.mint?.timestamp ? (
                     <p>
                       {new Date(
                         displayAmigoToken?.mint?.timestamp ?? "No disponible",
-                      ).toDateString()}
+                      ).toLocaleDateString("es-ES", {
+                        weekday: "short",
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </p>
                   ) : (
                     <p>No disponible</p>
@@ -312,7 +317,7 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
           </div>
         </div>
         {/*Header and subheader*/}
-        <div className="z-10 flex h-full flex-col justify-center gap-y-2 px-4 pt-8 md:w-2/3 md:gap-y-3 md:px-8 md:pb-16 md:pt-20 lg:w-[52.5%] lg:items-center lg:px-16 lg:pb-16 lg:pl-0 xl:pb-8 xl:pt-8">
+        <div className="z-10 flex h-full w-full flex-col justify-center gap-y-2 px-6 pt-8 md:w-2/3 md:px-8 md:pb-16 md:pt-20 lg:w-[52.5%] lg:items-center lg:px-16 lg:pb-8 lg:pl-0 xl:pb-8 xl:pt-16">
           <Image
             src="/images/landing/globoaz.png"
             alt="Únete a la comunidad de Nouns en Español"
@@ -322,14 +327,14 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
             className="h-auto w-full"
           />
           <h4
-            className={`${nounsFont.className} mt-2 px-4 text-[2rem] font-light leading-none md:text-center lg:text-left`}
+            className={`${nounsFont.className} mt-2 px-4 text-[2rem] font-light leading-none md:px-8 md:text-center lg:px-0`}
           >
-            Trae tus ideas y<br className="lg:hidden" /> construye con nosotros
+            Trae tus ideas y<br /> construye con nosotros
           </h4>
-          <div className="hidden p-4 md:block md:pl-16 lg:px-4">
-            <hr className="border-black" />
+          <div className="w-full px-4 py-4 md:px-20 lg:px-0">
+            <hr className="border-[1.5px] border-black" />
           </div>
-          <div className="hidden w-full items-center justify-around md:flex md:pl-12 lg:px-0">
+          <div className="hidden w-full items-center justify-around md:flex md:md:px-6 lg:px-0">
             <div className="hidden items-center lg:flex">
               <ArrowLeft className="h-12 w-12" />
             </div>
@@ -353,12 +358,17 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
                 )}
               </div>
               <div className="flex space-x-2">
-                <p>Acuñado:</p>
+                <p>Creado:</p>
                 {displayAmigoToken?.mint?.timestamp ? (
                   <p>
                     {new Date(
                       displayAmigoToken?.mint?.timestamp ?? "No disponible",
-                    ).toDateString()}
+                    ).toLocaleDateString("es-ES", {
+                      weekday: "short",
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
                   </p>
                 ) : (
                   <p>No disponible</p>
@@ -419,7 +429,7 @@ function WhatIsNounsAmigos() {
       id="what-is-nouns-amigos"
       className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center"
     >
-      <div className="flex h-full w-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:items-center lg:space-y-0 lg:text-center xl:px-32 xl:py-20 2xl:max-w-7xl">
+      <div className="flex h-full w-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:items-center lg:space-y-0 lg:py-16 lg:text-center xl:px-32 xl:py-20 2xl:max-w-7xl">
         <div className="flex w-full flex-col gap-y-4 lg:w-[52.5%] lg:pl-8 xl:pl-16">
           <h2
             className={`${nounsFont.className} block text-left text-5xl lg:hidden`}
@@ -496,7 +506,7 @@ const testimonials = [
 
 function Testimonials() {
   return (
-    <div className="bg-[#F8F8F8] px-6 py-16 text-foreground md:px-16 md:py-20 lg:px-24 xl:px-32">
+    <div className="bg-[#F8F8F8] px-6 py-16 text-foreground md:px-16 md:py-20 lg:px-24 lg:py-16 xl:px-32">
       <div className="mx-auto max-w-7xl xl:px-16">
         <div className="text-center">
           <h3
@@ -559,7 +569,7 @@ function Testimonials() {
 function Faq() {
   return (
     <div className="w-full bg-[#F8F8F8] text-foreground lg:flex lg:justify-center lg:px-24 xl:px-32">
-      <div className="flex h-full w-full max-w-7xl flex-col space-y-4 px-6 py-16 md:flex-row-reverse md:px-16 md:py-20 lg:px-0 lg:text-center xl:px-16">
+      <div className="flex h-full w-full max-w-7xl flex-col space-y-4 px-6 py-16 md:flex-row-reverse md:px-16 md:py-20 lg:px-0 lg:py-16 lg:text-center xl:px-16">
         <div className="w-full">
           <div className="flex w-full flex-col-reverse md:flex-row md:items-end">
             <div className="w-full md:w-1/2 md:pb-8">
