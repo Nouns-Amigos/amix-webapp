@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import useAlchemy from "@/services/alchemy";
 import {
@@ -8,6 +8,7 @@ import {
   type GetOwnersForContractWithTokenBalancesResponse,
   type Nft,
   NftTokenType,
+  NftContractOwner,
 } from "alchemy-sdk";
 import { getRandomNumber, truncateString } from "@/utils";
 import { nounsFont } from "@/lib/fonts";
@@ -123,11 +124,17 @@ export default function AmigoToken() {
     setAmigoHolders(holders);
   }
 
+  const Gallery = useCallback(
+    () => AmigoGallery({ amigosCollection, amigoHolders, getAmigoToken }),
+    [],
+  );
+
   useEffect(() => {
     if (!isCollectionFetched) {
       void getAmigoToken(-1);
       void getCollectionHolders();
       setIsCollectionFetched(true);
+      console.log("HOLDERS>>>>>>", amigoHolders);
     }
   }, []);
 
@@ -139,8 +146,8 @@ export default function AmigoToken() {
           isWarmColor ? "bg-warmBgNouns" : "bg-coolBgNouns"
         }`}
       >
-        <div className="flex h-full w-full flex-col items-end md:px-8 lg:w-4/5 xl:max-w-6xl">
-          <div className="w-full pt-12 md:flex md:pt-16">
+        <div className="flex h-full w-full flex-col items-end md:relative md:px-8 lg:w-4/5 xl:max-w-6xl">
+          <div className="w-full pt-12 md:flex md:pt-16 lg:pt-20 xl:pt-24">
             <div className="flex w-full items-end md:w-1/2">
               {displayAmigoToken ? (
                 <div className="flex aspect-square w-full justify-center">
@@ -171,9 +178,9 @@ export default function AmigoToken() {
                 </div>
               )}
             </div>
-            <div className="flex w-full flex-col space-y-2 p-4 md:w-1/2">
+            <div className="flex w-full flex-col space-y-2 p-4 md:w-1/2 xl:pb-0">
               <div className="flex w-full justify-start space-x-8 md:justify-between md:space-x-0 lg:justify-start lg:space-x-8">
-                <Button
+                {/* <Button
                   className="md:px-2"
                   variant="ghost"
                   onClick={() =>
@@ -184,13 +191,13 @@ export default function AmigoToken() {
                   }
                 >
                   <ChevronLeftIcon className="h-8 w-8" />
-                </Button>
+                </Button> */}
                 <h1
                   className={`${nounsFont.className} hidden text-5xl md:block lg:hidden`}
                 >
                   Amigo {displayAmigoToken?.tokenId}
                 </h1>
-                <Button className="md:px-2" variant="ghost">
+                {/* <Button className="md:px-2" variant="ghost">
                   <ChevronRightIcon
                     className="h-8 w-8"
                     onClick={() =>
@@ -201,39 +208,112 @@ export default function AmigoToken() {
                       )
                     }
                   />
-                </Button>
+                </Button> */}
               </div>
-              <div className="w-full px-4">
-                <h1
-                  className={`${nounsFont.className} text-6xl md:hidden lg:block`}
-                >
-                  Amigo {displayAmigoToken?.tokenId}
-                </h1>
-                <div className="flex items-center justify-between px-4 py-2 text-lg md:px-6 md:text-base">
-                  <p>Acuñado:</p>
+              <div className="w-full md:px-4">
+                <div className="flex w-full items-center justify-between">
+                  <button
+                    className="md:absolute md:left-0 md:top-1/2 lg:-ml-16"
+                    onClick={() =>
+                      parseInt(displayAmigoToken?.tokenId ?? "1") > 1 &&
+                      getAmigoToken(
+                        parseInt(displayAmigoToken?.tokenId ?? "2") - 1,
+                      )
+                    }
+                  >
+                    <Image
+                      src="/images/arrow.svg"
+                      alt="Arrow"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="w-16"
+                    />
+                  </button>
+                  <h1
+                    className={`${nounsFont.className} text-6xl md:hidden lg:block`}
+                  >
+                    Amigo {displayAmigoToken?.tokenId}
+                  </h1>
+                  <button
+                    className="md:absolute md:right-0 md:top-1/2 lg:-mr-16"
+                    onClick={() =>
+                      parseInt(displayAmigoToken?.tokenId ?? "1") <
+                        amigosCollection.length &&
+                      getAmigoToken(
+                        parseInt(displayAmigoToken?.tokenId ?? "2") + 1,
+                      )
+                    }
+                  >
+                    <Image
+                      src="/images/arrow.svg"
+                      alt="Arrow"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="w-16 scale-x-[-1]"
+                    />
+                  </button>
+                </div>
+                <div className="flex items-center justify-between px-4 pt-2 text-xl md:px-6 md:text-base">
+                  <p>Creado:</p>
                   {displayAmigoToken?.mint?.timestamp ? (
                     <p>
                       {new Date(
                         displayAmigoToken?.mint?.timestamp ?? "No disponible",
-                      ).toDateString()}
+                      ).toLocaleDateString("es-ES", {
+                        weekday: "short",
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
                     </p>
                   ) : (
                     <p>No disponible</p>
                   )}
                 </div>
-                <div className="flex items-center justify-between px-4 text-lg md:px-6 md:text-base">
+                <div className="flex items-center justify-between px-4 pt-2 text-xl md:px-6 md:text-base">
                   <p>Dueño:</p>
                   {displayAmigoOwner ? (
                     <Link
                       href={`https://etherscan.io/address/${displayAmigoOwner}`}
-                      className="flex items-center text-2xl font-medium text-primary md:text-xl"
+                      className="flex items-center text-xl font-medium text-primary md:text-lg"
                     >
-                      {truncateString(displayAmigoOwner ?? zeroAddress, 4, 4)}{" "}
-                      <ExternalLink className="ml-2 h-4 w-4 text-gray-700 md:h-3 md:w-3" />
+                      {truncateString(displayAmigoOwner ?? zeroAddress, 4, 4)}
                     </Link>
                   ) : (
                     <p>No disponible</p>
                   )}
+                </div>
+                <div className="flex w-full justify-end gap-x-2 px-4 pt-2 md:px-6 lg:flex-row lg:gap-y-0">
+                  <Link
+                    href={`https://opensea.io/assets/ethereum/0x964629a577ebd3d1cc9ce4361bdcc1abb282132f/${displayAmigoToken?.tokenId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src="/logos/opensea-logo.svg"
+                      alt="Únete a la comunidad de Nouns en Español"
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="h-6 w-6"
+                    />
+                  </Link>
+                  <Link
+                    href={`https://etherscan.io/address/0x964629a577ebd3d1cc9ce4361bdcc1abb282132f`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src="/logos/etherscan-logo.svg"
+                      alt="Etherscan link"
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="h-6 w-6"
+                    />
+                  </Link>
                 </div>
                 <div className="flex items-center justify-between px-4 md:px-0 lg:px-6">
                   <Accordion
@@ -244,9 +324,9 @@ export default function AmigoToken() {
                     <AccordionItem value="item-1">
                       <AccordionTrigger className="py-2">
                         <h3
-                          className={`${nounsFont.className} text-2xl md:text-3xl`}
+                          className={`${nounsFont.className} text-3xl md:text-3xl`}
                         >
-                          Rasgos
+                          Atributos
                         </h3>
                       </AccordionTrigger>
                       <AccordionContent className="text-xl md:pb-0 md:text-lg">
@@ -352,20 +432,6 @@ export default function AmigoToken() {
               </div>
             </div>
           </div>
-
-          {/* <div className="flex w-full flex-col items-center pb-4 md:hidden">
-            <a href="#stats">
-              <Button
-                variant="ghost"
-                className="border-none px-0 pb-0 pt-4 text-primary hover:bg-transparent hover:text-primary"
-              >
-                <ChevronsDown className="h-12 w-12" />
-              </Button>
-            </a>
-            <p className={`${nounsFont.className} text-2xl font-light`}>
-              Más información sobre colección
-            </p>
-          </div> */}
         </div>
         <div className="flex w-full flex-col items-center bg-[#F8F8F8] px-6 text-foreground lg:flex-row lg:justify-center lg:space-x-8 lg:px-32 xl:px-48">
           <div className="flex w-full flex-col items-center space-y-2 py-12 md:w-3/4 md:py-16 lg:w-full xl:pt-20">
@@ -433,19 +499,37 @@ export default function AmigoToken() {
                 </CardContent>
               </Card>
             </div>
-            <div className="md:space-around lg:space-between flex flex-col items-center gap-y-2 pb-4 pt-8 text-lg md:flex-row md:gap-x-3 lg:w-full lg:justify-center lg:gap-x-8">
+            <div className="md:space-around lg:space-between flex flex-col items-center gap-y-2 pb-4 pt-8 text-lg md:flex-row md:gap-x-2 lg:w-full lg:justify-center lg:gap-x-8">
               <p>
                 ¿Qué puedes hacer
                 <br className="hidden lg:block" /> con tu Noun Amigo?
               </p>
-              <p className="text-3xl font-bold md:hidden">↓</p>
-              <p className="hidden text-3xl font-bold md:block">→</p>
+              <Image
+                src="/images/arrow.svg"
+                alt="Arrow"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-16 rotate-90 scale-x-[-1] md:rotate-0"
+              />
+              {/* <p className="text-3xl font-bold md:hidden">↓</p> */}
+              {/* <p className="hidden text-3xl font-bold md:block">→</p> */}
               <p className="font-bold">
                 Votar en las rondas
                 <br className="hidden lg:block" /> de Nouns Amigos
               </p>
-              <p className="text-3xl font-bold md:hidden">↓</p>
-              <p className="hidden text-3xl font-bold md:block">→</p>
+
+              <Image
+                src="/images/arrow.svg"
+                alt="Arrow"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-16 rotate-90 scale-x-[-1] md:rotate-0"
+              />
+              {/* <p className="text-3xl font-bold md:hidden">↓</p> */}
+
+              {/* <p className="hidden text-3xl font-bold md:block">→</p> */}
               <p className="font-bold">
                 Votar en las rondas
                 <br className="hidden lg:block" /> de Nouns DAO
@@ -464,7 +548,11 @@ export default function AmigoToken() {
             </div>
             {isCollectionFetched && (
               <div className="py-6">
-                <AmigoGallery amigosCollection={amigosCollection} />
+                <AmigoGallery
+                  amigosCollection={amigosCollection}
+                  amigoHolders={amigoHolders}
+                  getAmigoToken={getAmigoToken}
+                />
               </div>
             )}
           </div>
@@ -507,25 +595,107 @@ function AmigoUtilitySection() {
   );
 }
 
-function AmigoGallery({ amigosCollection }: { amigosCollection: Nft[] }) {
+function AmigoGallery({
+  amigosCollection,
+  getAmigoToken,
+  amigoHolders,
+}: {
+  amigosCollection: Nft[];
+  getAmigoToken: (_tokenId: number) => Promise<void>;
+  amigoHolders:
+    | GetOwnersForContractWithTokenBalancesResponse
+    | GetOwnersForContractResponse
+    | undefined;
+}) {
   return (
     <div className="grid grid-cols-3 gap-3 md:grid-cols-4 md:gap-4 lg:grid-cols-5 xl:grid-cols-6">
       {amigosCollection
         .sort(() => Math.random() - 0.5)
         .map((amigoToken) => (
-          <div className="flex aspect-square w-full justify-center">
-            <div className="relative w-full">
-              <Image
-                src={amigoToken.image.originalUrl!}
-                alt={`Token Amigo with tokenId ${amigosCollection[
-                  amigosCollection.length - 1
-                ]?.tokenId}`}
-                width={0}
-                height={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "auto" }}
-                className="rounded-lg hover:cursor-pointer hover:ring-[3px] hover:ring-primary"
-              />
+          <div className="amigoCard amigo-Slide-up rounded-lg hover:cursor-pointer hover:border-[3px] hover:border-primary">
+            {/* <div className="flex aspect-square w-full justify-center"> */}
+            <Image
+              src={amigoToken.image.originalUrl!}
+              alt={`Token Amigo with tokenId ${amigosCollection[
+                amigosCollection.length - 1
+              ]?.tokenId}`}
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="h-auto w-full "
+            />
+            <div className="amigoCaption flex flex-col gap-y-0 bg-primary p-2 text-white">
+              <div className="flex items-center justify-between">
+                <p className={`${nounsFont.className}`}>
+                  Amigo {amigoToken.tokenId}
+                </p>
+                <div className="flex gap-x-2">
+                  <Link
+                    href={`https://opensea.io/assets/ethereum/0x964629a577ebd3d1cc9ce4361bdcc1abb282132f/${amigoToken?.tokenId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="z-10"
+                  >
+                    <Image
+                      src="/logos/opensea-logo-white.svg"
+                      alt="Únete a la comunidad de Nouns en Español"
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="h-4 w-4"
+                    />
+                  </Link>
+                  {/* <Link
+                    href={`https://etherscan.io/address/0x964629a577ebd3d1cc9ce4361bdcc1abb282132f`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src="/logos/etherscan-logo-white.svg"
+                      alt="Etherscan link"
+                      width="0"
+                      height="0"
+                      sizes="100vw"
+                      className="h-4 w-4"
+                    />
+                  </Link> */}
+                </div>
+              </div>
+              {/* <div className="flex items-center justify-between text-xs md:text-base">
+                <p className="text-[12px]">Creado:</p>
+                {amigoToken.mint?.timestamp ? (
+                  <p className="text-[8px]">
+                    {new Date(
+                      amigoToken.mint?.timestamp ?? "No disponible",
+                    ).toLocaleDateString("es-ES", {
+                      weekday: "short",
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </p>
+                ) : (
+                  <p className="text-[12px]">No disponible</p>
+                )}
+              </div> */}
+              <div className="flex items-center justify-between text-xs md:text-base">
+                <p className="text-[10px] md:text-[12px]">Dueño:</p>
+                <Link
+                  href={`https://etherscan.io/address/${AMIGOS_METADATA[
+                    parseInt(amigoToken.tokenId)
+                  ]?.owner}`}
+                  className="flex items-center text-[10px] font-medium md:text-[12px] md:text-sm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {truncateString(
+                    AMIGOS_METADATA[parseInt(amigoToken.tokenId)]?.owner ??
+                      zeroAddress,
+                    4,
+                    4,
+                  )}
+                </Link>
+              </div>
             </div>
           </div>
         ))}

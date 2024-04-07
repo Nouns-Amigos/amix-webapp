@@ -1,5 +1,6 @@
 export type AmigoMetadataType = {
   amigo: number;
+  owner: string;
   glasses: string;
   head: string;
   accesory: string;
@@ -10,6 +11,7 @@ export type AmigoMetadataType = {
 export const AMIGOS_METADATA: AmigoMetadataType[] = [
   {
     amigo: 0,
+    owner: "0x9581587991da459409B4E7e3b44Daa1E65E589EC",
     glasses: "square-yellow-orange-multi",
     head: "burrito",
     accesory: "hola",
@@ -18,6 +20,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 1,
+    owner: "0x560DDBB5cCaf91d27e91f0e7c0fA099e7Ee179E6",
     glasses: "square-honey",
     head: "calaverita",
     accesory: "cuerdas-de-sudadera",
@@ -26,6 +29,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 2,
+    owner: "0xD03d61065711Eaac86670C8b41487c3b84dCEa7f",
     glasses: "square-yellow-orange-multi",
     head: "cacomixtle",
     accesory: "gafete",
@@ -34,6 +38,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 3,
+    owner: "0x1db19b9903c5510aa5a866ea643eb021cd12bda0",
     glasses: "square-black",
     head: "iguana",
     accesory: "corbata-negra",
@@ -42,6 +47,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 4,
+    owner: "0x0c66d954d9cb1ebdf4e37a000262323c83655e70",
     glasses: "square-blue",
     head: "jaguar",
     accesory: "lineas-olivo",
@@ -50,6 +56,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 5,
+    owner: "0x6fD948ee06EbFBA2775841621CbcCD0C338dB7aD",
     glasses: "square-orange",
     head: "llama",
     accesory: "tejido-sucio",
@@ -58,6 +65,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 6,
+    owner: "0x67bace9bbdf3212509a7438ae026c7c9fbef6931",
     glasses: "square-green-blue-multi",
     head: "ajolote",
     accesory: "tortuga",
@@ -66,6 +74,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 7,
+    owner: "0xf6b6f07862a02c85628b3a9688beae07fea9c863",
     glasses: "square-teal",
     head: "platano-frito",
     accesory: "escalera-de-arcoiris",
@@ -74,6 +83,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 8,
+    owner: "0x66e4476BAc0CB348f893924d457cFA3eE64335eb",
     glasses: "square-fullblack",
     head: "aguacate",
     accesory: "cuadricula-azul",
@@ -82,6 +92,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 9,
+    owner: "0x2842decf9baEb5ec76988d1261325329848522Ae",
     glasses: "square-black-rgb",
     head: "sombrero",
     accesory: "pepe",
@@ -90,6 +101,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 10,
+    owner: "0x356234204D0bbC48EeA21Ad4816D330C2133F06c",
     glasses: "square-black-rgb",
     head: "arepa",
     accesory: "tucan",
@@ -99,6 +111,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   // 10
   {
     amigo: 11,
+    owner: "0xED2E683763f23321E772Ee011075640d05a9C22e",
     glasses: "square-teal",
     head: "burrito",
     accesory: "cara-feliz-invertida",
@@ -107,6 +120,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 12,
+    owner: "0xa98faB866D5133B860dA62FeF901d63851eBf68B",
     glasses: "square-black-eyes-red",
     head: "llama",
     accesory: "queso",
@@ -115,6 +129,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 13,
+    owner: "0x897284cc981D09EF61023D2ab96C5EcFD43e85f4",
     glasses: "warm",
     head: "jaguar",
     accesory: "cc0",
@@ -123,6 +138,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 14,
+    owner: "0x1db19b9903c5510aa5a866ea643eb021cd12bda0",
     glasses: "square-grey-light",
     head: "sombrero",
     accesory: "cara-seria",
@@ -131,6 +147,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 15,
+    owner: "0x6897aBe0fD62B589260784B21F4ca3F78A0D8017",
     glasses: "deep-teal",
     head: "ajolote",
     accesory: "lineas-rojas",
@@ -139,6 +156,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 16,
+    owner: "0xbf16DfAeE9fbBbcFf66467964dEA940ed229bF62",
     glasses: "square-red",
     head: "platano-frito",
     accesory: "cuadricula-ancha-negra",
@@ -147,6 +165,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 17,
+    owner: "0x49A3a65d0b7a54867eC720Bec80a3838291d2Fa3",
     glasses: "square-honey",
     head: "llama",
     accesory: "vaca",
@@ -155,6 +174,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 18,
+    owner: "0x66e4476BAc0CB348f893924d457cFA3eE64335eb",
     glasses: "square-yellow-orange-multi",
     head: "calaverita",
     accesory: "boleto-metro",
@@ -163,6 +183,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 19,
+    owner: "0xa98faB866D5133B860dA62FeF901d63851eBf68B",
     glasses: "square-black-eyes-red",
     head: "sombrero",
     accesory: "DAO",
@@ -171,6 +192,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 20,
+    owner: "0x535FDa4404cc3C07643F90edF6512D272897088b",
     glasses: "square-yellow-saturated",
     head: "burrito",
     accesory: "fantasma",
@@ -180,6 +202,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   // 20
   {
     amigo: 21,
+    owner: "0x178B06C2CaD0bcF0a0A10825A48292220f3DD7EA",
     glasses: "square-fullblack",
     head: "cacomixtle",
     accesory: "cool",
@@ -188,6 +211,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 22,
+    owner: "0x6fF333602196F28ae9D14d7023cA096957d73f40",
     glasses: "square-orange",
     head: "aguacate",
     accesory: "habanero",
@@ -196,6 +220,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 23,
+    owner: "0x560DDBB5cCaf91d27e91f0e7c0fA099e7Ee179E6",
     glasses: "square-red",
     head: "iguana",
     accesory: "BD",
@@ -204,6 +229,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 24,
+    owner: "0x897284cc981D09EF61023D2ab96C5EcFD43e85f4",
     glasses: "square-fullblack",
     head: "iguana",
     accesory: "lineas-y-cuadros",
@@ -212,6 +238,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 25,
+    owner: "0x50b6a381993834C623b2Bded6825824C936E48bB",
     glasses: "hip-rose",
     head: "calaverita",
     accesory: "nuns",
@@ -220,6 +247,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 26,
+    owner: "0x9985e1450F50c19A3e67f03ec54a8e957Fad2e8F",
     glasses: "square-yellow-saturated",
     head: "cacomixtle",
     accesory: "perro",
@@ -228,6 +256,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 27,
+    owner: "0x6fF333602196F28ae9D14d7023cA096957d73f40",
     glasses: "square-orange",
     head: "ajolote",
     accesory: "ok",
@@ -236,6 +265,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 28,
+    owner: "0x6fD948ee06EbFBA2775841621CbcCD0C338dB7aD",
     glasses: "grass",
     head: "llama",
     accesory: "lineas-rosas",
@@ -244,6 +274,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 29,
+    owner: "0x2842decf9baEb5ec76988d1261325329848522Ae",
     glasses: "square-magenta",
     head: "arepa",
     accesory: "arepa",
@@ -252,6 +283,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 30,
+    owner: "0x3bBf872cf2E74a424bd699300F56A8057dfC2720",
     glasses: "square-red",
     head: "iguana",
     accesory: "hongo",
@@ -261,6 +293,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   // 30
   {
     amigo: 31,
+    owner: "0xA8F0048A0d1A04663Ca5010d0bEaC5BCAEeA0eef",
     glasses: "square-guava",
     head: "burrito",
     accesory: "gaviota",
@@ -269,6 +302,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 32,
+    owner: "0xd91B4Ca4159cFDF90453B3fDb6405a9DFee4B88c",
     glasses: "hip-rose",
     head: "ajolote",
     accesory: "trebol",
@@ -277,6 +311,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 33,
+    owner: "0xD03d61065711Eaac86670C8b41487c3b84dCEa7f",
     glasses: "square-honey",
     head: "jaguar",
     accesory: "alien",
@@ -285,6 +320,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 34,
+    owner: "0x4c2d547796dE066F8466BD57E844AFE35649397B",
     glasses: "square-red",
     head: "dalmata",
     accesory: "moscas",
@@ -293,6 +329,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 35,
+    owner: "0xc054898Dc39d423b4c3CE42e1A7C0D300bB1138f",
     glasses: "square-black-eyes-red",
     head: "limon",
     accesory: "patito",
@@ -301,6 +338,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 36,
+    owner: "0xe021847F3E760D00dDF71c3D7391b03A4Ba52897",
     glasses: "square-yellow-orange-multi",
     head: "navegador",
     accesory: "nuns",
@@ -309,6 +347,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 37,
+    owner: "0x0c66d954d9cb1ebdf4e37a000262323c83655e70",
     glasses: "square-blue",
     head: "piñata",
     accesory: "pop",
@@ -317,6 +356,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 38,
+    owner: "0xc67ea816eB69722172A28946B29DA3901981E684",
     glasses: "hip-rose",
     head: "piñata",
     accesory: "ñ",
@@ -325,6 +365,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 39,
+    owner: "0xd91B4Ca4159cFDF90453B3fDb6405a9DFee4B88c",
     glasses: "square-orange",
     head: "arpia",
     accesory: "cuerdas-de-sudadera",
@@ -333,6 +374,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 40,
+    owner: "0xF14f94fF4c8c63Dfa73d82645Ef82743BB298231",
     glasses: "square-teal",
     head: "raton",
     accesory: "cuadricula-chica-magenta",
@@ -342,6 +384,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   // 40
   {
     amigo: 41,
+    owner: "0x247f186D50Cc451A04E45dE277E56D460540de88",
     glasses: "square-pink-purple-multi",
     head: "pantera",
     accesory: "degradado-discoteca",
@@ -350,6 +393,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 42,
+    owner: "0xFB6e1171419BC076884d2C6E4e5799FE64173FF6",
     glasses: "square-blue",
     head: "aguila",
     accesory: "cuadricula-ancha-negra",
@@ -358,6 +402,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 43,
+    owner: "0x1db19b9903c5510aa5a866ea643eb021cd12bda0",
     glasses: "square-black-eyes-red",
     head: "tapir-chido",
     accesory: "disco-de-vinil",
@@ -366,6 +411,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 44,
+    owner: "0x3bA44d6509Ee5fF1AB91BBBdE63D8EB094B1B0F0",
     glasses: "square-black",
     head: "pantera",
     accesory: "corbata-negra",
@@ -374,6 +420,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 45,
+    owner: "0xB02aaC06d6215a0D5b87280F1F8D0111F88837e1",
     glasses: "square-pink-purple-multi",
     head: "dalmata",
     accesory: "vaca",
@@ -382,6 +429,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 46,
+    owner: "0xa63aC1AC70A037CE317D1e928B56c73d5A95a26d",
     glasses: "square-green-blue-multi",
     head: "limon",
     accesory: "habanero",
@@ -390,6 +438,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 47,
+    owner: "0x560DDBB5cCaf91d27e91f0e7c0fA099e7Ee179E6",
     glasses: "square-red",
     head: "tijeras",
     accesory: "bomba",
@@ -398,6 +447,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 48,
+    owner: "0x02F7d88873594b18551cC374Ad7F27d0EE2c04a8",
     glasses: "square-guava",
     head: "pantera",
     accesory: "lineas-verdes",
@@ -406,6 +456,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 49,
+    owner: "0xF14f94fF4c8c63Dfa73d82645Ef82743BB298231",
     glasses: "square-blue-med-saturated",
     head: "dalmata",
     accesory: "fantasma",
@@ -414,6 +465,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 50,
+    owner: "0xa98faB866D5133B860dA62FeF901d63851eBf68B",
     glasses: "square-fullblack",
     head: "tapir-chido",
     accesory: "palmera",
@@ -423,6 +475,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   // 10
   {
     amigo: 51,
+    owner: "0x94D27d601775fF0DB45122BE89D5512a62699094",
     glasses: "square-yellow-saturated",
     head: "cacomixtle",
     accesory: "trebol",
@@ -431,6 +484,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 52,
+    owner: "0x0c66d954d9cb1ebdf4e37a000262323c83655e70",
     glasses: "square-grey-light",
     head: "navegador",
     accesory: "tejido-bicolor",
@@ -439,6 +493,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 53,
+    owner: "0xD03d61065711Eaac86670C8b41487c3b84dCEa7f",
     glasses: "square-yellow-saturated",
     head: "pantera",
     accesory: "bomba",
@@ -447,6 +502,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 54,
+    owner: "0x6fD948ee06EbFBA2775841621CbcCD0C338dB7aD",
     glasses: "square-red",
     head: "ajolote",
     accesory: "degradado-pride",
@@ -455,6 +511,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 55,
+    owner: "0x7C1e9430655963129A0b6eDECd8398C06429209f",
     glasses: "square-red",
     head: "sombrero",
     accesory: "gallina",
@@ -463,6 +520,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 56,
+    owner: "0x7D2e4D645c0Acc5A6Bf596B612caB351864f4090",
     glasses: "square-fullblack",
     head: "limon",
     accesory: "nuns",
@@ -471,6 +529,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 57,
+    owner: "0x8FFA534135D748F33B5f8c90Dd74212B8048fC80",
     glasses: "square-black",
     head: "burrito",
     accesory: "corbata-negra",
@@ -479,6 +538,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 58,
+    owner: "0xa98faB866D5133B860dA62FeF901d63851eBf68B",
     glasses: "square-fullblack",
     head: "arepa",
     accesory: "cuadricula-ancha-negra",
@@ -487,6 +547,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 59,
+    owner: "0x560DDBB5cCaf91d27e91f0e7c0fA099e7Ee179E6",
     glasses: "no-disponible",
     head: "no-disponible",
     accesory: "no-disponible",
@@ -495,6 +556,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   },
   {
     amigo: 60,
+    owner: "0xD03d61065711Eaac86670C8b41487c3b84dCEa7f",
     glasses: "no-disponible",
     head: "no-disponible",
     accesory: "no-disponible",
@@ -504,6 +566,7 @@ export const AMIGOS_METADATA: AmigoMetadataType[] = [
   // 60
   {
     amigo: 61,
+    owner: "0x1db19b9903c5510aa5a866ea643eb021cd12bda0",
     glasses: "no-disponible",
     head: "no-disponible",
     accesory: "no-disponible",

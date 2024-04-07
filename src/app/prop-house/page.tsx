@@ -10,7 +10,7 @@ export default function PropHouse() {
   return (
     <>
       <Navbar color="warm" />
-      <div className="bg-warmBgNouns flex w-full flex-col items-center px-6 text-foreground lg:flex-row lg:justify-center lg:space-x-8 lg:px-32 xl:px-48 xl:pb-16 xl:pt-12">
+      <div className="flex w-full flex-col items-center bg-warmBgNouns px-6 text-foreground lg:flex-row lg:justify-center lg:space-x-8 lg:px-32 xl:px-48 xl:pb-16 xl:pt-12">
         <div className="flex w-full flex-col space-y-2 py-12 md:w-3/5 lg:w-1/2">
           <h1
             className={`${nounsFont.className} pb-4 text-center text-5xl md:text-6xl lg:text-left`}
@@ -232,10 +232,17 @@ export default function PropHouse() {
               </p>
             </div>
             <div className="flex w-full items-center justify-center lg:w-1/3 lg:justify-between lg:gap-x-4">
-              <p className="hidden text-5xl lg:block">→</p>
+              <Image
+                src="/images/arrow.svg"
+                alt="Arrow"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="hidden w-16 scale-x-[-1] lg:-ml-4 lg:block"
+              />
               <Button
                 size="lg"
-                className="w-2/3 bg-[#9148B2] px-6 py-4 text-lg font-semibold text-brandWhite md:w-1/2 lg:w-auto lg:text-xl"
+                className="w-2/3 bg-[#9148B2] px-6 py-4 text-lg font-semibold text-white md:w-1/2 lg:w-auto lg:!py-6 lg:text-xl"
               >
                 ¡Súmate aquí!
               </Button>

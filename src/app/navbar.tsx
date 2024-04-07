@@ -40,7 +40,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
               />
             </div>
             <span
-              className={`${nounsFont.className} text-3xl font-semibold md:text-4xl`}
+              className={`${nounsFont.className} mb-0.5 text-2xl font-semibold md:mb-1 md:text-[2rem]`}
             >
               amigos
             </span>

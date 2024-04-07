@@ -33,6 +33,20 @@ export default function HamburgerMenu() {
         </SheetHeader>
         <div className="flex flex-col space-y-4">
           <Link
+            href="/"
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: `border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3 ${
+                pathname === "/" &&
+                "border-white bg-white hover:!bg-white hover:!text-black"
+              }`,
+            })}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <span>Inicio</span>
+          </Link>
+          <Link
             href="/nouns-dao-amigos"
             className={buttonVariants({
               variant: "outline",
@@ -47,25 +61,29 @@ export default function HamburgerMenu() {
             <span>DAO</span>
           </Link>
           <Link
-            href="https://prop.house/0x58fcf38562f7402aad42a27bd783bd0892870536"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
+            href="/prop-house"
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: `border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3 ${
+                pathname === "/prop-house" &&
+                "border-white bg-white hover:!bg-white hover:!text-black"
+              }`,
+            })}
             onClick={() => setIsMenuOpen(false)}
           >
-            <span className="mr-2">Prop House</span>
-            <ExternalLink size={14} />
-          </Link>
-          <Link
-            href="/comunidad"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Comunidad
+            Prop House
           </Link>
           <Link
             href="/token-amigo"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: `border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3 ${
+                pathname === "/token-amigo" &&
+                "border-white bg-white hover:!bg-white hover:!text-black"
+              }`,
+            })}
             onClick={() => setIsMenuOpen(false)}
           >
             AMIGO
