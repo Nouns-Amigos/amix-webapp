@@ -86,7 +86,7 @@ export default function NounsAmigosDaoPage() {
       <div className="flex min-h-[calc(100vh-64px)] w-full justify-center bg-background py-8 text-foreground lg:pt-12">
         <div className="flex h-full w-full flex-col md:items-center">
           <h1
-            className={`${nounsFont.className} text-redNoggles text-center text-5xl md:w-3/4 lg:w-full xl:max-w-5xl`}
+            className={`${nounsFont.className} text-center text-5xl text-redNoggles md:w-3/4 lg:w-full xl:max-w-5xl`}
           >
             ¿Qué hacemos en
             <br className="hidden md:block lg:hidden" /> Nouns DAO Amigos?
@@ -176,12 +176,19 @@ export default function NounsAmigosDaoPage() {
                 </div>
                 <div className="grid w-full grid-cols-7 lg:py-24">
                   <div className="col-span-3">
-                    <p className="text-2xl font-bold md:pr-6">
+                    <p className="text-2xl font-bold md:pr-6 xl:pr-12">
                       ¿Quieres saber más?
                     </p>
                   </div>
-                  <div className="col-start-4 -ml-8 flex items-center justify-center md:ml-0">
-                    <p className="text-4xl font-semibold lg:-ml-8">→</p>
+                  <div className="col-start-4 -ml-8 flex items-center justify-center md:ml-0 lg:-ml-8">
+                    <Image
+                      src="/images/arrow.svg"
+                      alt="Arrow"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      className="w-16 scale-x-[-1]"
+                    />
                   </div>
                   <div className="col-span-3 col-start-5 flex items-center md:justify-end">
                     <Link
@@ -189,7 +196,7 @@ export default function NounsAmigosDaoPage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button className="-ml-4 bg-[#9148B2] !py-6 px-6 text-[22px] font-medium hover:bg-[#A468BF] md:ml-0">
+                      <Button className="-ml-4 bg-[#9148B2] !py-6 px-6 text-[22px] font-medium hover:bg-[#A468BF] md:ml-0 lg:!py-7 lg:px-5 lg:font-semibold">
                         Prop House
                       </Button>
                     </Link>
@@ -210,7 +217,7 @@ export default function NounsAmigosDaoPage() {
                 <div className="grid w-full grid-cols-1 gap-y-4 px-8 py-4 md:grid-cols-3 md:gap-x-8 md:px-0">
                   <Card className="border-0">
                     <CardHeader className="!pb-0">
-                      <CardTitle className="text-redNoggles text-center text-7xl">
+                      <CardTitle className="text-center text-7xl text-redNoggles">
                         1
                       </CardTitle>
                     </CardHeader>
@@ -222,7 +229,7 @@ export default function NounsAmigosDaoPage() {
                   </Card>
                   <Card className="border-0">
                     <CardHeader className="!pb-0">
-                      <CardTitle className="text-redNoggles text-center text-7xl">
+                      <CardTitle className="text-center text-7xl text-redNoggles">
                         2
                       </CardTitle>
                     </CardHeader>
@@ -234,7 +241,7 @@ export default function NounsAmigosDaoPage() {
                   </Card>
                   <Card className="border-0">
                     <CardHeader className="!pb-0">
-                      <CardTitle className="text-redNoggles text-center text-7xl">
+                      <CardTitle className="text-center text-7xl text-redNoggles">
                         3
                       </CardTitle>
                     </CardHeader>
@@ -287,14 +294,21 @@ function TokenAmigo() {
           </div>
           <div className="hidden w-full grid-cols-7 md:grid md:w-4/5 lg:w-full lg:pr-8">
             <div className="col-span-3 lg:pr-8">
-              <p className="text-2xl font-bold">¿Quieres saber más?</p>
+              <p className="text-2xl font-bold">Conoce la colección</p>
             </div>
-            <div className="col-start-4 -ml-8 flex items-center justify-center md:ml-0 lg:-ml-8">
-              <p className="text-4xl font-semibold">→</p>
+            <div className="col-start-4 -ml-8 flex items-center justify-center md:ml-0 lg:-ml-12">
+              <Image
+                src="/images/arrow.svg"
+                alt="Arrow"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="w-16 scale-x-[-1]"
+              />
             </div>
             <div className="col-span-3 col-start-5 flex items-center md:justify-end">
               <Link href="/token-amigo">
-                <Button className="-ml-6 bg-[#FF78AD] !py-6 px-4 text-[22px] font-medium hover:bg-[#FF8FBB] md:ml-0">
+                <Button className="-ml-6 bg-[#FF78AD] !py-6 px-4 text-[22px] font-medium hover:bg-[#FF8FBB] md:ml-0 lg:!py-7 lg:px-5 lg:font-semibold">
                   Token AMIGO
                 </Button>
               </Link>

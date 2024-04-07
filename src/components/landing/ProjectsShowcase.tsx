@@ -31,7 +31,7 @@ export function ProjectsShowcase() {
   }, [api]);
   return (
     <div className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center lg:px-24 xl:px-32">
-      <div className="flex h-full w-full max-w-7xl flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:px-0 lg:text-center xl:px-16">
+      <div className="flex h-full w-full max-w-7xl flex-col gap-y-4 px-6 py-16 md:px-16 md:py-20 lg:px-0 lg:text-center xl:px-16">
         <div className="lg:hidden">
           <h3
             className={`${nounsFont.className} text-left text-4xl lg:text-5xl`}
@@ -80,7 +80,7 @@ export function ProjectsShowcase() {
               <CarouselNext className="lg:hidden" />
             </Carousel>
             <div className="w-full lg:w-[52.5%]">
-              <div className="hidden text-left lg:block">
+              <div className="hidden text-left lg:block xl:pb-12">
                 <h3 className={`${nounsFont.className} text-4xl xl:text-5xl`}>
                   Construye con nosotros y haz realidad tu proyecto
                 </h3>
@@ -93,48 +93,30 @@ export function ProjectsShowcase() {
                   </span>
                 </p>
               </div>
-              <h4
-                className={`${nounsFont.className} hidden pt-4 text-left text-4xl font-light lg:block xl:text-[42px]`}
-              >
-                {PROJECTS_ARRAY[current]?.title}
-              </h4>
+              <div className="hidden lg:block lg:py-3 xl:py-4">
+                <hr className="border-[1.25px] border-black" />
+              </div>
+              <div className="hidden items-center lg:flex">
+                <Image
+                  src="/images/arrow.svg"
+                  alt="Arrow"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-16"
+                />
+                <h4
+                  className={`${nounsFont.className} hidden text-left text-4xl font-light lg:block xl:text-[42px]`}
+                >
+                  {PROJECTS_ARRAY[current]?.title}
+                </h4>
+              </div>
               <div className="flex flex-col space-y-1 text-left lg:pt-2">
                 {PROJECTS_ARRAY[current]?.content}
                 {PROJECTS_ARRAY[current]?.stats}
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center lg:px-24 xl:px-32">
-      <div className="flex h-full max-w-7xl flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:text-center xl:px-16">
-        <div>
-          <h3 className={`${nounsFont.className} text-left text-4xl`}>
-            Construye con nosotros y haz realidad tu proyecto
-          </h3>
-          <p className="mt-2 text-lg md:text-xl lg:text-left">
-            Desde meet-ups, construir unos Noggles gigantes en Japón, o crear
-            proyectos tecnológicos,{" "}
-            <span className="font-bold">
-              en Nouns Amigos DAO apoyamos proyectos de todos los tamaños.
-            </span>
-          </p>
-        </div>
-        <div className="pt-4">
-          <Image
-            src={
-              PROJECTS_ARRAY[0]?.imageSrc ?? "/icons/android-chrome-512x512.png"
-            }
-            alt={PROJECTS_ARRAY[0]?.imageAlt ?? "Image showing the project"}
-            width={0}
-            height={0}
-            sizes="100vw"
-            style={{ width: "100%", height: "auto" }}
-          />
         </div>
       </div>
     </div>
