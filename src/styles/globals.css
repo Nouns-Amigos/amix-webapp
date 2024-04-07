@@ -75,6 +75,35 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  .amigoCard {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .amigoCaption {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .amigo-Slide-up:hover .amigoCaption {
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: -webkit-transform 0.4s;
+    transition: -webkit-transform 0.4s;
+    transition: transform 0.4s;
+    transition:
+      transform 0.4s,
+      -webkit-transform 0.4s;
+  }
 }
 
 @layer base {
