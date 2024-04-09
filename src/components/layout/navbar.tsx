@@ -6,7 +6,6 @@ import Link from "next/link";
 import { nounsFont } from "@/lib/fonts";
 
 import { Button, buttonVariants } from "@/components/ui/button";
-import HamburgerMenu from "./hamburgerMenu";
 import TreasuryButton from "./treasuryButton";
 import { usePathname } from "next/navigation";
 
@@ -36,8 +35,6 @@ export default function Navbar() {
           </Link>
           <TreasuryButton />
         </div>
-
-        {/* Primary Navbar items */}
         <div className="hidden items-center space-x-4 lg:flex">
           <Link
             href="/"
@@ -91,17 +88,12 @@ export default function Navbar() {
           >
             Token
           </Link>
-          {/* <CollectionDropdownButton /> */}
           <Button
             size="default"
             className={`${nounsFont.className} text-md bg-black p-2.5 text-base hover:bg-primary hover:text-white md:px-4 md:py-3`}
           >
             Entrar
           </Button>
-        </div>
-
-        <div className="flex items-center lg:hidden">
-          <HamburgerMenu />
         </div>
       </div>
     </nav>

@@ -8,17 +8,9 @@ import {
   type GetOwnersForContractWithTokenBalancesResponse,
   type Nft,
   NftTokenType,
-  NftContractOwner,
 } from "alchemy-sdk";
 import { getRandomNumber, truncateString } from "@/utils";
 import { nounsFont } from "@/lib/fonts";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronsDown,
-  ExternalLink,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { zeroAddress } from "viem";
 import Link from "next/link";
 import {
@@ -50,14 +42,6 @@ export default function AmigoToken() {
   >();
   const alchemy = useAlchemy();
 
-  // async function getRandomAmigoToken() {
-  //   const randomTokenId = getRandomNumber(AMIGOS_METADATA.length);
-  //   // setDisplayAmigoToken(AMIGOS_METADATA[randomTokenId]);
-  //   console.log(AMIGOS_METADATA[randomTokenId]);
-  //   AMIGOS_METADATA[randomTokenId]?.background === "warm"
-  //     ? setIsWarmColor(true)
-  //     : setIsWarmColor(false);
-  // }
   async function getNftsForAmigosCollection() {
     try {
       const nfts: Nft[] = [];
@@ -70,9 +54,6 @@ export default function AmigoToken() {
       for await (const nft of nftsIterable) {
         nfts.push(nft);
       }
-
-      // Log the NFTs.
-      console.log(nfts);
       return nfts;
     } catch (error) {
       console.log(error);
@@ -89,8 +70,6 @@ export default function AmigoToken() {
       tokenId,
       { tokenType: NftTokenType.ERC721 },
     );
-    console.log("amigoOwnerData", amigoOwnerData);
-    console.log("amigoMetadata", amigoMetadata);
     return { amigoMetadata, amigoOwner: amigoOwnerData.owners[0] };
   }
 
@@ -120,7 +99,6 @@ export default function AmigoToken() {
       NounsAmigosContractAddress,
       { withTokenBalances: true, includeCount: true },
     );
-    console.log(holders);
     setAmigoHolders(holders);
   }
 
@@ -134,7 +112,6 @@ export default function AmigoToken() {
       void getAmigoToken(-1);
       void getCollectionHolders();
       setIsCollectionFetched(true);
-      console.log("HOLDERS>>>>>>", amigoHolders);
     }
   }, []);
 
@@ -612,7 +589,10 @@ function AmigoGallery({
       {amigosCollection
         .sort(() => Math.random() - 0.5)
         .map((amigoToken) => (
-          <div className="amigoCard amigo-Slide-up rounded-lg hover:cursor-pointer hover:border-[3px] hover:border-primary">
+          <div
+            className="amigoCard amigo-Slide-up rounded-lg hover:cursor-pointer hover:border-[3px] hover:border-primary"
+            key={`amigo-token-${amigoToken.tokenId}`}
+          >
             {/* <div className="flex aspect-square w-full justify-center"> */}
             <Image
               src={amigoToken.image.originalUrl!}
