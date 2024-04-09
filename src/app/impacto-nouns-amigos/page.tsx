@@ -46,6 +46,10 @@ const Cuenta = () => {
       toast.warning("Ambos campos son requeridos");
       return;
     }
+    if (testimonial.length > 140) {
+      toast.warning("Máximo 140 caracteres!");
+      return;
+    }
     setIsLoading(true);
     const appWallet = wallets.find(
       (wallet) => wallet.walletClientType === "privy",
@@ -143,7 +147,8 @@ const Cuenta = () => {
             </h4>
             <div className="flex flex-col gap-y-1 pt-4">
               <label htmlFor="testimonial" className="text-xl font-semibold">
-                Para tí, ¿qué impacto ha tenido Nouns DAO Amigos?
+                Para tí, ¿qué impacto ha tenido Nouns DAO Amigos?{" "}
+                <span className="text-xs">máx. 140 caracteres</span>
               </label>
               <Textarea
                 id="testimonial"

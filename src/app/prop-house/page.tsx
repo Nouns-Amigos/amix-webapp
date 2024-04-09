@@ -11,13 +11,50 @@ export default function PropHouse() {
     <>
       <Navbar color="warm" />
       <div className="flex w-full flex-col items-center bg-warmBgNouns px-6 text-foreground lg:flex-row lg:justify-center lg:space-x-8 lg:px-32 xl:px-48 xl:pb-16 xl:pt-12">
-        <div className="flex w-full flex-col space-y-2 py-12 md:w-3/5 lg:w-1/2">
-          <h1
-            className={`${nounsFont.className} pb-4 text-center text-5xl md:text-6xl lg:text-left`}
-          >
-            prop.house
-          </h1>
-          <div className="flex w-full justify-center lg:hidden">
+        <div className="flex w-full xl:max-w-5xl">
+          <div className="flex w-full flex-col space-y-2 py-12 md:w-3/5 lg:w-1/2">
+            <h1
+              className={`${nounsFont.className} pb-4 text-center text-5xl md:text-6xl lg:text-left`}
+            >
+              prop.house
+            </h1>
+            <div className="flex w-full justify-center lg:hidden">
+              <Image
+                src="/images/prop-house/prop-house-hero.png"
+                alt="Turning ideas into ETH"
+                width="0"
+                height="0"
+                sizes="100vw"
+                className="h-auto w-4/5 lg:w-full"
+              />
+            </div>
+            <p className="text-justify lg:text-lg">
+              Nouns Amigos busca fondear ideas que contribuyan al ecosistema
+              Nouns. Algunas áreas para enfocarse pueden ser:
+              <br />
+              <span className="font-semibold">
+                Bienes públicos, impacto social, arte, ilustración, animación y
+                tecnología.
+              </span>
+            </p>
+            <p className="text-justify lg:text-lg">
+              ¡Siempre con el enfoque nounish!
+            </p>
+            <p className="text-justify lg:text-lg">
+              Esto es posible en las rondas de{" "}
+              <Link
+                href="https://prop.house/0x58fcf38562f7402aad42a27bd783bd0892870536"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-[#9148B2] hover:text-redNoggles"
+              >
+                Prop House
+              </Link>
+              , que es la forma más sencilla y divertida de premiar a las
+              personas onchain.
+            </p>
+          </div>
+          <div className="hidden w-1/2 justify-center lg:flex">
             <Image
               src="/images/prop-house/prop-house-hero.png"
               alt="Turning ideas into ETH"
@@ -27,45 +64,10 @@ export default function PropHouse() {
               className="h-auto w-4/5 lg:w-full"
             />
           </div>
-          <p className="text-justify lg:text-lg">
-            Nouns Amigos busca fondear ideas que contribuyan al ecosistema
-            Nouns. Algunas áreas para enfocarse pueden ser:
-            <br />
-            <span className="font-semibold">
-              Bienes públicos, impacto social, arte, ilustración, animación y
-              tecnología.
-            </span>
-          </p>
-          <p className="text-justify lg:text-lg">
-            ¡Siempre con el enfoque nounish!
-          </p>
-          <p className="text-justify lg:text-lg">
-            Esto es posible en las rondas de{" "}
-            <Link
-              href="https://prop.house/0x58fcf38562f7402aad42a27bd783bd0892870536"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-bold text-[#9148B2] hover:text-redNoggles"
-            >
-              Prop House
-            </Link>
-            , que es la forma más sencilla y divertida de premiar a las personas
-            onchain.
-          </p>
-        </div>
-        <div className="hidden w-1/2 justify-center lg:flex">
-          <Image
-            src="/images/prop-house/prop-house-hero.png"
-            alt="Turning ideas into ETH"
-            width="0"
-            height="0"
-            sizes="100vw"
-            className="h-auto w-4/5 lg:w-full"
-          />
         </div>
       </div>
       <div className="flex w-full flex-col items-center bg-[#F8F8F8] px-6 text-foreground lg:flex-row lg:justify-center lg:space-x-8 lg:px-32 xl:px-48">
-        <div className="flex w-full flex-col items-center space-y-2 py-12 md:w-3/5 md:py-16 lg:w-full xl:pt-20">
+        <div className="flex w-full flex-col items-center space-y-2 py-12 md:w-3/5 md:py-16 lg:w-full xl:max-w-5xl xl:pt-20">
           <h2
             className={`${nounsFont.className} pb-4 text-center text-4xl md:text-5xl`}
           >
