@@ -48,7 +48,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
   return (
     <nav className={`h-20 md:h-24 ${navbarBgTwClass}`}>
       <div className="mx-auto flex h-full max-w-7xl justify-between px-4 md:px-8 lg:px-12 xl:px-16">
-        <div className="flex items-center space-x-0 md:space-x-4">
+        <div className="flex w-3/4 items-center justify-start space-x-0 md:w-1/2 md:space-x-4">
           <Link href="/" className="flex items-center gap-1 px-2 text-black">
             <div className="flex items-center">
               <Image
@@ -70,7 +70,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
         </div>
 
         {/* Primary Navbar items */}
-        <div className="mr-1 hidden items-center space-x-4 lg:flex">
+        <div className="mr-1 hidden items-center space-x-4 lg:flex lg:w-1/2">
           <Link
             href="/"
             className={buttonVariants({
@@ -128,8 +128,8 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
             variant={authenticated ? "outline" : "default"}
             className={
               authenticated
-                ? "border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3"
-                : `${nounsFont.className} text-md bg-black p-2.5 text-base hover:bg-primary hover:text-white md:px-4 md:py-3`
+                ? "border-primary px-3 py-2.5 font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3"
+                : `${nounsFont.className} bg-black p-2.5 text-base hover:bg-primary hover:text-white md:px-4 md:py-3`
             }
             onClick={authenticated ? logout : login}
           >
@@ -137,7 +137,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
           </Button>
         </div>
 
-        <div className="mr-1 flex items-center lg:hidden">
+        <div className="mr-1 flex w-1/4 items-center justify-end lg:hidden">
           <HamburgerMenu
             authenticated={authenticated}
             login={login}

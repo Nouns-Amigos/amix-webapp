@@ -215,38 +215,44 @@ export default function NounsAmigosDaoPage() {
                   Cómo involucrarte en Nouns Amigos?
                 </h2>
                 <div className="grid w-full grid-cols-1 gap-y-4 px-8 py-4 md:grid-cols-3 md:gap-x-8 md:px-0">
-                  <Card className="border-0">
+                  <Card className="flex flex-col justify-center border-0">
                     <CardHeader className="!pb-0">
-                      <CardTitle className="text-center text-7xl text-redNoggles">
+                      <CardTitle
+                        className={`${nounsFont.className} text-center text-6xl font-medium text-[#9148B2]`}
+                      >
                         1
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-center text-2xl font-semibold">
+                      <p className="text-center text-xl font-semibold md:text-2xl">
                         Síguenos en redes
                       </p>
                     </CardContent>
                   </Card>
-                  <Card className="border-0">
+                  <Card className="flex flex-col justify-center border-0">
                     <CardHeader className="!pb-0">
-                      <CardTitle className="text-center text-7xl text-redNoggles">
+                      <CardTitle
+                        className={`${nounsFont.className} text-center text-6xl font-medium text-[#9148B2]`}
+                      >
                         2
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-center text-2xl font-semibold">
+                      <p className="text-center text-xl font-semibold md:text-2xl">
                         Únete a Discord
                       </p>
                     </CardContent>
                   </Card>
-                  <Card className="border-0">
+                  <Card className="flex flex-col justify-center border-0">
                     <CardHeader className="!pb-0">
-                      <CardTitle className="text-center text-7xl text-redNoggles">
+                      <CardTitle
+                        className={`${nounsFont.className} text-center text-6xl font-medium text-[#9148B2]`}
+                      >
                         3
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-center text-2xl font-semibold">
+                      <p className="text-center text-xl font-semibold md:text-2xl">
                         Sube tus ideas
                       </p>
                     </CardContent>

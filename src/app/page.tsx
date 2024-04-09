@@ -420,8 +420,8 @@ function WhatIsNounsAmigos() {
       id="what-is-nouns-amigos"
       className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center"
     >
-      <div className="flex h-full w-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:items-center lg:space-y-0 lg:py-16 lg:text-center xl:px-32 xl:py-20 2xl:max-w-7xl">
-        <div className="flex w-full flex-col gap-y-4 lg:w-[52.5%] lg:pl-8 xl:pl-16">
+      <div className="flex h-full w-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:items-center lg:space-y-0 lg:px-24 lg:py-16 lg:text-center xl:px-44 xl:py-20 2xl:px-52">
+        <div className="flex w-full flex-col gap-y-4 lg:w-[52.5%] lg:pl-0">
           <h2
             className={`${nounsFont.className} block text-left text-5xl lg:hidden`}
           >
@@ -430,9 +430,7 @@ function WhatIsNounsAmigos() {
           <div className="aspect-video md:mt-6 lg:mt-0 lg:px-2">
             <iframe
               className="h-full w-full"
-              // width="560"
-              // height="315"
-              src="https://www.youtube.com/embed/lOzCA7bZG_k?si=eaJujb_skKPeakI9"
+              src="https://www.youtube.com/embed/4HI61GT5-dg?si=2EUq3cMGdBQ5k74g"
               title="¿Qué es Nouns?"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -467,27 +465,27 @@ function WhatIsNounsAmigos() {
 
 const testimonials = [
   {
-    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    body: "Entra a la app, regístrate y cuéntanos el impacto que Nouns Amigos ha tenido para tí",
     author: {
-      name: "Leslie Alexander",
+      name: "Contribuye a NounsAmigos.wtf",
       handle: "lesliealexander",
       imageUrl:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
-    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    body: "Necesitarás una cartera Web3 para poder crear tu cuenta y registrar tu testimonio.",
     author: {
-      name: "Leslie Alexander",
+      name: "Entra y firma p/iniciar sesión",
       handle: "lesliealexander2",
       imageUrl:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
     },
   },
   {
-    body: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+    body: "Queremos impulsar tu camino onchain, ¡estas interacciones son importantes!",
     author: {
-      name: "Leslie Alexander",
+      name: "Nouns DAO Amigos onchain",
       handle: "lesliealexander3",
       imageUrl:
         "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
@@ -507,7 +505,7 @@ function Testimonials() {
           </h3>
         </div>
         <div className="max-w-2xl pb-8 pt-12 lg:mx-0 lg:max-w-none">
-          <div className="grid gap-x-4 sm:grid-cols-2 sm:text-[0] md:grid-cols-3">
+          <div className="grid grid-rows-1 gap-x-4 sm:grid-cols-2 sm:text-[0] md:grid-cols-3">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.author.handle}
@@ -516,7 +514,7 @@ function Testimonials() {
                 <figure className="rounded-2xl bg-zinc-200 p-6 leading-6">
                   <figcaption className="flex items-center gap-x-4">
                     <Image
-                      className="h-10 w-10 rounded-full bg-gray-50"
+                      className="h-10 w-10 rounded-full bg-gray-50 md:hidden lg:block"
                       src="/icons/android-chrome-512x512.png"
                       alt=""
                       width={10}
@@ -526,7 +524,6 @@ function Testimonials() {
                       <div className="text-xl font-semibold text-gray-900">
                         {testimonial.author.name}
                       </div>
-                      <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
                     </div>
                   </figcaption>
                   <blockquote className="py-2 text-lg text-gray-900">
