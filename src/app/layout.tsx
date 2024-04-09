@@ -5,8 +5,9 @@ import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
 
-import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import WalletProvider from "providers/WalletProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: "Nouns Amigos",
@@ -30,15 +31,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${bodyFont.variable} h-screen`}>
-        <TRPCReactProvider cookies={cookies().toString()}>
-          {/* <Navbar /> */}
-          <main
-            className={`min-h-[calc(100svh-${NAVBAR_HEIGHT_SM})] overflow-x-hidden t-[${NAVBAR_HEIGHT_SM}] md:min-h-[calc(100svh-${NAVBAR_HEIGHT_MD})] t-[${NAVBAR_HEIGHT_MD}]`}
-          >
-            {children}
-          </main>
-          <Footer />
-        </TRPCReactProvider>
+        <WalletProvider>
+          <TRPCReactProvider cookies={cookies().toString()}>
+            <main
+              className={`min-h-[calc(100svh-${NAVBAR_HEIGHT_SM})] overflow-x-hidden t-[${NAVBAR_HEIGHT_SM}] md:min-h-[calc(100svh-${NAVBAR_HEIGHT_MD})] t-[${NAVBAR_HEIGHT_MD}]`}
+            >
+              {children}
+            </main>
+            <Footer />
+            <Toaster richColors />
+          </TRPCReactProvider>
+        </WalletProvider>
       </body>
     </html>
   );

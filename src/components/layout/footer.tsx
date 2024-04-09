@@ -85,7 +85,7 @@ function Footer() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-500"
+              className="text-gray-500 hover:text-primary"
             >
               {item.name}
             </a>

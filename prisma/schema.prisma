@@ -12,35 +12,54 @@ datasource db {
 
 model User {
   id                    String              @id
-  wallet                String              @unique
+  appWallet             String              @unique
   username              String              @unique
+  extWallet             String              @unique
   email                 String?             @unique
   bio                   String?
   website               String?
-  avatar_url            String?
-  banner_url            String?
+  avatarUrl             String?
+  bannerUrl             String?
+  profile               Profile?
   communities           UserCommunity[]
   projects              Project[]
   posts                 Post[]
   comments              Comment[]
-  votes         Vote[]
+  votes                 Vote[]
   createdAt             DateTime            @default(now())
   updatedAt             DateTime            @updatedAt
 
-  @@index([wallet, username, email])
+  @@index([appWallet, username, extWallet, email])
+}
+
+model Profile {
+  displayName           String
+  firstName             String?
+  lastName              String?
+  cityRegion            String?
+  country               String?
+  primaryRole           String?
+  professionalProfile   String?
+  isStudent             Boolean             @default(false)
+  githubUsername        String
+  xUsername             String
+  telegramUsername      String
+  user                  User                @relation(fields: [userId], references: [id])
+  userId                String              @unique
 }
 
 model Project {
   id                    String              @id @default(uuid())
-  wallet                String              @unique
+  wallet                String?             @unique
   name                  String              @unique
-  email                 String              @unique
+  email                 String?             @unique
   website               String              @unique
   description           String?
-  avatar_url            String?
-  banner_url            String?
-  token_address         String?
+  avatarUrl             String?
+  bannerUrl             String?
+  tokenAddress          String?
   category              String
+  networks              String[]
   admin                 User                @relation(fields: [adminId], references: [id])
   adminId               String
   community             Community?          @relation(fields: [communityId], references: [id])
@@ -80,12 +99,13 @@ model Post {
   title                 String
   content               String?
   media_url             String?
+  category              String?             @default("default")
   upvotes               Int                 @default(0)
   downvotes             Int                 @default(0)
   author                User                @relation(fields: [authorId], references: [id])
   authorId              String
-  community             Community           @relation(fields: [communityId], references: [id])
-  communityId           String
+  community             Community?          @relation(fields: [communityId], references: [id])
+  communityId           String?
   comments              Comment[]
   votes                 Vote[]
   createdAt             DateTime            @default(now())

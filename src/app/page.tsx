@@ -114,8 +114,6 @@ export default function Home() {
 
   async function getRandomAmigoToken() {
     const randomTokenId = getRandomNumber(AMIGOS_METADATA.length);
-    // setDisplayAmigoToken(AMIGOS_METADATA[randomTokenId]);
-    console.log(AMIGOS_METADATA[randomTokenId]);
     AMIGOS_METADATA[randomTokenId]?.background === "warm"
       ? setIsWarmColor(true)
       : setIsWarmColor(false);
@@ -171,9 +169,6 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
       for await (const nft of nftsIterable) {
         nfts.push(nft);
       }
-
-      // Log the NFTs.
-      console.log(nfts);
       return nfts;
     } catch (error) {
       console.log(error);
@@ -190,8 +185,6 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
       tokenId,
       { tokenType: NftTokenType.ERC721 },
     );
-    console.log("amigoOwnerData", amigoOwnerData);
-    console.log("amigoMetadata", amigoMetadata);
     return { amigoMetadata, amigoOwner: amigoOwnerData.owners[0] };
   }
 
@@ -215,15 +208,6 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
     setIsWarmColor(AMIGOS_METADATA[tokenId]?.background === "warm");
   }
 
-  // async function getCollectionHolders() {
-  //   const holders = await alchemy.nft.getOwnersForContract(
-  //     NounsAmigosContractAddress,
-  //     { withTokenBalances: true, includeCount: true },
-  //   );
-  //   console.log(holders);
-  //   setAmigoHolders(holders);
-  // }
-
   useEffect(() => {
     if (!isCollectionFetched) {
       void getAmigoToken(-1);
@@ -238,7 +222,7 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
         isWarmColor ? "bg-[#E1D7D5]" : "bg-[#D5D7E1]"
       } w-full xl:flex xl:justify-center`}
     >
-      <div className="flex h-full w-full flex-col-reverse items-center md:items-end lg:w-full lg:flex-row lg:items-center xl:max-w-6xl">
+      <div className="flex h-full w-full flex-col-reverse items-center md:items-end lg:w-full lg:flex-row lg:items-center lg:pt-12 xl:max-w-6xl xl:pt-20">
         {/*AMIGO image container*/}
         <div className="flex w-full flex-wrap justify-center md:absolute md:justify-start md:py-0 lg:static lg:h-full lg:w-[47.5%] lg:items-end lg:justify-end lg:pt-10 xl:pt-0">
           {/*AMIGO image*/}
@@ -336,7 +320,14 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
           </div>
           <div className="hidden w-full items-center justify-around md:flex md:md:px-6 lg:px-0">
             <div className="hidden items-center lg:flex">
-              <ArrowLeft className="h-12 w-12" />
+              <Image
+                src="/images/arrow.svg"
+                alt="Arrow"
+                width={0}
+                height={0}
+                sizes="100vw"
+                className="lg:w-18 md:w-16 xl:w-20"
+              />
             </div>
             <div className={`${nounsFont.className} text-[40px]`}>
               Amigo {displayAmigoToken?.tokenId}
