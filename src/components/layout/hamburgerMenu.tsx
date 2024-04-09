@@ -11,16 +11,29 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { buttonVariants } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
+import { nounsFont } from "@/lib/fonts";
 
-// type HamburgerMenuProps = {
-//   menuItems?: [{ displayText: string; href: string }];
-// };
+type MobileMenuProps = {
+  authenticated: boolean;
+  login: () => void;
+  logout: () => void;
+  // menuItems?: [{ displayText: string; href: string }];
+};
 
-export default function HamburgerMenu() {
+export default function HamburgerMenu({
+  authenticated,
+  login,
+  logout,
+}: MobileMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  function handleLogout() {
+    logout();
+    setIsMenuOpen(false);
+  }
 
   return (
     <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -88,6 +101,17 @@ export default function HamburgerMenu() {
           >
             AMIGO
           </Link>
+          <Button
+            variant={authenticated ? "outline" : "default"}
+            className={
+              authenticated
+                ? "border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3"
+                : `${nounsFont.className} text-md bg-black p-2.5 text-base hover:bg-primary hover:text-white md:px-4 md:py-3`
+            }
+            onClick={authenticated ? handleLogout : login}
+          >
+            {authenticated ? "Salir" : "Entrar"}
+          </Button>
         </div>
       </SheetContent>
     </Sheet>

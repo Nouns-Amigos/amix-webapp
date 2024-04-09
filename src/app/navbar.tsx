@@ -2,16 +2,37 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useLogin, useLogout, usePrivy } from "@privy-io/react-auth";
 
 import { nounsFont } from "@/lib/fonts";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import HamburgerMenu from "@/components/layout/hamburgerMenu";
 import TreasuryButton from "@/components/layout/treasuryButton";
-import { usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar({ color }: { color?: "cool" | "warm" }) {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const { ready, authenticated } = usePrivy();
+  const { login } = useLogin({
+    // Set up an `onComplete` callback to run when `login` completes
+    onComplete(user, isNewUser, wasPreviouslyAuthenticated) {
+      console.log("🔑 ✅ Login success", {
+        user,
+        isNewUser,
+        wasPreviouslyAuthenticated,
+      });
+      if (!wasPreviouslyAuthenticated) router.push("/impacto-nouns-amigos");
+    },
+    // Set up an `onError` callback to run when there is a `login` error
+    onError(error) {
+      console.log("🔑 🚨 Login error", { error });
+    },
+  });
+  const { logout } = useLogout();
+
   let navbarBgTwClass = "bg-transparent";
   switch (color) {
     case "cool":
@@ -104,15 +125,24 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
           </Link>
           {/* <CollectionDropdownButton /> */}
           <Button
-            size="default"
-            className={`${nounsFont.className} text-md bg-black p-2.5 text-base hover:bg-primary hover:text-white md:px-4 md:py-3`}
+            variant={authenticated ? "outline" : "default"}
+            className={
+              authenticated
+                ? "border-primary px-3 py-2.5 text-base font-semibold hover:!bg-primary hover:text-white md:px-4 md:py-3"
+                : `${nounsFont.className} text-md bg-black p-2.5 text-base hover:bg-primary hover:text-white md:px-4 md:py-3`
+            }
+            onClick={authenticated ? logout : login}
           >
-            Entrar
+            {authenticated ? "Salir" : "Entrar"}
           </Button>
         </div>
 
         <div className="mr-1 flex items-center lg:hidden">
-          <HamburgerMenu />
+          <HamburgerMenu
+            authenticated={authenticated}
+            login={login}
+            logout={logout}
+          />
         </div>
       </div>
     </nav>
