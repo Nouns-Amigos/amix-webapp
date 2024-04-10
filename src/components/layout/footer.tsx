@@ -1,6 +1,11 @@
 import type { JSX, SVGProps } from "react";
 import Image from "next/image";
 import { nounsFont } from "@/lib/fonts";
+import localFont from "next/font/local";
+
+const logoFont = localFont({
+  src: "../../lib/local-fonts/SFProDisplay-Heavy.ttf",
+});
 
 const navigation = [
   {
@@ -85,7 +90,7 @@ function Footer() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-primary"
+              className="text-gray-500 hover:text-primary lg:text-lg"
             >
               {item.name}
             </a>
@@ -102,7 +107,7 @@ function Footer() {
               className="h-auto w-16 transition duration-300 ease-in-out hover:scale-90"
             />
             <span
-              className={`${nounsFont.className} text-2xl font-semibold md:text-[26px]`}
+              className={`${logoFont.className} text-2xl font-semibold md:text-[26px]`}
             >
               amigos
             </span>

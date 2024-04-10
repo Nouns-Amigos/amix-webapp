@@ -191,11 +191,7 @@ export default function NounsAmigosDaoPage() {
                     />
                   </div>
                   <div className="col-span-3 col-start-5 flex items-center md:justify-end">
-                    <Link
-                      href="https://prop.house/0x58fcf38562f7402aad42a27bd783bd0892870536"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <Link href="/prop-house">
                       <Button className="-ml-4 bg-[#9148B2] !py-6 px-6 text-[22px] font-medium hover:bg-[#A468BF] md:ml-0 lg:!py-7 lg:px-5 lg:font-semibold">
                         Prop House
                       </Button>
@@ -269,9 +265,9 @@ export default function NounsAmigosDaoPage() {
 
 function TokenAmigo() {
   return (
-    <div className="flex w-full flex-col space-y-2 bg-[#D3D7E2] px-8 pb-0 pt-12 text-lg md:items-center md:px-0 lg:px-24 lg:py-16">
-      <div className="flex w-full flex-col items-center lg:flex-row lg:items-start lg:justify-center xl:max-w-5xl">
-        <div className="flex w-full flex-col space-y-4 md:w-3/4 md:items-center lg:w-1/2">
+    <div className="flex w-full flex-col space-y-2 bg-[#D3D7E2] px-8 pb-0 pt-12 text-lg md:items-center md:px-0 lg:px-24 lg:pb-0 lg:pt-16">
+      <div className="flex w-full flex-col items-center lg:grid lg:auto-rows-fr lg:grid-cols-2 xl:max-w-5xl">
+        <div className="flex w-full flex-col space-y-4 md:w-3/4 md:items-center lg:w-full lg:pb-8">
           <div className="w-full flex-col space-y-2 md:w-4/5 lg:w-full lg:pr-8">
             <h2
               className={`${nounsFont.className} w-full text-left text-[2rem] md:text-4xl`}
@@ -336,15 +332,17 @@ function TokenAmigo() {
             </Link>
           </div>
         </div>
-        <div className="w-full md:w-2/5 lg:bottom-0 lg:flex lg:h-full lg:w-1/2 lg:flex-grow">
-          <Image
-            src="/icons/android-chrome-512x512.png"
-            alt="AMIGO token example: a burro with noggles wearing a red shirt that says 'hola'"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="h-auto w-full"
-          />
+        <div className="w-full md:mt-4 md:w-1/2 lg:mt-0 lg:flex lg:h-full lg:w-full lg:items-end">
+          <div className="w-full xl:flex xl:justify-center">
+            <Image
+              src="/images/amigos/amigo-6.png"
+              alt="AMIGO token example: a burro with noggles wearing a red shirt that says 'hola'"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="aspect-square w-full xl:w-4/5"
+            />
+          </div>
         </div>
       </div>
     </div>
