@@ -242,12 +242,19 @@ export default function PropHouse() {
                 sizes="100vw"
                 className="hidden w-16 scale-x-[-1] lg:-ml-4 lg:block"
               />
-              <Button
-                size="lg"
-                className="w-2/3 bg-[#9148B2] px-6 py-4 text-lg font-semibold text-white md:w-1/2 lg:w-auto lg:!py-6 lg:text-xl"
+              <Link
+                href="https://discord.gg/we3HY9YBfZ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex justify-center"
               >
-                ¡Súmate aquí!
-              </Button>
+                <Button
+                  size="lg"
+                  className="bg-[#9148B2] px-6 py-4 text-lg font-semibold text-white lg:!py-6 lg:text-xl"
+                >
+                  ¡Súmate aquí!
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
