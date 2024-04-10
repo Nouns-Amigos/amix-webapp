@@ -604,8 +604,8 @@ function AmigoGallery({
               sizes="100vw"
               className="h-auto w-full "
             />
-            <div className="amigoCaption flex flex-col gap-y-0 bg-primary p-2 text-white">
-              <div className="flex items-center justify-between">
+            <div className="amigoCaption flex flex-col gap-y-0 bg-primary px-1 py-0 text-white xs:px-2 xs:py-0.5">
+              <div className="flex items-center justify-between text-sm lg:text-base">
                 <p className={`${nounsFont.className}`}>
                   Amigo {amigoToken.tokenId}
                 </p>
@@ -622,7 +622,7 @@ function AmigoGallery({
                       width="0"
                       height="0"
                       sizes="100vw"
-                      className="h-4 w-4"
+                      className="h-3 w-3 lg:h-4 lg:w-4"
                     />
                   </Link>
                   {/* <Link
@@ -641,6 +641,24 @@ function AmigoGallery({
                   </Link> */}
                 </div>
               </div>
+              <div className="flex items-center justify-between text-[10px] lg:text-xs">
+                <p className="">Dueño:</p>
+                <Link
+                  href={`https://etherscan.io/address/${AMIGOS_METADATA[
+                    parseInt(amigoToken.tokenId)
+                  ]?.owner}`}
+                  className="flex items-center font-medium"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {truncateString(
+                    AMIGOS_METADATA[parseInt(amigoToken.tokenId)]?.owner ??
+                      zeroAddress,
+                    4,
+                    4,
+                  )}
+                </Link>
+              </div>
               {/* <div className="flex items-center justify-between text-xs md:text-base">
                 <p className="text-[12px]">Creado:</p>
                 {amigoToken.mint?.timestamp ? (
@@ -658,24 +676,6 @@ function AmigoGallery({
                   <p className="text-[12px]">No disponible</p>
                 )}
               </div> */}
-              <div className="flex items-center justify-between text-xs md:text-base">
-                <p className="text-[10px] md:text-[12px]">Dueño:</p>
-                <Link
-                  href={`https://etherscan.io/address/${AMIGOS_METADATA[
-                    parseInt(amigoToken.tokenId)
-                  ]?.owner}`}
-                  className="flex items-center text-[10px] font-medium md:text-[12px] md:text-sm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {truncateString(
-                    AMIGOS_METADATA[parseInt(amigoToken.tokenId)]?.owner ??
-                      zeroAddress,
-                    4,
-                    4,
-                  )}
-                </Link>
-              </div>
             </div>
           </div>
         ))}

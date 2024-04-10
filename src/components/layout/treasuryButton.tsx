@@ -67,7 +67,7 @@ function TreasuryButton() {
     <DropdownMenu onOpenChange={() => setIsOpen(!isOpen)}>
       <DropdownMenuTrigger asChild>
         <Button
-          className={`border-primary p-2.5 text-base hover:bg-primary hover:text-white active:bg-primary md:p-3 ${
+          className={`border-primary px-1 py-2 text-base hover:bg-primary hover:text-white active:bg-primary md:p-3 ${
             isOpen && "bg-primary text-white"
           }`}
           variant="outline"

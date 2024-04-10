@@ -303,12 +303,12 @@ function Hero({ isWarmColor, setIsWarmColor }: HeroProps) {
         {/*Header and subheader*/}
         <div className="z-10 flex h-full w-full flex-col justify-center gap-y-2 px-6 pt-8 md:w-2/3 md:px-8 md:pb-16 md:pt-20 lg:w-[52.5%] lg:items-center lg:px-16 lg:pb-8 lg:pl-0 xl:pb-8 xl:pt-16">
           <Image
-            src="/images/landing/globoaz.png"
+            src="/images/landing/globoaz.svg"
             alt="Únete a la comunidad de Nouns en Español"
             width="0"
             height="0"
             sizes="100vw"
-            className="h-auto w-full"
+            className="h-auto w-full md:-mt-16"
           />
           <h4
             className={`${nounsFont.className} mt-2 px-4 text-[2rem] font-light leading-none md:px-8 md:text-center lg:px-0`}
@@ -420,14 +420,14 @@ function WhatIsNounsAmigos() {
       id="what-is-nouns-amigos"
       className="w-full bg-[#EBEBEB] text-foreground lg:flex lg:justify-center"
     >
-      <div className="flex h-full w-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:items-center lg:space-y-0 lg:px-24 lg:py-16 lg:text-center xl:px-44 xl:py-20 2xl:px-52">
+      <div className="flex h-full w-full flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:items-center lg:space-y-0 lg:px-24 lg:py-16 lg:text-center xl:px-48 xl:py-20 2xl:px-52">
         <div className="flex w-full flex-col gap-y-4 lg:w-[52.5%] lg:pl-0">
           <h2
             className={`${nounsFont.className} block text-left text-5xl lg:hidden`}
           >
             Nouns Amigos es para todos
           </h2>
-          <div className="aspect-video md:mt-6 lg:mt-0 lg:px-2">
+          <div className="aspect-video md:mt-6 lg:mt-0">
             <iframe
               className="h-full w-full"
               src="https://www.youtube.com/embed/4HI61GT5-dg?si=2EUq3cMGdBQ5k74g"
@@ -437,25 +437,20 @@ function WhatIsNounsAmigos() {
             />
           </div>
         </div>
-        <div className="lg:w-[47.5%] lg:pl-4 lg:pr-0 xl:pr-16">
+        <div className="lg:w-[47.5%] lg:pl-12">
           <h2
-            className={`${nounsFont.className} hidden text-left text-5xl lg:block`}
+            className={`${nounsFont.className} hidden text-left text-5xl lg:block xl:text-6xl`}
           >
-            Nouns Amigos es <br className="hidden lg:block" />
-            para todos
+            Nouns Amigos <br className="hidden lg:block" />
+            es para todos
           </h2>
           <div className="flex flex-col space-y-4">
-            <p className="mt-2 text-lg md:text-xl lg:text-left">
+            <p className="mt-2 text-lg lg:text-left xl:text-xl">
               Nouns Amigos es una marca de uso libre que genera un impacto
               positivo al financiar ideas y fomentar la colaboración entre
               comunidades de habla Hispana. <br /> Desde coleccionistas y
-              tecnólogos hasta marcas y organizaciones sin fines de lucro...
+              tecnólogos hasta marcas y organizaciones sin fines de lucro.
             </p>
-            <h4
-              className={`${nounsFont.className} text-center text-3xl font-light uppercase lg:text-left`}
-            >
-              ¡Nouns Amigos es para todos!
-            </h4>
           </div>
         </div>
       </div>
@@ -542,12 +537,18 @@ function Testimonials() {
             construir en Web3 con nosotros
           </h4>
           <p className="hidden md:block md:text-4xl">→</p>
-          <Button
-            size="lg"
-            className={`${nounsFont.className} px-6 py-2.5 text-2xl lg:h-14 lg:!py-4 lg:px-8 lg:text-3xl`}
+          <Link
+            href="https://discord.gg/we3HY9YBfZ"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            Únete en Discord
-          </Button>
+            <Button
+              size="lg"
+              className={`${nounsFont.className} px-6 py-2.5 text-2xl lg:h-14 lg:!py-4 lg:px-8 lg:text-3xl`}
+            >
+              Únete en Discord
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
@@ -557,213 +558,236 @@ function Testimonials() {
 function Faq() {
   return (
     <div className="w-full bg-[#F8F8F8] text-foreground lg:flex lg:justify-center lg:px-24 xl:px-32">
-      <div className="flex h-full w-full max-w-7xl flex-col space-y-4 px-6 py-16 md:flex-row-reverse md:px-16 md:py-20 lg:px-0 lg:py-16 lg:text-center xl:px-16">
-        <div className="w-full">
-          <div className="flex w-full flex-col-reverse md:flex-row md:items-end">
-            <div className="w-full md:w-1/2 md:pb-8">
-              <h3
-                className={`${nounsFont.className} mt-2 text-4xl leading-tight xs:text-4xl md:text-left lg:text-5xl`}
-              >
-                Preguntas Frecuentes
-              </h3>
-            </div>
-            <div className="flex w-full justify-end md:w-1/2 md:px-0 lg:w-[47.5%]">
-              <Image
-                src="/images/landing/faq-globe-green.png"
-                alt="Únete a la comunidad de Nouns en Español"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="h-auto w-2/3 md:w-full"
-              />
-            </div>
+      <div className="flex h-full w-full max-w-7xl flex-col space-y-4 px-6 py-16 md:px-16 md:py-20 lg:flex-row lg:px-0 lg:py-16 lg:text-center xl:px-16">
+        <div className="flex w-full flex-col md:items-start lg:flex-row">
+          <div className="flex h-full w-full items-start justify-end lg:w-2/5 lg:justify-center">
+            <Image
+              src="/images/landing/faq-globe-green.png"
+              alt="Únete a la comunidad de Nouns en Español"
+              width="0"
+              height="0"
+              sizes="100vw"
+              className="h-auto w-2/3 md:w-1/2 lg:w-5/6"
+            />
           </div>
-          <div className="w-full px-4 md:flex md:justify-start md:pl-8">
-            <Accordion
-              type="single"
-              collapsible
-              className="w-full py-4 md:w-4/5 md:pt-0 lg:w-3/4"
+          <div className="flex w-full flex-col gap-y-4 md:pb-8 lg:w-3/5 lg:pt-12">
+            <h3
+              className={`${nounsFont.className} mt-2 text-4xl leading-tight xs:text-4xl md:text-left lg:hidden`}
             >
-              <AccordionItem value="item-1" className="">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Qué es Nouns?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    Nouns es una DAO que se dedica a financiar ideas. Estas
-                    ideas pueden ir en cualquier dirección que ayude a difundir
-                    Nouns de una manera positiva en básicamente cualquier
-                    categoría que puedas imaginar: bienes públicos, impacto
-                    social, arte, diseño, tecnología, ciencia, música, danza,
-                    juguetes, gastronomía, deporte, etc.
-                  </p>
-                  <p>
-                    Para financiar estas ideas se subasta un NFT diariamente.
-                    Los fondos recaudados de esas subastas se envían
-                    directamente a la tesorería de la DAO donde los poseedores
-                    del NFT pueden decidir cómo utilizar esos fondos. Todo este
-                    proceso ocurre de una manera descentralizada.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Qué es Prop House?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    Prop House es una infraestructura pública financiada por
-                    Nouns DAO. Es un enfoque experimental para que las
-                    comunidades distribuyan capital. Mediante rondas de
-                    financiamiento, las comunidades subastan cantidades fijas de
-                    capital a los creadores con las mejores ideas.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Cómo funciona Prop House?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    Las comunidades realizan rondas de financiamiento en sus
-                    casas comunitarias. En estas rondas, los creadores pueden
-                    proponer ideas para ser financiadas. El flujo es el
-                    siguiente:
-                  </p>
-                  <ol className="list-inside list-decimal pt-2">
-                    <li>
-                      Una comunidad propone una ronda de financiamiento. Cada
-                      ronda tiene una cantidad fija de capital a ganar (por
-                      ejemplo, 3 ganadores obtienen 1 ETH cada uno) y se compone
-                      de un periodo de propuesta y otro de votación.
-                    </li>
-                    <li>
-                      Comienza el periodo de propuestas. Los creadores pueden
-                      proponer ideas para las cuales les gustaría obtener
-                      fondos.
-                    </li>
-                    <li>
-                      Finaliza el periodo de propuestas y comienza el periodo de
-                      votaciones. Los poseedores de tokens de la comunidad votan
-                      sus propuestas favoritas.
-                    </li>
-                    <li>
-                      Finaliza el periodo de votación. ¡Las mejores propuestas
-                      obtienen fondos!
-                    </li>
-                  </ol>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4" className="">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Qué es una propuesta?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    Una propuesta es una idea articulada que se presenta en una
-                    ronda de financiamiento para que sea votada por la comunidad
-                    por la posibilidad de obtener ese financiamiento.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Quién puede enviar propuestas?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    Cualquier persona con una dirección de Ethereum puede enviar
-                    una propuesta a cualquier ronda de financiamiento.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-6">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Qué se obtiene al ganar una ronda?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    Al ganar una ronda de financiamiento de Nouns Amigos
-                    obtendrás el monto indicado en ETH en cada ronda.
-                    Adicionalmente del monto, obtendrás el token de Nouns
-                    Amigos. A continuación, se espera que ejecutes la idea que
-                    has propuesto. Asegúrate de solicitar el apoyo de la
-                    comunidad Nouns Amigos.
-                  </p>
-                  <p>
-                    Nota: animamos a los creadores a construir en público, a
-                    través de ser activos en redes sociales, para crecer su
-                    reputación. En este nuevo mundo, ¡una buena reputación vale
-                    su peso en oro!
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-7">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Quién puede votar por las propuestas de la Casa Nouns
-                    Amigos?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>Pueden votar poseedores del token de Nouns Amigos.</p>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-8">
-                <AccordionTrigger className="py-2">
-                  <h4
-                    className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
-                  >
-                    ¿Cómo funciona y cómo se obtiene el token de NounsAmigos?
-                  </h4>
-                </AccordionTrigger>
-                <AccordionContent className="text-left text-lg">
-                  <p>
-                    A diferencia de otros proyectos y DAOs, no hay una venta o
-                    subasta de tokens. El token de Nouns amigos se puede obtener
-                    al ganar una ronda de financiamiento. De esta manera
-                    queremos incentivar a creadores a que propongan ideas para
-                    obtener financiamiento y el token.
-                  </p>
-                  <p>
-                    Por lo mismo, se creará (mint) un nuevo token (NFT) por cada
-                    propuesta ganadora al finalizar cada ronda de
-                    financiamiento. No será necesario comprarlo ya que se
-                    obtendrá al ganar una ronda.
-                  </p>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+              Preguntas Frecuentes
+            </h3>
+            <p className="text-left text-xl md:w-4/5 lg:w-full">
+              Somos la comunidad de Nouns DAO todos los que hablamos español.
+              Ayudamos a crear bienes públicos, impacto social, arte, diseño y
+              tecnología.
+            </p>
+
+            <FaqAccordion />
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function FaqAccordion() {
+  return (
+    <Accordion
+      type="single"
+      collapsible
+      className="w-full md:w-4/5 md:pt-0 lg:w-full"
+    >
+      <AccordionItem
+        value="item-1"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Qué es Nouns?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            Nouns es una DAO que se dedica a financiar ideas. Estas ideas pueden
+            ir en cualquier dirección que ayude a difundir Nouns de una manera
+            positiva en básicamente cualquier categoría que puedas imaginar:
+            bienes públicos, impacto social, arte, diseño, tecnología, ciencia,
+            música, danza, juguetes, gastronomía, deporte, etc.
+          </p>
+          <p>
+            Para financiar estas ideas se subasta un NFT diariamente. Los fondos
+            recaudados de esas subastas se envían directamente a la tesorería de
+            la DAO donde los poseedores del NFT pueden decidir cómo utilizar
+            esos fondos. Todo este proceso ocurre de una manera descentralizada.
+          </p>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-2"
+        className="rounded-lg px-4 py-2 md:px-6 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Qué es Prop House?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            Prop House es una infraestructura pública financiada por Nouns DAO.
+            Es un enfoque experimental para que las comunidades distribuyan
+            capital. Mediante rondas de financiamiento, las comunidades subastan
+            cantidades fijas de capital a los creadores con las mejores ideas.
+          </p>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-3"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Cómo funciona Prop House?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            Las comunidades realizan rondas de financiamiento en sus casas
+            comunitarias. En estas rondas, los creadores pueden proponer ideas
+            para ser financiadas. El flujo es el siguiente:
+          </p>
+          <ol className="list-inside list-decimal pt-2">
+            <li>
+              Una comunidad propone una ronda de financiamiento. Cada ronda
+              tiene una cantidad fija de capital a ganar (por ejemplo, 3
+              ganadores obtienen 1 ETH cada uno) y se compone de un periodo de
+              propuesta y otro de votación.
+            </li>
+            <li>
+              Comienza el periodo de propuestas. Los creadores pueden proponer
+              ideas para las cuales les gustaría obtener fondos.
+            </li>
+            <li>
+              Finaliza el periodo de propuestas y comienza el periodo de
+              votaciones. Los poseedores de tokens de la comunidad votan sus
+              propuestas favoritas.
+            </li>
+            <li>
+              Finaliza el periodo de votación. ¡Las mejores propuestas obtienen
+              fondos!
+            </li>
+          </ol>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-4"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Qué es una propuesta?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            Una propuesta es una idea articulada que se presenta en una ronda de
+            financiamiento para que sea votada por la comunidad por la
+            posibilidad de obtener ese financiamiento.
+          </p>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-5"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Quién puede enviar propuestas?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            Cualquier persona con una dirección de Ethereum puede enviar una
+            propuesta a cualquier ronda de financiamiento.
+          </p>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-6"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Qué se obtiene al ganar una ronda?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            Al ganar una ronda de financiamiento de Nouns Amigos obtendrás el
+            monto indicado en ETH en cada ronda. Adicionalmente del monto,
+            obtendrás el token de Nouns Amigos. A continuación, se espera que
+            ejecutes la idea que has propuesto. Asegúrate de solicitar el apoyo
+            de la comunidad Nouns Amigos.
+          </p>
+          <p>
+            Nota: animamos a los creadores a construir en público, a través de
+            ser activos en redes sociales, para crecer su reputación. En este
+            nuevo mundo, ¡una buena reputación vale su peso en oro!
+          </p>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-7"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Quién puede votar por las propuestas de la Casa Nouns Amigos?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>Pueden votar poseedores del token de Nouns Amigos.</p>
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem
+        value="item-8"
+        className="rounded-lg px-4 py-2 md:px-6 md:py-4 [&[data-state=open]]:bg-[#ebebeb]"
+      >
+        <AccordionTrigger className="py-0">
+          <h4
+            className={`${nounsFont.className} text-left text-3xl md:text-4xl`}
+          >
+            ¿Cómo funciona y cómo se obtiene el token de NounsAmigos?
+          </h4>
+        </AccordionTrigger>
+        <AccordionContent className="pt-2 text-left text-lg">
+          <p>
+            A diferencia de otros proyectos y DAOs, no hay una venta o subasta
+            de tokens. El token de Nouns amigos se puede obtener al ganar una
+            ronda de financiamiento. De esta manera queremos incentivar a
+            creadores a que propongan ideas para obtener financiamiento y el
+            token.
+          </p>
+          <p>
+            Por lo mismo, se creará (mint) un nuevo token (NFT) por cada
+            propuesta ganadora al finalizar cada ronda de financiamiento. No
+            será necesario comprarlo ya que se obtendrá al ganar una ronda.
+          </p>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }
