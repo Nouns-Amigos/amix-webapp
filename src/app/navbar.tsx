@@ -5,11 +5,16 @@ import Link from "next/link";
 import { useLogin, useLogout, usePrivy } from "@privy-io/react-auth";
 
 import { nounsFont } from "@/lib/fonts";
+import localFont from "next/font/local";
 
 import { Button, buttonVariants } from "@/components/ui/button";
 import HamburgerMenu from "@/components/layout/hamburgerMenu";
 import TreasuryButton from "@/components/layout/treasuryButton";
 import { useRouter, usePathname } from "next/navigation";
+
+const logoFont = localFont({
+  src: "../lib/local-fonts/SFProDisplay-Heavy.ttf",
+});
 
 export default function Navbar({ color }: { color?: "cool" | "warm" }) {
   const pathname = usePathname();
@@ -48,20 +53,23 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
   return (
     <nav className={`h-20 md:h-24 ${navbarBgTwClass}`}>
       <div className="mx-auto flex h-full max-w-7xl justify-between px-4 md:px-8 lg:px-12 xl:px-16">
-        <div className="flex w-3/4 items-center justify-start space-x-0 md:w-1/2 md:space-x-4">
-          <Link href="/" className="flex items-center gap-1 px-2 text-black">
-            <div className="flex items-center">
+        <div className="flex w-3/4 items-center justify-start space-x-0 md:space-x-4 lg:w-1/2">
+          <Link
+            href="/"
+            className="flex w-auto items-center gap-1 px-2 text-black"
+          >
+            <div className="flex h-full w-auto flex-grow items-center">
               <Image
                 src="/icons/noggles.png"
                 alt="Noggles"
                 width="0"
                 height="0"
                 sizes="100vw"
-                className="h-6 w-full transition duration-300 ease-in-out hover:scale-90 md:h-8"
+                className="h-6 w-auto transition duration-300 ease-in-out hover:scale-90 md:h-7"
               />
             </div>
             <span
-              className={`${nounsFont.className} mb-0.5 text-2xl font-semibold md:mb-1 md:text-[2rem]`}
+              className={`${logoFont.className} mb-0.5 text-2xl font-semibold md:mb-1 md:text-[1.75rem]`}
             >
               amigos
             </span>
@@ -70,7 +78,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
         </div>
 
         {/* Primary Navbar items */}
-        <div className="mr-1 hidden items-center space-x-4 lg:flex lg:w-1/2">
+        <div className="mr-1 hidden items-center space-x-4 lg:flex lg:w-1/2 lg:justify-end">
           <Link
             href="/"
             className={buttonVariants({
