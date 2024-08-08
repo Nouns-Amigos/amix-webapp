@@ -106,7 +106,8 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
             DAO
           </Link>
           <Link
-            href="/prop-house"
+            href="https://app.clarity.so/nounsamigos"
+            target="_blank"
             className={buttonVariants({
               variant: "outline",
               size: "default",
@@ -116,7 +117,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
               }`,
             })}
           >
-            Prop House
+            Grants
           </Link>
           <Link
             href="/token-amigo"
