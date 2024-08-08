@@ -74,7 +74,8 @@ export default function HamburgerMenu({
             <span>DAO</span>
           </Link>
           <Link
-            href="/prop-house"
+            href="https://app.clarity.so/nounsamigos"
+            target="_blank"
             className={buttonVariants({
               variant: "outline",
               size: "sm",
@@ -85,7 +86,7 @@ export default function HamburgerMenu({
             })}
             onClick={() => setIsMenuOpen(false)}
           >
-            Prop House
+            Grants
           </Link>
           <Link
             href="/token-amigo"
