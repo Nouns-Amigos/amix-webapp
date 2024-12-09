@@ -106,7 +106,7 @@ export default function Navbar({ color }: { color?: "cool" | "warm" }) {
             DAO
           </Link>
           <Link
-            href="https://app.clarity.so/nounsamigos"
+            href="https://hackmd.io/@nounsamigos/wiki"
             target="_blank"
             className={buttonVariants({
               variant: "outline",
